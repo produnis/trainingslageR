@@ -2,7 +2,7 @@
 
 ![](_extensions/buechlein/ccbyncsa.png){width=2.2cm}
 
-Dieses Script ist unter `CC BY-NC-SA 4.0`^[siehe <https://creativecommons.org/licenses/by-nc-sa/4.0/>] lizensiert.
+Dieses Script ist unter der  `Creative Commons BY-NC-SA 4.0`^[siehe <https://creativecommons.org/licenses/by-nc-sa/4.0/>] lizensiert.
 
 Sie dürfen:
 

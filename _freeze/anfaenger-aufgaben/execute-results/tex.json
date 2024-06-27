@@ -1,0 +1,21 @@
+{
+  "hash": "56e7129050605e8ea6bba871c467bca5",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Aufgaben für EinsteigerInnen {#sec-AufgabeAnfang}\n\n## Aufgabe [-@sec-AAA01] Vektoren {#sec-AAA01}\n\n::: {.callout-note appearance=\"simple\"}\n\na) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.\n\nb) Erzeugen Sie einen Datenvektor, der aus den Wörtern \"Apfel\", \"Birne\" und \"Postauto\" besteht.\n\nc) Erzeugen Sie einen weiteren Datenvektor, in welchem die Wörter \"Apfel\", \"Birne\" und \"Postauto\" 30 mal wiederholt werden.\n\n::: {.callout-caution appearance=\"simple\"}\nSchauen Sie sich die Hilfeseite zur Funktion `rep()` an, um Aufgabe c) besser lösen zu können\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n?rep()\n# oder\nhelp(rep)\n```\n:::\n\n\n\n\n:::\n\n:::\n\n::: {.callout-tip appearance=\"simple\"}\nLösung siehe @sec-LAA01\n:::\n",
+    "supporting": [
+      "anfaenger-aufgaben_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}

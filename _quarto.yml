@@ -1,9 +1,25 @@
 project:
   type: book
 
+author:
+    - name: Prof. Dr. Jörg große Schlarmann
+      url: https://www.produnis.de/R
+      affiliation: Hochschule Niederrhein
+      affiliation-url: https://www.hs-niederrhein.de
+      orcid: 0000-0002-3634-7722
+
+citation:
+  type: book
+  title: "trainingslageR"
+  publisher: "Hochschule Niederrhein"
+  publisher-place: "Krefeld"
+  language: de
+  status: "advance online publication"
+  license: "CC BY-NC-SA 4.0"
+
 book:
   title: "trainingslageR"
-  subtitle: "Ein Übungsbuch für R-Einsteiger*innen"
+  subtitle: "Ein Übungsbuch für R-Einsteiger*innen und Fortgeschrittene"
   language: de
   author:
     - name: Prof. Dr. Jörg große Schlarmann
@@ -14,15 +30,21 @@ book:
   date: "2024-06-27"
   chapters:
     - index.qmd
-    - aufgaben.qmd
-    - loesungen.qmd
+    - part: "Aufgaben"
+      chapters:
+        - anfaenger-aufgaben.qmd
+    - part: "Lösungen"
+      chapters:
+        - anfaenger-loesungen.qmd
     - literatur.qmd
     - credits.qmd
 
 bibliography: literatur.bib
 nocite: |
   @waltherR22, @tidytuesday, @Rbase
-
+language:
+  crossref-sec-prefix: "Abschnitt"
+  crossref-chap-prefix: "Abschnitt"
 freeze: auto
 
 format:
@@ -38,7 +60,7 @@ format:
         - headsep=15mm
       df-print: kable
       code-line-numbers: false # false
-      keep-tex: false # true # false
+      keep-tex: true #false # true # false
       lang: de
       date-format: "DD.MM.YYYY"
       linkcolor: black

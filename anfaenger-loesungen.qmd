@@ -1,0 +1,41 @@
+# Lösungswege zu den Aufgaben für EinsteigerInnen {#sec-LoesungAnfang}
+
+
+## Lösung zur Aufgabe [-@sec-AAA01] Vektoren {#sec-LAA01}
+::: {.callout-tip}
+## a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
+
+```{r}
+#| label: LoesungAA01a
+zahlen <- c(1:100)
+#anschauen
+zahlen
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Erzeugen Sie einen Datenvektor, der aus den Wörtern "Apfel", "Birne" und "Postauto" besteht.
+
+```{r}
+#| label: LoesungAA01b
+worte <- c("Apfel", "Birne", "Postauto")
+# anschauen
+worte
+```
+
+:::
+
+::: {.callout-tip}
+## c) Erzeugen Sie einen weiteren Datenvektor, in welchem die Wörter "Apfel", "Birne" und "Postauto" 30 mal wiederholt werden.
+
+```{r}
+#| label: LoesungAA01c
+# mit rep() 30mal "worte" wiederholen
+worte30 <- rep(worte, 30)
+# anschauen
+worte30
+```
+
+:::

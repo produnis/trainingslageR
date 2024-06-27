@@ -1,0 +1,29 @@
+# Aufgaben für EinsteigerInnen {#sec-AufgabeAnfang}
+
+## Aufgabe [-@sec-AAA01] Vektoren {#sec-AAA01}
+
+::: {.callout-note appearance="simple"}
+
+a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
+
+b) Erzeugen Sie einen Datenvektor, der aus den Wörtern "Apfel", "Birne" und "Postauto" besteht.
+
+c) Erzeugen Sie einen weiteren Datenvektor, in welchem die Wörter "Apfel", "Birne" und "Postauto" 30 mal wiederholt werden.
+
+::: {.callout-caution appearance="simple"}
+Schauen Sie sich die Hilfeseite zur Funktion `rep()` an, um Aufgabe c) besser lösen zu können
+```{r}
+#| label: AufgabeAnfangVectorenA
+#| eval: false
+?rep()
+# oder
+help(rep)
+```
+
+:::
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA01
+:::
