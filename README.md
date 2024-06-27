@@ -11,6 +11,12 @@ Ein freies Übungsbuch für R-Einsteiger*innen und Fortgeschrittene
 
 [Creative Commons CC-BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+## How To
+
+Das Buch ist mit `quarto` erstellt worden, siehe <https://quarto.org>. Wenn Sie RStudio installiert haben, können Sie das Projekt über die Datei `_trainingslageR.Rproj` laden und das Buch rendern.
+
+Eine fertig gerenderte PDF-Datei steht im Unterornder `_book` zur Verfügung.
+
 
 ## siehe auch
 
