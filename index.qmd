@@ -21,14 +21,14 @@ Unter folgenden Bedingungen:
 
 ::: {.callout-tip}
 ## **Zitationsvorschlag**
-große Schlarmann, J (2024): "R-Übungsbuch", Hochschule Niederrhein, <https://www.produnis.de/R/exercise.html>
+große Schlarmann, J (2024): "R-Übungsbuch", Hochschule Niederrhein, <https://www.produnis.de/R/trainingslager.html>
 
 \scriptsize
 
 ```bibtex
 @book{grSchl_exeRueb,
 	author = {{große Schlarmann}, Jörg},
-	title = {R-Übungsbuch},
+	title = {trainingslageR},
 	year = {2024},
 	publisher = {Hochschule Niederrhein},
 	address = {Krefeld},
