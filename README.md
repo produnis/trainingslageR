@@ -1,6 +1,6 @@
 # trainingslageR
 
-Ein freies Übungsbuch für R-Einsteiger*innen
+Ein freies Übungsbuch für R-Einsteiger*innen und Fortgeschrittene
 
 ## Author
 
