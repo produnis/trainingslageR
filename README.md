@@ -4,7 +4,7 @@ Ein freies Übungsbuch für R-Einsteiger*innen
 
 ## Author
 
-- Jörg große Schlarmann, <https://www.produnis.de/R>
+- Jörg große Schlarmann, `orcid 0000-0002-3634-7722`
 
 
 ## Lizenz
