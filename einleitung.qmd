@@ -1,0 +1,16 @@
+# Einleitung {.unnumbered}
+
+::: {.callout}
+“You shouldn’t feel ashamed about your code - if it solves the problem, it’s perfect just the way it is. \newline But also, it could always be better.” \footnotesize — **Hadley Wickham** at `rstudio::conf2019`
+:::
+ 
+\bigskip\ 
+
+\Large Willkommen im trainingslageR!
+\normalsize
+
+In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten. Für Ihre Lösungswege kann das freie Nachschlagewerk von @grSchlR hilfreich sein.
+
+Lassen Sie sich nicht entmutigen, `R` hat eine steile Lernkurve.
+
+Falls Sie nach diesen Übungen immer noch nicht genug haben, finden Sie weitere Aufgabenstellungen bei @grSchlRuebung.

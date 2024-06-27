@@ -1,7 +1,12 @@
 # Lösungswege zu den Aufgaben für EinsteigerInnen {#sec-LoesungAnfang}
 
+::: {.callout-warning appearance="simple"}
+Gerade als Anfänger:in sollten Sie zumindest *versuchen*, die Aufgaben selbstständig zu lösen, bevor Sie sich die Lösungswege anschauen. Kopf hoch, Sie schaffen das!
+:::
 
-## Lösung zur Aufgabe [-@sec-AAA01] Vektoren {#sec-LAA01}
+## Lösungen zu Objekten in R {#sec-LoesungenAnfangA}
+
+### Lösung zur Aufgabe [-@sec-AAA01] Vektoren {#sec-LAA01}
 ::: {.callout-tip}
 ## a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
 
@@ -39,3 +44,343 @@ worte30
 ```
 
 :::
+
+
+
+### Lösung zur Aufgabe [-@sec-AAA02] Zufallsvektoren {#sec-LAA02}
+
+::: {.callout-tip}
+## a) Erzeugen Sie einen Datenvektor aus 200 zufälligen Zahlen zwischen 1 und 500, ohne dass eine Zahl doppelt vorkommt (sog. "ohne zurücklegen").
+
+```{r}
+#| label: LoesungAA02a
+sample(1:500, 200, replace = FALSE)
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Erzeugen Sie einen weiteren Datenvektor mit ebenfalls 200 zufälligen Zahlen zwischen 1 und 500, wobei Zahlen nun doppelt vorkommen dürfen (sog. "mit zurücklegen").
+
+```{r}
+#| label: LoesungAA02b
+sample(1:500, 200, replace = TRUE)
+```
+
+:::
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAA03] Krankenhausaufenthalte {#sec-LAA03}
+
+::: {.callout-tip}
+## a) Überführen Sie die Daten in ein R-Objekt mit dem Namen `KHAufenthalte`.
+
+```{r}
+#| label: LoesungAA03a
+KHAufenthalte <- c(1,0,0,3,1,5,1,2,2,0,1,0,5,2,1,0,1,0,0,4,0,1,1,3,0,
+                   1,1,1,3,1,0,1,4,2,0,3,1,1,7,2,0,2,1,3,0,0,0,0,6,1,
+                   1,2,1,0,1,0,3,0,1,3,0,5,2,1,0,2,4,0,1,1,3,0,1,2,1,
+                   1,1,1,2,2,0,3,0,1,0,1,0,0,0,5,0,4,1,2,2,7,1,3,1,5)
+#anschauen
+KHAufenthalte
+```
+:::
+
+::: {.callout-tip}
+## b) Entfernen Sie den ersten und den dritten Eintrag aus Ihrem R-Objekt.
+
+```{r}
+#| label: LoesungAA03b
+# ersten und dritten Wert enfernen
+KHAufenthalte <- KHAufenthalte[-c(1,3)]
+
+#anschauen
+KHAufenthalte
+```
+:::
+
+
+::: {.callout-tip}
+## c) Fügen Sie die Werte $7$ und $2$ dem Objekt hinzu.
+
+```{r}
+#| label: LoesungAA03c
+# 7 und 2 hinzufügen
+KHAufenthalte <- c(KHAufenthalte, 7, 2)
+
+#anschauen
+KHAufenthalte
+```
+:::
+
+::: {.callout-tip}
+## d) Benennen Sie das Objekt in `hospital.stays` um.
+
+```{r}
+#| label: LoesungAA03d
+# umbenennen
+hospital.stays <- KHAufenthalte
+```
+:::
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAA04] Größe und Gewicht {#sec-LAA04}
+
+::: {.callout-tip}
+## a) Überführen Sie die Daten in R-Objekte mit den Namen `Groesse` und `Gewicht`.
+
+```{r}
+#| label: LoesungAA04a
+Groesse <- c(1.68, 1.87, 1.95, 1.74, 1.80,
+             1.75, 1.59, 1.77, 1.82, 1.74)
+
+Gewicht <- c(78500, 110100, 97500, 69200, 82500,
+             71500,  81500, 87200, 75500, 65500)
+
+# anzeigen
+Groesse
+Gewicht
+```
+:::
+
+::: {.callout-tip}
+## b) Rechnen Sie das Gewicht um in Kilogramm, und speichern Sie Ihr Ergebnis in der Variable `Kilogramm`.
+
+```{r}
+#| label: LoesungAA04b
+# Rechne Gramm in Kilogramm um 
+Kilogramm <-  Gewicht/1000
+
+# anzeigen
+Kilogramm
+```
+:::
+
+
+::: {.callout-tip}
+## c) Berechnen Sie den BMI (kg/m^2^) der Probanden und speichern Ihr Ergebnis in das Objekt `BMI`.
+
+```{r}
+#| label: LoesungAA04c
+# BMI berechnen 
+BMI <-  Kilogramm / (Groesse^2)
+
+# anzeigen
+BMI
+```
+:::
+
+
+::: {.callout-tip}
+## d) Fügen Sie die Objekte `Groesse`, `Gewicht` (aber in Kilogramm) und `BMI` zu einem Datenframe zusammen.
+
+```{r}
+#| label: LoesungAA04d
+# Datenframe erzeugen
+df <- data.frame(Groesse, Gewicht=Kilogramm, BMI)
+
+# anzeigen
+df
+```
+:::
+
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAA05] ordinale Faktoren {#sec-LAA05}
+
+::: {.callout-tip}
+## a) Erstellen Sie die ordinale Variable `Monate`, in welcher die 12 ausgeschriebenen Monatsnamen in korrekter Levelreihenfolge enthalten sind.
+
+```{r}
+#| label: LoesungAA05a
+# ordinaler Faktor
+Monate <- factor(c("Januar", "Februar", "März", "April", "Mai", "Juni",
+                 "Juli", "August", "September", "Oktober", "November",
+                 "Dezember"), 
+                 levels= c("Januar", "Februar", "März", "April", "Mai", 
+                           "Juni", "Juli", "August", "September", "Oktober", 
+                           "November", "Dezember"),
+                 ordered=TRUE )
+
+# anzeigen  
+Monate
+```
+
+Wir können uns aber auch ein bisschen Schreibarbeit ersparen.
+```{r}
+#| label: LoesungAA05a2
+# Hilfsvektor erzeugen
+dummy <- c("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", 
+           "August", "September", "Oktober", "November", "Dezember")
+# ordinaler Faktor
+Monate <- factor(dummy, levels=dummy, ordered=TRUE)
+
+# anzeigen  
+Monate
+```
+
+:::
+
+
+
+
+::: {.callout-tip}
+## b) Erstellen Sie die ordinale Variable `Schulnoten`, in welcher die 6 ausgeschriebenen Schulnoten  in korrekter Levelreihenfolge  enthalten sind.
+
+```{r}
+#| label: LoesungAA05b
+# ordinaler Faktor
+# Achten Sie auf die Reihenfolge der Schulnoten,
+# wir müssen mit der schlechtesten anfangen.
+Schulnoten <- c("ungenügend", "mangelhaft", "ausreichend", "befriedigend",
+                "gut", "sehr gut")
+Schulnoten <- factor(Schulnoten, levels=Schulnoten, ordered=TRUE)
+
+# anzeigen
+Schulnoten
+```
+
+:::
+
+::: {.callout-tip}
+## c) Erzeugen Sie aus den folgenden Daten einen ordinalen Faktor mit korrekter Levelreihenfolge
+
+```{r}
+#| label: LoesungAA05c
+# ordinaler Faktor
+f <- factor(c("vielleicht", "glaube nicht", "nein", "glaube nicht", "ja", 
+              "glaube schon", "vielleicht", "nein", "glaube nicht", "ja", 
+              "ja", "glaube schon", "ja", "ja", "nein", "glaube nicht", 
+              "glaube schon", "vielleicht", "vielleicht", "glaube nicht"),
+            levels=c("nein", "glaube nicht", "vielleicht", "glaube schon", "ja"), 
+            ordered=TRUE)
+# anzeigen
+f
+```
+
+:::
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAA06] Hogwarts-Kurse {#sec-LAA06}
+
+::: {.callout-tip}
+## a) Erstellen Sie das Datenframe `Kurse`, in welchem die Daten aus den Tabellenspalten `Haus` und `Kurs` enthalten sind.
+
+```{r}
+#| label: LoesungAA06a
+# Daten übertragen
+Kurse <- data.frame(
+  Haus = c("Gryffindor", "Gryffindor", "Gryffindor", "Gryffindor",
+           "Hufflepuff", "Hufflepuff", "Hufflepuff", "Hufflepuff",
+           "Ravenclaw", "Ravenclaw", "Ravenclaw", "Ravenclaw",
+           "Slytherin", "Slytherin", "Slytherin", "Slytherin"),
+  Kurs = c("Verteidigung gegen die dunklen Künste", "Zauberkunst", 
+           "Verwandlung", "Besenflugunterricht",
+           "Kräuterkunde", "Pflege magischer Geschöpfe", 
+           "Geschichte der Zauberei", "Alte Runen",
+           "Arithmantik", "Astronomie", 
+           "Verwandlung", "Verteidigung gegen die dunklen Künste",
+           "Zaubertränke", "Zauberkunst", 
+           "Dunkle Künste", "Legilimentik")
+)
+# anzeigen  
+Kurse
+```
+:::
+
+
+::: {.callout-tip}
+## b) Stellen Sie sicher, dass Ihre Variablen das korrekte Skalenniveau aufweisen.
+
+Da es sich um nominale Daten handelt, sollten sie als Faktoren gespeichert werden.
+
+```{r}
+#| label: LoesungAA06b1
+# überprüfen
+str(Kurse)
+```
+Beide Variablen sind vom Typ `charakter`. 
+
+```{r}
+#| label: LoesungAA06b
+# wandle in Faktoren um
+Kurse$Haus <- factor(Kurse$Haus)
+Kurse$Kurs <- factor(Kurse$Kurs)
+
+# überprüfen
+str(Kurse)
+```
+Beide Variablen sind nun Faktoren.
+
+:::
+
+
+::: {.callout-tip}
+## c) Erstellen Sie für jedes Haus ein eigenes Datenframe
+
+```{r}
+#| label: LoesungAA06c
+# Subsets erstellen
+gryffindor <- subset(Kurse, Haus=="Gryffindor")
+hufflepuff <- subset(Kurse, Haus=="Hufflepuff")
+ravenclaw <- subset(Kurse, Haus=="Ravenclaw")
+slytherin <- subset(Kurse, Haus=="Slytherin")
+```
+
+:::
+
+::: {.callout-tip}
+## d) Wandeln Sie in jedem Haus-Datenframe die Variablen in Faktoren um.
+
+```{r}
+#| label: LoesungAA06d
+# Subsets erstellen
+gryffindor$Kurs <- factor(gryffindor$Kurs)
+gryffindor$Haus <- factor(gryffindor$Haus)
+
+hufflepuff$Kurs <- factor(hufflepuff$Kurs)
+hufflepuff$Haus <- factor(hufflepuff$Haus)
+
+ravenclaw$Kurs <- factor(ravenclaw$Kurs)
+ravenclaw$Haus <- factor(ravenclaw$Haus)
+
+slytherin$Kurs <- factor(slytherin$Kurs)
+slytherin$Haus <- factor(slytherin$Haus)
+```
+
+:::
+
+
+::: {.callout-tip}
+## e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Zauberkunst*" um.
+
+```{r}
+#| label: LoesungAA06e
+# Zusammenführen
+Hogwarts <- rbind(gryffindor, hufflepuff, ravenclaw, slytherin)
+
+# Level ändern
+levels(Hogwarts$Kurs)[levels(Hogwarts$Kurs)=="Geschichte der Zauberei"] <- "Geisterkunde"
+
+# anzeigen
+Hogwarts$Kurs
+```
+
+:::
+
+
+

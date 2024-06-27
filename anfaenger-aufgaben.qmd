@@ -1,6 +1,8 @@
 # Aufgaben für EinsteigerInnen {#sec-AufgabeAnfang}
 
-## Aufgabe [-@sec-AAA01] Vektoren {#sec-AAA01}
+## Objekte in R {#sec-AufgabenAnfangA}
+
+### Aufgabe [-@sec-AAA01] Vektoren {#sec-AAA01}
 
 ::: {.callout-note appearance="simple"}
 
@@ -27,3 +29,144 @@ help(rep)
 ::: {.callout-tip appearance="simple"}
 Lösung siehe @sec-LAA01
 :::
+
+
+
+### Aufgabe [-@sec-AAA02] Zufallsvektoren {#sec-AAA02}
+
+::: {.callout-note appearance="simple"}
+a) Erzeugen Sie einen Datenvektor aus 200 zufälligen Zahlen zwischen 1 und 500, ohne dass eine Zahl doppelt vorkommt (sog. "ohne zurücklegen").
+
+b) Erzeugen Sie einen weiteren Datenvektor mit ebenfalls 200 zufälligen Zahlen zwischen 1 und 500, wobei Zahlen nun doppelt vorkommen dürfen (sog. "mit zurücklegen").
+
+::: {.callout-caution appearance="simple"}
+Schauen Sie sich die Hilfeseite zur Funktion `sample()` an, um die Aufgaben leichter lösen zu können.
+```{r}
+#| eval: false
+#| label: aufgabenaa02setup
+?sample
+# oder
+help(sample)
+```
+
+:::
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA02
+:::
+
+
+
+
+
+
+### Aufgabe [-@sec-AAA03] Krankenhausaufenthalte {#sec-AAA03}
+
+::: {.callout-note appearance="simple"}
+Hundert zufällig ausgewählte Personen wurden befragt, wie oft sie im
+letzten Jahr im Krankenhaus stationär behandelt wurden. Die Antworten
+wurden wie folgt notiert:
+
+
+              1,0,0,3,1,5,1,2,2,0,1,0,5,2,1,0,1,0,0,4,0,1,1,3,0,
+              1,1,1,3,1,0,1,4,2,0,3,1,1,7,2,0,2,1,3,0,0,0,0,6,1,
+              1,2,1,0,1,0,3,0,1,3,0,5,2,1,0,2,4,0,1,1,3,0,1,2,1,
+              1,1,1,2,2,0,3,0,1,0,1,0,0,0,5,0,4,1,2,2,7,1,3,1,5
+
+
+a) Überführen Sie die Daten in ein R-Objekt mit dem Namen `KHAufenthalte`.
+b) Entfernen Sie den ersten und den dritten Eintrag aus Ihrem R-Objekt.
+c) Fügen Sie die Werte $7$ und $2$ dem Objekt hinzu.
+d) Benennen Sie das Objekt in `hospital.stays` um.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA03
+:::
+
+
+
+### Aufgabe [-@sec-AAA04] Größe und Gewicht {#sec-AAA04}
+
+::: {.callout-note appearance="simple"}
+Von 10 Personen wurden folgende Körpergrößen in Meter gemessen:
+
+              1,68   1,87   1,95   1,74   1,80
+              1,75   1,59   1,77   1,82   1,74
+
+... sowie folgende Gewichte in Gramm:
+
+              78500  110100  97500   69200   82500
+              71500   81500  87200   75500   65500
+
+a) Überführen Sie die Daten in R-Objekte mit den Namen `Groesse` und `Gewicht`.
+b) Rechnen Sie das Gewicht um in Kilogramm, und speichern Sie Ihr Ergebnis in der Variable `Kilogramm`.
+c) Berechnen Sie den BMI (kg/m^2^) der Probanden und speichern Ihr Ergebnis in das Objekt `BMI` (Dabei könnten Ihnen die zuvor erstellten Variablen von Nutzen sein!).
+d) Fügen Sie die Objekte `Groesse`, `Gewicht` (aber in Kilogramm) und `BMI` zu einem Datenframe zusammen.
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA04
+:::
+
+
+
+
+### Aufgabe [-@sec-AAA05] ordinale Faktoren {#sec-AAA05}
+
+::: {.callout-note appearance="simple"}
+a) Erstellen Sie die ordinale Variable `Monate`, in welcher die 12 ausgeschriebenen Monatsnamen in korrekter Levelreihenfolge enthalten sind.
+
+b) Erstellen Sie die ordinale Variable `Schulnoten`, in welcher die 6 ausgeschriebenen Schulnoten  in korrekter Levelreihenfolge  enthalten sind.
+
+c) Erzeugen Sie aus den folgenden Daten einen ordinalen Faktor mit korrekter Levelreihenfolge.
+
+> vielleicht, glaube nicht, nein, glaube nicht, ja, glaube schon, vielleicht, nein, glaube nicht, ja, ja, glaube schon, ja, ja, nein, glaube nicht, glaube schon, vielleicht, vielleicht, glaube nicht
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA05
+:::
+
+
+
+### Aufgabe [-@sec-AAA06] Hogwarts-Kurse {#sec-AAA06}
+
+::: {.callout-note appearance="simple"}
+In Hogwarts wurden jeweils die vier beliebtesten Kurse der Schüler pro Haus ermittelt.
+
+| Haus       | Kurs                                |
+|------------|-------------------------------------|
+| Gryffindor | Verteidigung gegen die dunklen Künste |
+| Gryffindor | Zauberkunst                         |
+| Gryffindor | Verwandlung                         |
+| Gryffindor | Besenflugunterricht                 |
+| Hufflepuff | Kräuterkunde                        |
+| Hufflepuff | Pflege magischer Geschöpfe          |
+| Hufflepuff | Geschichte der Zauberei             |
+| Hufflepuff | Alte Runen                          |
+| Ravenclaw  | Arithmantik                         |
+| Ravenclaw  | Astronomie                          |
+| Ravenclaw  | Verwandlung                         |
+| Ravenclaw  | Verteidigung gegen die dunklen Künste |
+| Slytherin  | Zaubertränke                        |
+| Slytherin  | Zauberkunst                         |
+| Slytherin  | Dunkle Künste                       |
+| Slytherin  | Legilimentik                        |
+
+
+a) Erstellen Sie das Datenframe `Kurse`, in welchem die Daten aus den Tabellenspalten `Haus` und `Kurs` enthalten sind.
+b) Stellen Sie sicher, dass Ihre Variablen das korrekte Skalenniveau aufweisen.
+c) Erstellen Sie für jedes Haus ein eigenes Datenframe
+d) Wandeln Sie in jedem Haus-Datenframe die Variablen in Faktoren um.
+e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um. 
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA06
+:::
+
+

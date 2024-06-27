@@ -1,0 +1,104 @@
+# Lösungswege zu den Aufgaben für Fortgeschrittene {#sec-LoesungFortschritt}
+
+::: {.callout-note appearance="simple"}
+Wenn Ihr `R`-Code eleganter ist als die hier präsentierten Lösungswege, dann freuen Sie sich! Wenn Sie meinen, Ihr Code sei zu klobig und umständlich, dann Kopf hoch: wenn er tut, was er soll, dann ist er genau richtig.
+:::
+
+## Lösungen zu Objekten in R {#sec-LoesungenFortschrittA}
+
+### Lösung zur Aufgabe [-@sec-ABA01] Hogwarts-Kurse {#sec-LBA01}
+::: {.callout-tip}
+## a) Benutzen Sie die `tribble()`-Funktion, um die Daten in die Objekte `tab1` und `tab2` zu überführen.
+
+```{r}
+#| label: LoesungBA01a
+#| paged.print: FALSE
+library(tibble)
+tab1 <- tribble(
+    ~Hufflepuff,                  ~Slytherin,
+  "Kräuterkunde",               "Zaubertränke", 
+  "Pflege magischer Geschöpfe", "Zauberkunst",
+  "Geschichte der Zauberei",    "Dunkle Künste", 
+  "Alte Runen",                 "Legilimentik"
+)
+
+tab2 <- tribble(
+  ~Gryffindor,                             ~Ravenclaw,
+  "Verteidigung gegen die dunklen Künste", "Arithmantik", 
+  "Zauberkunst",                           "Astronomie",
+  "Verwandlung",                           "Verwandlung",
+  "Besenflugunterricht", "Verteidigung gegen die dunklen Künste"
+)
+# anzeigen
+tab1
+tab2
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Fügen Sie `tab1` und `tab2` zu einem Objekt `Hogwarts` zusammen.
+
+```{r}
+#| label: LoesungBA01b
+Hogwarts <- cbind(tab1, tab2)
+
+# anzeigen
+str(Hogwarts)
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Nutzen Sie die `mutate()`-Funktion, um die Datenklassen der Variablen anzupassen (Skalenniveau).
+
+```{r}
+#| label: LoesungBA01c
+#| warning: false
+library(dplyr)
+Hogwarts <- Hogwarts %>% 
+              mutate_if(is.character, as.factor)
+
+# anzeigen
+str(Hogwarts)
+```
+
+:::
+
+
+::: {.callout-tip}
+## d) Ändern Sie anschließend mit der `mutate()`-Funktion den Kurs "*Geschichte der Zauberei*" \newline in "*Geisterkunde*" um.
+
+```{r}
+#| label: LoesungBA01d
+library(dplyr)
+library(forcats)
+Hogwarts <- Hogwarts %>% 
+            mutate(Hufflepuff = fct_recode(Hufflepuff, 
+                                           "Geisterkunde" = "Geschichte der Zauberei"))
+
+# anzeigen
+Hogwarts
+```
+
+:::
+
+
+::: {.callout-tip}
+## e) Die Daten liegen nicht im Tidy-Data-Format vor. Erzeugen Sie ein neues Objekt `Kurse` mit den Variablen `Haus` und `Kurs`.
+
+```{r}
+#| label: LoesungBA01e
+library(tidyr)
+Kurse <- Hogwarts %>% 
+          pivot_longer(Hufflepuff:Ravenclaw,
+                       names_to = "Haus",
+                       values_to = "Kurs")
+# anzeigen
+Kurse
+```
+
+:::
+

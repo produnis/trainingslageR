@@ -21,19 +21,19 @@ Unter folgenden Bedingungen:
 
 ::: {.callout-tip}
 ## **Zitationsvorschlag**
-große Schlarmann, J (2024): "R-Übungsbuch", Hochschule Niederrhein, <https://www.produnis.de/R/trainingslager.html>
+große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger*innen und Fortgeschrittene", Hochschule Niederrhein, <https://www.produnis.de/R/trainingslager.html>
 
 \scriptsize
 
 ```bibtex
 @book{grSchl_exeRueb,
 	author = {{große Schlarmann}, Jörg},
-	title = {trainingslageR},
+	title = {{trainingslageR}. Ein Übungsbuch für R-Einsteiger*innen und Fortgeschrittene},
 	year = {2024},
 	publisher = {Hochschule Niederrhein},
 	address = {Krefeld},
 	copyright = {CC BY-NC-SA 4.0},
-	url = {https://www.produnis.de/R/exercise.html},
+	url = {https://www.produnis.de/R/trainingslager.html},
 	language = {de},
 }
 ```
@@ -43,6 +43,8 @@ große Schlarmann, J (2024): "R-Übungsbuch", Hochschule Niederrhein, <https://w
 \normalsize
 
 \newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
 \tableofcontents
 \newpage
 \pagenumbering{arabic}

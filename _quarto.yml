@@ -30,18 +30,21 @@ book:
   date: "2024-06-27"
   chapters:
     - index.qmd
+    - einleitung.qmd
     - part: "Aufgaben"
       chapters:
         - anfaenger-aufgaben.qmd
-    - part: "Lösungen"
+        - fortgeschritten-aufgaben.qmd
+    - part: "Lösungswege"
       chapters:
         - anfaenger-loesungen.qmd
+        - fortgeschritten-loesungen.qmd
     - literatur.qmd
     - credits.qmd
 
 bibliography: literatur.bib
 nocite: |
-  @waltherR22, @tidytuesday, @Rbase
+  @waltherR22, @tidytuesday, @Rbase, @wickham23
 language:
   crossref-sec-prefix: "Abschnitt"
   crossref-chap-prefix: "Abschnitt"
@@ -58,9 +61,9 @@ format:
         - left=20mm
         - right=20mm
         - headsep=15mm
-      df-print: kable
+      df-print: default
       code-line-numbers: false # false
-      keep-tex: true #false # true # false
+      keep-tex: false # true # false
       lang: de
       date-format: "DD.MM.YYYY"
       linkcolor: black
@@ -69,6 +72,7 @@ format:
       toc: false
       lof: false
       lot: false
+      link-citations: true
       csl: _extensions/buechlein/apa-single-spaced.csl
       include-in-header: _extensions/buechlein/in-header.tex   # header
       template-partials:
