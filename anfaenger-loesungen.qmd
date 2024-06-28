@@ -193,6 +193,28 @@ df
 
 
 
+::: {.callout-tip}
+## e) Lassen Sie die Daten von Proband 4, 7 und 9 ausgeben.
+
+```{r}
+#| label: LoesungAA04e
+df[c(4, 7, 9),]
+```
+:::
+
+
+
+::: {.callout-tip}
+## f) Lassen Sie die Daten der Probanden ausgeben, deren Gewicht größer ist als 80kg.
+
+```{r}
+#| label: LoesungAA04f
+df[df$Gewicht > 80 , ]
+```
+:::
+
+
+
 
 
 
@@ -381,6 +403,37 @@ Hogwarts$Kurs
 ```
 
 :::
+
+
+
+::: {.callout-tip}
+## f) Sortieren Sie den Datensatz, so dass die Kurse in alphabetischer Reihenfolge angezeigt werden.
+
+Wenn wir "einfach so" die `order()`-Funktion nutzen, erhalten wir eine falsche Ausgabe.
+```{r}
+#| label: LoesungAA06f
+# wird nicht korrekt sortiert
+Hogwarts[order(Hogwarts$Kurs),]
+```
+Das liegt daran, dass `Hogwarts$Kurs` als Factor vorliegt, und somit nach Levelreihenfolge sortiert wird.
+
+```{r}
+#| label: LoesungAA06f2
+# Datenklasse Factor
+class(Hogwarts$Kurs)
+```
+
+Wir müssen daher die Funktion `as.character()` um die Variable wickeln, um eine alphabetische Sortierung zu erzwingen.
+
+```{r}
+#| label: LoesungAA06f3
+# jetzt klappt es
+Hogwarts[order(as.character(Hogwarts$Kurs)),]
+```
+
+:::
+
+
 
 
 

@@ -67,7 +67,6 @@ format:
       code-line-numbers: false # false
       keep-tex: false # true # false
       lang: de
-      date-format: "DD.MM.YYYY"
       linkcolor: black
       logowidth: 101.4mm
       logo: _src/HSNRfb10.png

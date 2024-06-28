@@ -104,6 +104,8 @@ a) Überführen Sie die Daten in R-Objekte mit den Namen `Groesse` und `Gewicht`
 b) Rechnen Sie das Gewicht um in Kilogramm, und speichern Sie Ihr Ergebnis in der Variable `Kilogramm`.
 c) Berechnen Sie den BMI (kg/m^2^) der Probanden und speichern Ihr Ergebnis in das Objekt `BMI` (Dabei könnten Ihnen die zuvor erstellten Variablen von Nutzen sein!).
 d) Fügen Sie die Objekte `Groesse`, `Gewicht` (aber in Kilogramm) und `BMI` zu einem Datenframe zusammen.
+e) Lassen Sie die Daten von Proband 4, 7 und 9 ausgeben.
+f) Lassen Sie die Daten der Probanden ausgeben, deren Gewicht größer ist als 80kg.
 
 :::
 
@@ -163,6 +165,7 @@ b) Stellen Sie sicher, dass Ihre Variablen das korrekte Skalenniveau aufweisen.
 c) Erstellen Sie für jedes Haus ein eigenes Datenframe
 d) Wandeln Sie in jedem Haus-Datenframe die Variablen in Faktoren um.
 e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um. 
+f) Sortieren Sie den Datensatz, so dass die Kurse in alphabetischer Reihenfolge angezeigt werden.
 :::
 
 ::: {.callout-tip appearance="simple"}
