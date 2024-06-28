@@ -28,6 +28,7 @@ book:
       affiliation-url: https://www.hs-niederrhein.de
       orcid: 0000-0002-3634-7722
   date: "2024-06-27"
+  date-format: "DD.MM.YYYY"
   chapters:
     - index.qmd
     - einleitung.qmd
@@ -45,6 +46,7 @@ book:
 bibliography: literatur.bib
 nocite: |
   @waltherR22, @tidytuesday, @Rbase, @wickham23
+csl: _src/apa-single-spaced.csl
 language:
   crossref-sec-prefix: "Abschnitt"
   crossref-chap-prefix: "Abschnitt"
@@ -73,7 +75,6 @@ format:
       lof: false
       lot: false
       link-citations: true
-      csl: _src/apa-single-spaced.csl
       include-in-header: _src/in-header.tex   # header
       template-partials:
         - _src/title.tex

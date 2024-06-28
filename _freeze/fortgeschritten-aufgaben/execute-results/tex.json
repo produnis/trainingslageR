@@ -3,9 +3,7 @@
   "result": {
     "engine": "knitr",
     "markdown": "# Aufgaben für Fortgeschrittene {#sec-AufgabeFortschritt}\n\n## Objekte in R {#sec-AufgabenFortschrittA}\n\n### Aufgabe [-@sec-ABA01] Hogwarts-Kurse {#sec-ABA01}\n\n\n::: {.callout-note appearance=\"simple\"}\nIn Hogwarts wurden jeweils die vier beliebtesten Kurse der Schüler pro Haus ermittelt. Die Ergebnisse liegen in 2 Tabellen vor.\n\n\n\\small\n\n::: {.callout-caution}\n## Tabelle 1\n\n\n\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n                 Hufflepuff     Slytherin\n               Kräuterkunde  Zaubertränke\n Pflege magischer Geschöpfe   Zauberkunst\n    Geschichte der Zauberei Dunkle Künste\n                 Alte Runen  Legilimentik\n```\n\n\n:::\n:::\n\n\n\n:::\n\n\\bigskip\\ \n\n::: {.callout-caution}\n## Tabelle 2:\n\n\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n                            Gryffindor                             Ravenclaw\n Verteidigung gegen die dunklen Künste                           Arithmantik\n                           Zauberkunst                            Astronomie\n                           Verwandlung                           Verwandlung\n                   Besenflugunterricht Verteidigung gegen die dunklen Künste\n```\n\n\n:::\n:::\n\n\n\n\n:::\n\n\\normalsize\n\n\\smallskip\\ \n\na) Benutzen Sie die `tribble()`-Funktion, um die Daten in die Objekte `tab1` und `tab2` zu überführen.\nb) Fügen Sie `tab1` und `tab2` zu einem Objekt `Hogwarts` zusammen.\nc) Nutzen Sie die `mutate()`-Funktion, um die Datenklassen der Variablen anzupassen (Skalenniveau).\nd) Ändern Sie anschließend mit der `mutate()`-Funktion den Kurs \"*Geschichte der Zauberei*\" in \"*Geisterkunde*\" um.\ne) Die Daten liegen nicht im Tidy-Data-Format vor. Erzeugen Sie ein neues Objekt `Kurse` mit den Variablen `Haus` und `Kurs`.\n:::\n\n\n::: {.callout-tip appearance=\"simple\"}\nLösung siehe @sec-LBA01\n:::\n\n\n\n",
-    "supporting": [
-      "fortgeschritten-aufgaben_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
