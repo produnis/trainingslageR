@@ -170,3 +170,55 @@ Lösung siehe @sec-LAA06
 :::
 
 
+
+
+
+### Aufgabe [-@sec-AAA07] Datentabelle {#sec-AAA07}
+
+::: {.callout-note appearance="simple"}
+Von 6 Probanden wurde der Cholesterolspiegel in mg/dl gemessen.
+
+| Name                | Geschlecht | Gewicht | Größe | Cholesterol |
+|---------------------|:------:|:------:|:------:|:------:|
+| Anna Tomie          | W      | 85     | 179    | 182         |
+| Bud Zillus          | M      | 115    | 173    | 232         |
+| Dieter Mietenplage  | M      | 79     | 181    | 191         |
+| Hella Scheinwerfer  | W      | 60     | 170    | 200         |
+| Inge Danken         | W      | 57     | 158    | 148         |
+| Jason Zufall        | M      | 96     | 174    | 249         |
+
+
+a) Übertragen Sie die Daten in das Datenframe `chol`.
+b) Erstellen Sie eine neue Variable `Alter`, die zwischen `Name` und `Geschlecht` liegt und folgende Daten beinhaltet:
+
+| Name                | Alter |
+|---------------------|:---:|
+| Anna Tomie          | 18 |
+| Bud Zillus          | 32 |
+| Dieter Mietenplage  | 24 |
+| Hella Scheinwerfer  | 35 |
+| Inge Danken         | 46 |
+| Jason Zufall        | 68 |
+
+c) Fügen Sie einen weiteren Fall mit folgenden Daten dem Datenframe hinzu
+
+| Name  | Alter | Geschlecht | Gewicht | Größe | Cholesterol |
+|-------|:---:|:---:|:---:|:---:|:---:|
+| Mitch Mackes | 44 | M | 92 | 178 | 220 |
+
+d) Erzeugen Sie eine neue Variable `BMI` ($\text{BMI}=\frac{kg}{m^2}$).
+e) Fügen Sie die Variable `Adipositas` hinzu, in welcher Sie die `BMI`-Werte wie folgt klassieren:
+    - weniger als 18,5 $\rightarrow\ $ Untergewicht
+    - zwischen 18,5 und 24.5 $\rightarrow\ $ Normalgewicht
+    - zwischen 24,5 und 30 $\rightarrow\ $ Übergewicht
+    - größer als 30 $\rightarrow\ $ Adipositas
+f) Filtern Sie Ihren Datensatz, so dass Sie einen neuen Datensatz `male` erhalten, welcher nur die Daten der Männer beinhaltet.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA07
+:::
+
+
+
+

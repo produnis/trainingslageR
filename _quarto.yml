@@ -68,14 +68,14 @@ format:
       date-format: "DD.MM.YYYY"
       linkcolor: black
       logowidth: 101.4mm
-      logo: _extensions/buechlein/HSNRfb10.png
+      logo: _src/HSNRfb10.png
       toc: false
       lof: false
       lot: false
       link-citations: true
-      csl: _extensions/buechlein/apa-single-spaced.csl
-      include-in-header: _extensions/buechlein/in-header.tex   # header
+      csl: _src/apa-single-spaced.csl
+      include-in-header: _src/in-header.tex   # header
       template-partials:
-        - _extensions/buechlein/title.tex
-        - _extensions/buechlein/before-body.tex
+        - _src/title.tex
+        - _src/before-body.tex
 

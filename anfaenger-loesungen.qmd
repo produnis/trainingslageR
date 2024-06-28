@@ -384,3 +384,130 @@ Hogwarts$Kurs
 
 
 
+
+
+### Lösung zur Aufgabe [-@sec-AAA07] Datentabelle {#sec-LAA07}
+
+::: {.callout-tip}
+## a) Übertragen Sie die Daten in das Datenframe `chol`.
+
+```{r}
+#| label: LoesungAA07a
+# Daten übertragen
+chol <- data.frame(Name = c("Anna Tomie", "Bud Zillus", "Dieter Mietenplage",
+                            "Hella Scheinwerfer", "Inge Danken", "Jason Zufall"),
+                   Geschlecht = c("W", "M", "M", "W", "W", "M"),
+                   Gewicht = c(85, 115, 79, 60, 57, 96),
+                   Größe = c(179, 173, 181, 170, 158, 174),
+                   Cholesterol = c(182, 232, 191, 200, 148, 249)
+        )
+# anzeigen  
+chol
+```
+:::
+
+
+::: {.callout-tip}
+## b) Erstellen Sie eine neue Variable `Alter`, die zwischen `Name` und `Geschlecht` liegt
+
+```{r}
+#| label: LoesungAA07b
+# Daten übertragen
+alter <- c(18, 32, 24, 35, 46, 68)
+
+# zwischen Name und Geschlecht einfügen
+chol <- data.frame(Name=chol$Name, Alter=alter, Geschlecht=chol$Geschlecht, 
+                   Gewicht=chol$Gewicht, Größe=chol$Größe, 
+                   Cholesterol=chol$Cholesterol)
+# anzeigen  
+chol
+```
+:::
+
+
+
+::: {.callout-tip}
+## c) Fügen Sie einen weiteren Fall mit folgenden Daten dem Datenframe hinzu.
+
+```{r}
+#| label: LoesungAA07c
+# Daten übertragen
+neu <- data.frame(Name="Mitch Mackes", Alter=44, Geschlecht="M", Gewicht=92,
+                  Größe=178, Cholesterol=220)
+
+# zusammenfügen
+chol <- rbind(chol, neu)
+# anzeigen  
+chol
+```
+:::
+
+
+::: {.callout-tip}
+## d) Erzeugen Sie eine neue Variable `BMI` ($\text{BMI}=\frac{kg}{m^2}$).
+
+```{r}
+#| label: LoesungAA07d
+# BMI hinzufügen
+# Größe muss in Meter umgerechnet werden
+chol$BMI <- chol$Gewicht / (chol$Größe/100)^2
+
+# anzeigen  
+chol
+```
+:::
+
+
+
+
+::: {.callout-tip}
+## e) Fügen Sie die Variable `Adipositas` hinzu, in welcher Sie die `BMI`-Werte klassieren
+
+Ein Klassierung kann auf mehrere Weisen erfolgen.
+```{r}
+#| label: LoesungAA07e
+# bedingtes Referenzieren
+chol$Adipositas[chol$BMI < 18.5] <- "Untergewicht"
+chol$Adipositas[chol$BMI >= 18.5 & chol$BMI < 24.5] <- "Normalgewicht"
+chol$Adipositas[chol$BMI >= 24.5 & chol$BMI < 30] <- "Übergewicht"
+chol$Adipositas[chol$BMI >= 30]   <- "Adipositas"
+
+# anzeigen  
+chol
+```
+
+Alternativ kann die `cut()`-Funktion verwendet werden.
+```{r}
+#| label: LoesungAA07e2
+# cut-Funktion
+chol$Adipositas <- cut(chol$BMI, breaks = c(0, 18.5, 24.5, 30, Inf), 
+                       labels = c("Untergewicht", "Normalgewicht", 
+                                  "Übergewicht", "Adipositas"),
+                       right = FALSE)
+
+# anzeigen  
+chol
+```
+:::
+
+
+
+
+::: {.callout-tip}
+## f) Filtern Sie Ihren Datensatz, so dass Sie einen neuen Datensatz `male` erhalten, welcher nur die Daten der Männer beinhaltet.
+
+```{r}
+#| label: LoesungAA07f
+# subset erzeugen
+male <- subset(chol, Geschlecht=="M")
+
+# anzeigen  
+male
+```
+
+:::
+
+
+
+
+

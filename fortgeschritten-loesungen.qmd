@@ -76,8 +76,8 @@ str(Hogwarts)
 library(dplyr)
 library(forcats)
 Hogwarts <- Hogwarts %>% 
-            mutate(Hufflepuff = fct_recode(Hufflepuff, 
-                                           "Geisterkunde" = "Geschichte der Zauberei"))
+    mutate(Hufflepuff = fct_recode(Hufflepuff, 
+                                   "Geisterkunde" = "Geschichte der Zauberei"))
 
 # anzeigen
 Hogwarts
