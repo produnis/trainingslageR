@@ -5,3 +5,5 @@
 *.tex
 *.log
 notizen.R
+.RData
+.Rhistory
