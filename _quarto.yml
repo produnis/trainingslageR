@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: PDF
 
 author:
     - name: Prof. Dr. Jörg große Schlarmann
