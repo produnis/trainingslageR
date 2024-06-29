@@ -14,3 +14,5 @@ In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalt
 Lassen Sie sich nicht entmutigen, `R` hat eine steile Lernkurve.
 
 Falls Sie nach diesen Übungen immer noch nicht genug haben, finden Sie weitere Aufgabenstellungen bei @grSchlRuebung.
+
+Der Quelltext dieses Buchs ist bei GitHub verfügbar, siehe <https://github.com/produnis/trainingslageR>.
