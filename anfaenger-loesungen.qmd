@@ -296,6 +296,7 @@ f
 
 
 
+\newpage
 
 ### Lösung zur Aufgabe [-@sec-AAA06] Hogwarts-Kurse {#sec-LAA06}
 
@@ -326,28 +327,17 @@ Kurse
 
 
 ::: {.callout-tip}
-## b) Stellen Sie sicher, dass Ihre Variablen das korrekte Skalenniveau aufweisen.
+## Wieviele Kurse haben es in die Auswahlliste geschafft?
 
-Da es sich um nominale Daten handelt, sollten sie als Faktoren gespeichert werden.
 
 ```{r}
 #| label: LoesungAA06b1
-# überprüfen
-str(Kurse)
+# unique()
+unique(Kurse$Kurs)
+length(unique(Kurse$Kurs))
+
 ```
-Beide Variablen sind vom Typ `charakter`. 
-
-```{r}
-#| label: LoesungAA06b
-# wandle in Faktoren um
-Kurse$Haus <- factor(Kurse$Haus)
-Kurse$Kurs <- factor(Kurse$Kurs)
-
-# überprüfen
-str(Kurse)
-```
-Beide Variablen sind nun Faktoren.
-
+Es sind 13 Kurse in der Liste.
 :::
 
 

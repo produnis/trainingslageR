@@ -1,6 +1,13 @@
 # Aufgaben für EinsteigerInnen {#sec-AufgabeAnfang}
 
+
+Schön, dass Sie Ihre R-Fähigkeiten überprüfen möchten. Bleiben Sie am Ball, Sie schaffen das!
+
+
 ## Objekte in R {#sec-AufgabenAnfangA}
+
+In diesem Abschnitt üben Sie den Umgang mit `R`-Objekten wie Vektoren, Faktoren und Datenframes.
+
 
 ### Aufgabe [-@sec-AAA01] Vektoren {#sec-AAA01}
 
@@ -31,6 +38,7 @@ Lösung siehe @sec-LAA01
 :::
 
 
+\newpage
 
 ### Aufgabe [-@sec-AAA02] Zufallsvektoren {#sec-AAA02}
 
@@ -86,6 +94,7 @@ Lösung siehe @sec-LAA03
 :::
 
 
+\newpage
 
 ### Aufgabe [-@sec-AAA04] Größe und Gewicht {#sec-AAA04}
 
@@ -161,7 +170,7 @@ In Hogwarts wurden jeweils die vier beliebtesten Kurse der Schüler pro Haus erm
 
 
 a) Erstellen Sie das Datenframe `Kurse`, in welchem die Daten aus den Tabellenspalten `Haus` und `Kurs` enthalten sind.
-b) Stellen Sie sicher, dass Ihre Variablen das korrekte Skalenniveau aufweisen.
+b) Wieviele Kurse haben es in die Auswahlliste geschafft?
 c) Erstellen Sie für jedes Haus ein eigenes Datenframe
 d) Wandeln Sie in jedem Haus-Datenframe die Variablen in Faktoren um.
 e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um. 
@@ -174,6 +183,7 @@ Lösung siehe @sec-LAA06
 
 
 
+\newpage
 
 
 ### Aufgabe [-@sec-AAA07] Datentabelle {#sec-AAA07}
