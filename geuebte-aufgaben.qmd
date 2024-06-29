@@ -1,0 +1,77 @@
+# Aufgaben für geübte User:innen {#sec-AufgabeGeuebt}
+
+## Objekte in R {#sec-AufgabenGeuebtA}
+
+### Aufgabe [-@sec-ABA01] Hogwarts-Kurse {#sec-ABA01}
+
+
+::: {.callout-note appearance="simple"}
+In Hogwarts wurden jeweils die vier beliebtesten Kurse der Schüler pro Haus ermittelt. Die Ergebnisse liegen in 2 Tabellen vor.
+
+
+\small
+
+::: {.callout-caution}
+## Tabelle 1
+
+
+```{r}
+#| label: ABA01a
+#| echo: false
+# Subsets erstellen
+Kurse <- data.frame(
+  Haus = c("Gryffindor", "Gryffindor", "Gryffindor", "Gryffindor",
+           "Hufflepuff", "Hufflepuff", "Hufflepuff", "Hufflepuff",
+           "Ravenclaw", "Ravenclaw", "Ravenclaw", "Ravenclaw",
+           "Slytherin", "Slytherin", "Slytherin", "Slytherin"),
+  Kurs = c("Verteidigung gegen die dunklen Künste", "Zauberkunst", 
+           "Verwandlung", "Besenflugunterricht",
+           "Kräuterkunde", "Pflege magischer Geschöpfe", 
+           "Geschichte der Zauberei", "Alte Runen",
+           "Arithmantik", "Astronomie", 
+           "Verwandlung", "Verteidigung gegen die dunklen Künste",
+           "Zaubertränke", "Zauberkunst", 
+           "Dunkle Künste", "Legilimentik")
+)
+gryffindor <- subset(Kurse, Haus=="Gryffindor")
+hufflepuff <- subset(Kurse, Haus=="Hufflepuff")
+ravenclaw <- subset(Kurse, Haus=="Ravenclaw")
+slytherin <- subset(Kurse, Haus=="Slytherin")
+
+print(data.frame(Hufflepuff = hufflepuff$Kurs,
+                   Slytherin = slytherin$Kurs), row.names = FALSE)
+```
+:::
+
+\bigskip\ 
+
+::: {.callout-caution}
+## Tabelle 2:
+
+```{r}
+#| label: ABA01b
+#| echo: false
+print(data.frame(Gryffindor = gryffindor$Kurs,
+                   Ravenclaw = ravenclaw$Kurs), row.names = FALSE)
+```
+
+:::
+
+\normalsize
+
+\smallskip\ 
+
+a) Benutzen Sie die `tribble()`-Funktion, um die Daten in die Objekte `tab1` und `tab2` zu überführen.
+b) Fügen Sie `tab1` und `tab2` zu einem Objekt `Hogwarts` zusammen.
+c) Nutzen Sie die `mutate()`-Funktion, um die Datenklassen der Variablen anzupassen (Skalenniveau).
+d) Ändern Sie anschließend mit der `mutate()`-Funktion den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um.
+e) Die Daten liegen nicht im Tidy-Data-Format vor. Erzeugen Sie ein neues Objekt `Kurse` mit den Variablen `Haus` und `Kurs`.
+:::
+
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LBA01
+:::
+
+
+

@@ -20,7 +20,7 @@ citation:
 
 book:
   title: "trainingslageR"
-  subtitle: "Ein Übungsbuch für R-Einsteiger*innen und Fortgeschrittene"
+  subtitle: "Ein Übungsbuch für R-Einsteiger:innen und Fortgeschrittene"
   language: de
   author:
     - name: Prof. Dr. Jörg große Schlarmann
@@ -36,10 +36,12 @@ book:
     - part: "Aufgaben"
       chapters:
         - anfaenger-aufgaben.qmd
+        - geuebte-aufgaben.qmd
         - fortgeschritten-aufgaben.qmd
     - part: "Lösungswege"
       chapters:
         - anfaenger-loesungen.qmd
+        - geuebte-loesungen.qmd
         - fortgeschritten-loesungen.qmd
     - literatur.qmd
     - credits.qmd
@@ -48,6 +50,7 @@ bibliography: literatur.bib
 nocite: |
   @waltherR22, @tidytuesday, @Rbase, @wickham23
 csl: _src/apa-single-spaced.csl
+
 language:
   crossref-sec-prefix: "Abschnitt"
   crossref-chap-prefix: "Abschnitt"
@@ -64,18 +67,16 @@ format:
         - left=20mm
         - right=20mm
         - headsep=15mm
-      df-print: default
-      code-line-numbers: false # false
-      keep-tex: false # true # false
       lang: de
       linkcolor: black
-      logowidth: 101.4mm
-      logo: _src/HSNRfb10.png
+      link-citations: true
       toc: false
       lof: false
       lot: false
-      link-citations: true
-      include-in-header: _src/in-header.tex   # header
+      df-print: default
+      code-line-numbers: false
+      keep-tex: false # true # false
+      include-in-header: _src/in-header.tex
       template-partials:
         - _src/title.tex
         - _src/before-body.tex

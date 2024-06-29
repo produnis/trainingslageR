@@ -1,4 +1,4 @@
-# Lösungswege zu den Aufgaben für EinsteigerInnen {#sec-LoesungAnfang}
+# Lösungswege zu den Aufgaben für Einsteiger:innen {#sec-LoesungAnfang}
 
 ::: {.callout-warning appearance="simple"}
 Gerade als Anfänger:in sollten Sie zumindest *versuchen*, die Aufgaben selbstständig zu lösen, bevor Sie sich die Lösungswege anschauen. Kopf hoch, Sie schaffen das!
@@ -123,6 +123,20 @@ KHAufenthalte
 #| label: LoesungAA03d
 # umbenennen
 hospital.stays <- KHAufenthalte
+```
+:::
+
+::: {.callout-tip}
+## e) Klassieren Sie mit der `cut()`-Funktion in die Klassen $0$, $1-2$ und $>2$ Aufenthalte.
+
+```{r}
+#| label: LoesungAA03e
+# cut
+cut(hospital.stays, breaks=c(0,1,3,Inf), right=FALSE)
+
+# mit custom labels
+cut(hospital.stays, breaks=c(0,1,3,Inf), right=FALSE,
+    labels=c("0", "1-2", "mehr als 2"))
 ```
 :::
 
@@ -281,10 +295,15 @@ Schulnoten
 ```{r}
 #| label: LoesungAA05c
 # ordinaler Faktor
-f <- factor(c("vielleicht", "glaube nicht", "nein", "glaube nicht", "ja", 
-              "glaube schon", "vielleicht", "nein", "glaube nicht", "ja", 
-              "ja", "glaube schon", "ja", "ja", "nein", "glaube nicht", 
-              "glaube schon", "vielleicht", "vielleicht", "glaube nicht"),
+f <- factor(c("vielleicht", "glaube nicht", "nein", "glaube nicht", 
+              "ja", "glaube schon", "vielleicht", "nein", "glaube nicht",
+              "ja", "ja", "glaube schon", "ja", "ja", "nein", 
+              "glaube nicht", "glaube schon", "vielleicht", "vielleicht", 
+              "glaube nicht", "vielleicht", "glaube nicht", "nein", 
+              "glaube nicht", "ja", "glaube schon", "vielleicht", "nein", 
+              "glaube nicht", "ja", "ja", "glaube schon", "ja", "ja", 
+              "nein", "glaube nicht", "glaube schon", "vielleicht", 
+              "vielleicht", "glaube nicht"),
             levels=c("nein", "glaube nicht", "vielleicht", "glaube schon", "ja"), 
             ordered=TRUE)
 # anzeigen
@@ -295,8 +314,23 @@ f
 
 
 
+::: {.callout-tip}
+## d) Ändern Sie die Levelnamen in `-2`, `-1`, `0`, `1`, `2`.
 
-\newpage
+```{r}
+#| label: LoesungAA05d
+# Levelnamen ändern
+levels(f) <- c("-2", "-1", "0", "1", "2")
+
+# anzeigen
+f
+```
+
+:::
+
+
+
+
 
 ### Lösung zur Aufgabe [-@sec-AAA06] Hogwarts-Kurse {#sec-LAA06}
 
@@ -327,7 +361,7 @@ Kurse
 
 
 ::: {.callout-tip}
-## Wieviele Kurse haben es in die Auswahlliste geschafft?
+## b) Wieviele Kurse haben es in die Auswahlliste geschafft?
 
 
 ```{r}
@@ -378,12 +412,12 @@ slytherin$Haus <- factor(slytherin$Haus)
 
 
 ::: {.callout-tip}
-## e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Zauberkunst*" um.
+## e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen, in der Reihenfolge Ravenclaw, Gryffindor, Syltherin und Hufflepuff. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um. 
 
 ```{r}
 #| label: LoesungAA06e
 # Zusammenführen
-Hogwarts <- rbind(gryffindor, hufflepuff, ravenclaw, slytherin)
+Hogwarts <- rbind(ravenclaw, gryffindor, slytherin, hufflepuff)
 
 # Level ändern
 levels(Hogwarts$Kurs)[levels(Hogwarts$Kurs)=="Geschichte der Zauberei"] <- "Geisterkunde"
@@ -419,6 +453,24 @@ Wir müssen daher die Funktion `as.character()` um die Variable wickeln, um eine
 #| label: LoesungAA06f3
 # jetzt klappt es
 Hogwarts[order(as.character(Hogwarts$Kurs)),]
+```
+
+:::
+
+
+::: {.callout-tip}
+## g) Speichern Sie den so sortierten Datensatz in das Objekt `sorted`, und reparieren Sie die Zeilennummerierung von `sorted`.
+
+```{r}
+#| label: LoesungAA06g
+# sortiert speichern
+sorted <- Hogwarts[order(as.character(Hogwarts$Kurs)),]
+
+# Zeilennummerierung reparieren
+rownames(sorted) <- 1:length(sorted$Kurs)
+
+# anzeigen
+sorted
 ```
 
 :::

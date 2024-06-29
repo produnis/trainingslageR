@@ -1,4 +1,4 @@
-# Aufgaben für EinsteigerInnen {#sec-AufgabeAnfang}
+# Aufgaben für Einsteiger:innen {#sec-AufgabeAnfang}
 
 
 Schön, dass Sie Ihre R-Fähigkeiten überprüfen möchten. Bleiben Sie am Ball, Sie schaffen das!
@@ -87,6 +87,10 @@ a) Überführen Sie die Daten in ein R-Objekt mit dem Namen `KHAufenthalte`.
 b) Entfernen Sie den ersten und den dritten Eintrag aus Ihrem R-Objekt.
 c) Fügen Sie die Werte $7$ und $2$ dem Objekt hinzu.
 d) Benennen Sie das Objekt in `hospital.stays` um.
+e) Unterteilen Sie die Kranenhausaufenthalte mit der `cut()`-Funktion in die Klassen 
+   - `0`, 
+   - `1-2` und 
+   - `mehr als 2` Aufenthalte.
 :::
 
 ::: {.callout-tip appearance="simple"}
@@ -134,8 +138,9 @@ b) Erstellen Sie die ordinale Variable `Schulnoten`, in welcher die 6 ausgeschri
 
 c) Erzeugen Sie aus den folgenden Daten einen ordinalen Faktor mit korrekter Levelreihenfolge.
 
-> vielleicht, glaube nicht, nein, glaube nicht, ja, glaube schon, vielleicht, nein, glaube nicht, ja, ja, glaube schon, ja, ja, nein, glaube nicht, glaube schon, vielleicht, vielleicht, glaube nicht
+> vielleicht, glaube nicht, nein, glaube nicht, ja, glaube schon, vielleicht, nein, glaube nicht, ja, ja, glaube schon, ja, ja, nein, glaube nicht, glaube schon, vielleicht, vielleicht, glaube nicht, vielleicht, glaube nicht, nein, glaube nicht, ja, glaube schon, vielleicht, nein, glaube nicht, ja, ja, glaube schon, ja, ja, nein, glaube nicht, glaube schon, vielleicht, vielleicht, glaube nicht
 
+d) Ändern Sie die Levelnamen in `-2`, `-1`, `0`, `1`, `2`.
 :::
 
 ::: {.callout-tip appearance="simple"}
@@ -173,8 +178,9 @@ a) Erstellen Sie das Datenframe `Kurse`, in welchem die Daten aus den Tabellensp
 b) Wieviele Kurse haben es in die Auswahlliste geschafft?
 c) Erstellen Sie für jedes Haus ein eigenes Datenframe
 d) Wandeln Sie in jedem Haus-Datenframe die Variablen in Faktoren um.
-e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um. 
+e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen, in der Reihenfolge Ravenclaw, Gryffindor, Syltherin und Hufflepuff. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um. 
 f) Sortieren Sie den Datensatz, so dass die Kurse in alphabetischer Reihenfolge angezeigt werden.
+g) Speichern Sie den so sortierten Datensatz in das Objekt `sorted`, und reparieren Sie die Zeilennummerierung von `sorted`.
 :::
 
 ::: {.callout-tip appearance="simple"}
