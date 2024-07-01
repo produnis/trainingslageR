@@ -18,3 +18,4 @@ Hochschule Niederrhein, Krefeld
 
 <https://www.produnis.de/R>
 
+<https://www.github.com/produnis/trainingslager>

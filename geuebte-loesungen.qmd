@@ -103,3 +103,731 @@ Kurse
 
 :::
 
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-ABA02] Aufnahme und Entlassung {#sec-LBA02}
+::: {.callout-tip}
+## a) Laden Sie den Datensatz `Krankenhaus.RData` in Ihre R-Session.
+```{r}
+#| label: LoesungBA02a
+#| eval: false
+# Lese Daten ein
+load("https://www.produnis.de/R/data/Krankenhaus.RData")
+```
+
+```{r}
+#| label: LoesungBA02a2
+#| include: false
+load("data/Krankenhaus.RData")
+```
+
+```{r}
+#| label: LoesungBA02a3
+# anschauen
+str(St.Gott.Hospital)
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## b) Ein Variablenname enthält einen Tippfehler. Reparieren Sie auch die Datenklassen der Variablen. Entfernen Sie alle Einträge mit ungültigen Zeitstempeln.
+```{r}
+#| label: LoesungBA02b
+#| warning: false
+# Variable ALter korrigieren
+library(dplyr)
+kh <- St.Gott.Hospital %>% 
+  select(Geschlecht, Alter = ALter, Aufnahme, Entlassung)
+                 
+# Datenklassen anpassen
+# Geschlecht als Faktor
+kh$Geschlecht <- factor(kh$Geschlecht)
+
+# Erzeuge POSIX Zeitobjekte
+# CET = Europäische Zeit
+library(lubridate)
+kh$Aufnahme <- ymd_hm(kh$Aufnahme, tz="CET")
+kh$Entlassung <- ymd_hm(kh$Entlassung, tz="CET")
+
+# anzeigen
+str(kh)
+```
+Durch die Umwandlung der Aufnahme- und Entlassungsdaten sind die Datenreihen mit fehlerhaften oder unvollständigen Zeitstempeln in NAs umgewandelt worden.
+
+```{r}
+#| label: LoesungBA02b2
+kh <- kh %>% 
+  drop_na(Aufnahme, Entlassung)
+
+# anschauen
+glimpse(kh)
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## c) Erstellen Sie die neue Variable `Liegedauer`, welche die Aufenthaltsdauer in Tagen beinhaltet.
+```{r}
+#| label: LoesungBA02c
+# Liegedauer berechnen
+# entweder...
+kh$Liegedauer <- as_date(kh$Entlassung) - as_date(kh$Aufnahme)
+
+# ...oder
+kh$Liegedauer <- ceiling(difftime(kh$Entlassung, kh$Aufnahme, units="days"))
+
+# anzeigen
+head(kh$Liegedauer)
+str(kh)
+```
+
+:::
+
+
+
+
+
+::: {.callout-tip}
+## d) Über welchen Zeitraum wurden die Daten erhoben?
+```{r}
+#| label: LoesungBA02d
+erste <- min(kh$Aufnahme, na.rm=TRUE)
+letzte <- max(kh$Entlassung, na.rm=TRUE)
+
+# Zeitspanne in Tagen
+as_date(letzte) - as_date(erste)
+
+# Zeitspanne in Wochen
+difftime(letzte, erste, units="weeks")
+
+# Zeitspanne in Jahren
+as.numeric(as_date(letzte) - as_date(erste)) / 365
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## e) Klassieren Sie die Daten der Aufnahme in einer neuen Variable `Kalenderjahr`. 
+```{r}
+#| label: LoesungBA02e
+#| warning: false
+# cut ausprobieren
+a <- cut.POSIXt(kh$Aufnahme, breaks="years")
+head(a)
+
+# lubridate::year() ist einfacher
+a <- year(kh$Aufnahme)
+head(a)
+
+# in neue Variable schreiben
+kh$Kalenderjahr <- year(kh$Aufnahme)
+
+# anschauen
+glimpse(kh)
+```
+
+:::
+
+
+::: {.callout-tip}
+## f) Klassieren Sie die Daten der Entlassung je mit einer neuen Variable `Wochentag` und `Monat`. 
+```{r}
+#| label: LoesungBA02f
+#| warning: false
+# Wochentag
+kh$Wochentag <- wday(kh$Entlassung, label=TRUE)
+
+# Monat
+kh$Monat <- month(kh$Entlassung, label=TRUE)
+
+# anschauen
+glimpse(kh)
+```
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Lösungen zu den Datensatzauswertungen {#sec-LoesungenGeuebtB}
+
+### Lösung zur Aufgabe [-@sec-ABB01] Aufnahme und Entlassung {#sec-LBB01}
+::: {.callout-tip}
+## a) Laden Sie den Datensatz `Krankenhaus.RData` in Ihre R-Session, korrigieren Sie den Tippfehler der Variable `ALter`, reparieren Sie die Datenklassen der Variablen und entfernen Sie alle Einträge mit ungültigen Zeitstempeln. 
+
+```{r}
+#| label: LoesungBB01setupA
+#| eval: false
+# Lese Daten ein
+load("https://www.produnis.de/R/data/Krankenhaus.RData")
+```
+
+```{r}
+#| label: LoesungBB01setupB
+#| include: false
+load("data/Krankenhaus.RData")
+```
+
+
+```{r}
+#| label: LoesungBB01a
+#| warning: false
+library(dplyr)
+library(lubridate)
+# repariere Typo und Datenklassen und
+# entferne NAs
+kh <- St.Gott.Hospital %>% 
+  select(Geschlecht, Alter = ALter, Aufnahme, Entlassung) %>% 
+  mutate(Geschlecht = factor(Geschlecht),
+         Aufnahme = ymd_hm(Aufnahme, tz="CET"),
+         Entlassung = ymd_hm(Entlassung, tz="CET")
+         ) %>% 
+  drop_na(Aufnahme, Entlassung)
+
+# anzeigen
+glimpse(kh)
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## b) Plotten Sie die absoluten Häufigkeiten der Aufnahmen und Entlassungen pro Kalendertag. Was fällt Ihnen auf?
+
+```{r}
+#| label: LoesungBB02a
+#| warning: false
+library(ggplot2)
+# Hilfsdatenframe mit Anzahl Aufnahmen pro Tag
+Aufnahmen <- kh %>%
+  group_by(as_date(Aufnahme)) %>%
+  summarise(freq = n()) %>% 
+  # Spalten umbenennen
+  select(Datum = `as_date(Aufnahme)`, freq) %>% 
+  # Variable "Typ" hinzufügen
+  mutate(Typ="Aufnahme")
+
+# Hilfsdatenframe mit Anzahl Entlassungen pro Tag
+Entlassungen <- kh %>%
+  group_by(as_date(Entlassung)) %>%
+  summarise(freq = n()) %>% 
+  select(Datum = `as_date(Entlassung)`, freq) %>% 
+  mutate(Typ="Entlassung")
+
+# Zusammenführen
+df <- rbind(Aufnahmen, Entlassungen)
+
+# Plotten
+ggplot(df, aes(x=Datum, y=freq)) +
+  geom_line(aes(color=Typ)) +
+  labs(title = "Absolute Häufigkeit der Datumswerte",
+       x = "Datum",
+       y = "Absolute Häufigkeit") +
+  theme_minimal()
+```
+Es fällt auf, dass für das Jahr 2019 keine Daten zur Verfügung stehen.
+:::
+
+
+
+
+::: {.callout-tip}
+## c) Plotten Sie die durchschnittlichen (arithmetisches Mittel) absoluten Häufigkeiten an täglichen Aufnahmen und Entlassungen pro Wochentag. Was fällt Ihnen auf?
+
+```{r}
+#| label: LoesungBB02b
+#| warning: false
+# nochmal Hilfsdatenframe mit Anzahl Aufnahmen pro Tag
+Aufnahmen <- kh %>%
+  group_by(as_date(Aufnahme)) %>%
+  summarise(freq = n()) %>% 
+  # Spalten umbenennen
+  select(Datum = `as_date(Aufnahme)`, freq) %>% 
+  # Variable "Typ" hinzufügen
+  mutate(Typ = "Aufnahme",
+         # Wochentag hinzufügen
+         Tag= wday(Datum, label=TRUE))
+
+
+# Hilfsdatenframe mit Anzahl Entlassungen pro Tag
+Entlassungen <- kh %>%
+  group_by(as_date(Entlassung)) %>%
+  summarise(freq = n()) %>% 
+  select(Datum = `as_date(Entlassung)`, freq) %>% 
+  mutate(Typ = "Entlassung",
+         # Wochentag hinzufügen
+         Tag = wday(Datum, label=TRUE))
+
+# zusammenführen
+Wochentage <- rbind(Aufnahmen, Entlassungen)
+
+# absolute Häufigkeiten anzeigen
+table(Wochentage$Typ, Wochentage$Tag)
+
+# durchschnittliche Häufigkeiten
+Wochentage  %>% 
+  group_by(Typ, Tag) %>% 
+  summarise(Mean = mean(freq))
+
+# durchschnittliche (arith.) Häufigkeiten
+ggplot(Wochentage, aes(x=Tag, y=freq, fill=Typ)) +
+  stat_summary(fun=mean, geom="bar", position="dodge") 
+```
+
+An Sonn- und Montag gibt es deutlich mehr Aufnahmen als Entlassungen.
+:::
+
+
+
+::: {.callout-tip}
+## d) Plotten Sie die durchschnittlichen absoluten Häufigkeiten an täglichen Aufnahmen und Entlassungen pro Monat sowie die absoluten Häufigkeiten pro Tagesstunde.
+
+```{r}
+#| label: LoesungBB02d
+#| warning: false
+# nochmal Hilfsdatenframe mit Anzahl Aufnahmen pro Monat
+Aufnahmen <- kh %>%
+  group_by(as_date(Aufnahme)) %>%
+  summarise(freq = n()) %>% 
+  # Spalten umbenennen
+  select(Datum = `as_date(Aufnahme)`, freq) %>% 
+  # Variable "Typ" hinzufügen
+  mutate(Typ = "Aufnahme",
+         # Monat hinzufügen
+         Monat= month(Datum, label=TRUE))
+
+
+# Hilfsdatenframe mit Anzahl Entlassungen pro Tag
+Entlassungen <- kh %>%
+  group_by(as_date(Entlassung)) %>%
+  summarise(freq = n()) %>% 
+  select(Datum = `as_date(Entlassung)`, freq) %>% 
+  mutate(Typ = "Entlassung",
+         # Monate hinzufügen
+         Monat= month(Datum, label=TRUE))
+
+# zusammenführen
+Monate <- rbind(Aufnahmen, Entlassungen)
+
+# absolute Häufigkeiten anzeigen
+table(Monate$Typ, Monate$Monat)
+
+# durchschnittliche Häufigkeiten
+ Monate %>% 
+  group_by(Typ,Monat) %>% 
+  summarise(Median = median(freq))
+
+# durchschnittliche (Median) Häufigkeiten
+ggplot(Monate, aes(x=Monat, y=freq, fill=Typ)) +
+  stat_summary(fun=median, geom="bar", position="dodge") 
+```
+
+
+
+
+
+Wiederholen wir nun den Vorgang für die Häufigkeiten pro Tagesstunde.
+```{r}
+#| label: LoesungBB02d1
+#| warning: false
+# nochmal Hilfsdatenframe mit Anzahl Aufnahmen pro Tagesstunde
+kh$Aufnahmestunde <- hour(kh$Aufnahme)
+kh$Entlassungstunde <- hour(kh$Entlassung)
+
+Aufnahmen <- kh %>%
+  group_by(Aufnahmestunde) %>%
+  summarise(freq = n()) %>% 
+  # Variable "Typ" hinzufügen
+  mutate(Typ = "Aufnahme") %>% 
+  select(Stunde = Aufnahmestunde, freq, Typ)
+
+
+# Hilfsdatenframe mit Anzahl Entlassungen pro Tagesstunde
+Entlassungen <- kh %>%
+  group_by(Entlassungstunde) %>%
+  summarise(freq = n()) %>% 
+  # Variable "Typ" hinzufügen
+  mutate(Typ = "Entlassungen") %>% 
+  select(Stunde = Entlassungstunde, freq, Typ)
+
+# zusammenführen
+Stunden <- rbind(Aufnahmen, Entlassungen)
+
+# absolute Häufigkeiten pro Tagesstunde
+ggplot(Stunden, aes(x=Stunde, y=freq, fill=Typ)) +
+  geom_col(position="dodge") 
+```
+
+
+:::
+
+
+::: {.callout-tip}
+## e) Erstellen Sie ein Poissionregressionsmodell für die Anzahl der täglichen Aufnahmen erklärt durch den Wochentag. Ist das Modell überdispersioniert? Wieviele Aufnahmen sind an einem Dienstag und an einem Sonntag zu erwarten?
+
+```{r}
+#| label: LoesungBB02e
+#| warning: false
+# nur Aufnahmen
+dfA <- subset(Wochentage, Typ=="Aufnahme")
+
+# "Tag" für Poisson vorbereiten
+# ordered entfernen
+dfA$Tag <- factor(dfA$Tag, ordered=FALSE)
+# Montag als Basiswert
+dfA$Tag <- relevel(dfA$Tag, "Mo")
+
+# Poisson-Modell erstellen
+fit <- glm(freq ~ Tag, data=dfA, family = poisson)
+
+# Zusammenfassung des Modells
+summary(fit)
+```
+
+
+```{r}
+#| label: LoesungBB02eB
+# alternative Zusammenfassung
+sjPlot::tab_model(fit)
+```
+
+
+Testen wir, ob das Modell überdispersioniert ist.
+```{r}
+#| label: LoesungBB02e2
+AER::dispersiontest(fit, trafo=1)
+```
+Der Test ist signifikant, d.h. das Modell **ist** überdispersioniert. Wir müssen das Modell daher anpassen:
+```{r}
+#| label: LoesungBB02e3
+fit <- glm(freq ~ Tag, data=dfA, family = quasipoisson)
+summary(fit)
+```
+
+\bigskip\ 
+
+Mit dem neuen Modell können nun die Vorhersagen erfolgen.
+```{r}
+#| label: LoesungBB02e4
+# Vorhersage Dienstag
+predict(fit, list(Tag="Di"), type = "response")
+
+# Vorhersage Sonntag
+predict(fit, list(Tag="So"), type = "response")
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## f) Fügen Sie den Monat als weiteren Prädiktor hinzu. Wird das Modell dadurch besser? Wieviele Aufnahmen sind an einem Donnerstag im Mai zu erwarten, und wieviele im September?
+
+```{r}
+#| label: LoesungBB02f
+#| warning: false
+dfA$Monat <- month(dfA$Datum, label=TRUE)
+dfA$Monat <- factor(dfA$Monat, ordered=FALSE)
+dfA$Monat <- relevel(dfA$Monat, "Jan")
+
+fit <- glm(freq ~ Tag + Monat, data=dfA, family="poisson")
+summary(fit)
+
+``` 
+
+Das Modell hat einen größeren AIC-Wert als das alte.
+
+Testen wir, ob das Modell überdispersioniert ist.
+```{r}
+#| label: LoesungBB02f2
+AER::dispersiontest(fit, trafo=1)
+```
+
+Der Test ist signifikant, d.h. das Modell **ist** überdispersioniert. Wir müssen das Modell anpassen.
+
+```{r}
+#| label: LoesungBB02f3
+fit <- glm(freq ~ Tag + Monat, data=dfA, family = quasipoisson)
+summary(fit)
+```
+
+\bigskip\ 
+
+Mit dem neuen Modell können wir nun die Vorhersagen treffen.
+```{r}
+#| label: LoesungBB02f4
+# Vorhersagen
+predict(fit, list(Tag="Do", Monat="Mai"), type = "response")
+predict(fit, list(Tag="Do", Monat="Sep"), type = "response")
+```
+
+
+:::
+
+
+
+
+
+
+::: {.callout-tip}
+## g) Wie groß ist die Wahrscheinlichkeit, dass an einem Mittwoch im Mai 10 Patienten aufgenommen werden? 
+
+```{r}
+#| label: LoesungBB02g
+#| warning: false
+# Schätzen der mittleren Häufigkeit
+mu <- predict(fit, list(Tag="Mi", Monat="Mai"), type = "response")
+
+# Wahrscheinlichkeit für 10 Aufnahmen berechnen
+dpois(10, lambda = mu)
+``` 
+Die Wahrscheinlichkeit liegt bei 2,3\%.
+:::
+
+
+
+::: {.callout-tip}
+## h) Wie groß ist die Wahrscheinlichkeit, dass an einem Mittwoch im Mai zwischen 4 und 7 Patienten aufgenommen werden?
+
+```{r}
+#| label: LoesungBB02h
+#| warning: false
+# Schätzen der mittleren Häufigkeit
+mu <- predict(fit, list(Tag="Mi", Monat="Mai"), type = "response")
+
+# Wahrscheinlichkeit für 4 bis 7 Aufnahmen berechnen
+# entweder
+ppois(7, lambda=mu) - ppois(3, lambda=mu)
+
+# oder
+sum(dpois(4:7, lambda=mu))
+``` 
+Die Wahrscheinlichkeit liegt bei 60,76\%.
+:::
+
+
+::: {.callout-tip}
+## i) Wie groß ist die Wahrscheinlichkeit, dass an einem Montag im Januar maximal 2 Patienten aufgenommen werden?
+
+```{r}
+#| label: LoesungBB02i
+#| warning: false
+# Schätzen der mittleren Häufigkeit
+mu <- predict(fit, list(Tag="Mo", Monat="Jan"), type = "response")
+
+# Wahrscheinlichkeit für maximal 2 Aufnahmen berechnen
+ppois(2, lambda = mu)
+``` 
+Die Wahrscheinlichkeit liegt bei 0,98\%.
+:::
+
+
+
+::: {.callout-tip}
+## j) Erzeugen Sie ein Histogramm des Alters der Probanden. Was fällt Ihnen auf? Korrigieren Sie wenn nötig die Daten. Ist das Alter der Probanden normalverteilt?
+
+```{r}
+#| label: LoesungBB02j
+#| warning: false
+# Histogramm mit Rbase
+hist(kh$Alter)
+# Wahrscheinlichkeit für maximal 2 Aufnahmen berechnen
+ppois(2, lambda = mu)
+``` 
+Es fällt auf, dass es viele Probanden mit `Alter=0` gibt. Diese sollten in `NA` umgewandelt werden.
+
+```{r}
+#| label: LoesungBB02j2
+kh$Alter[kh$Alter==0] <- NA
+
+# Histogram wiederholen
+hist(kh$Alter)
+
+# Teste, ob Alter normalverteilt ist
+ks.test(kh$Alter, "pnorm")
+```
+Der Test ist signifikant, das heisst, es liegt **keine** Normalverteilung vor.
+:::
+
+
+
+
+
+
+
+
+::: {.callout-tip}
+## k) Stellen Sie das Alter der Männern und Frauen tabellarisch und graphisch dar. Unterscheidet sich das Alter der Probanden zwischen Männern und Frauen? 
+
+```{r}
+#| label: LoesungBB02k
+#| warning: false
+# Tabellarisch
+kh %>%
+  group_by(Geschlecht) %>%
+  drop_na(Alter) %>%
+  summarise(Min = min(Alter),
+            Q1 = quantile(Alter, probs=0.25, type=6),
+            Median = median(Alter),
+            Mittel = mean(Alter),
+            Q3 = quantile(Alter, probs=0.75, type=6),
+            Max = max(Alter))
+
+
+# graphisch
+boxplot(Alter ~ Geschlecht, data=kh)
+``` 
+Männer und Frauen unterscheiden sich nicht hinsichtlich des Alters.
+:::
+
+
+::: {.callout-tip}
+## l) Ist der Unterschied signifikant? 
+
+```{r}
+#| label: LoesungBB02l
+#| warning: false
+# subsets vorbereiten
+m <- subset(kh, Geschlecht=="m")
+w <- subset(kh, Geschlecht=="w")
+
+# keine Normalverteilung = kein t.Test
+wilcox.test(m$Alter, w$Alter)
+``` 
+Der Test ist nicht signifikant, es liegt kein Unterschied vor. 
+:::
+
+
+
+
+::: {.callout-tip}
+## m) Ab welchem Alter sind 10\% der Männer älter als dieser Wert?
+
+```{r}
+#| label: LoesungBB02m
+# nur Männer
+m <- subset(kh, Geschlecht=="m")
+# beim 90. Perzentil liegen 10% der Werte darüber
+quantile(m$Alter, 0.9, na.rm=TRUE, type=6)
+``` 
+Es sind 10\% der Männer älter als 86 Jahre.
+:::
+
+
+
+::: {.callout-tip}
+## n) Ab welchem Alter sind 80\% der Frauen jünger als dieser Wert?
+
+```{r}
+#| label: LoesungBB02n
+# nur Frauen
+w <- subset(kh, Geschlecht=="w")
+# beim 90. Perzentil liegen 10% der Werte darüber
+quantile(w$Alter, 0.8, na.rm=TRUE, type=6)
+``` 
+Es sind 80\% der Frauen jünger als 83 Jahre.
+:::
+
+
+::: {.callout-tip}
+## o) Wie groß ist die mittlere Liegedauer in Tagen? Stellen Sie die Liegedauer mittels Kennwerten sowie graphisch dar. Was fällt Ihnen auf?
+
+```{r}
+#| label: LoesungBB02o
+# Liegedauer berechnen
+kh$Liegedauer <- as_date(kh$Entlassung) - as_date(kh$Aufnahme)
+# mittlere Liegedauer, Median
+mean(kh$Liegedauer)
+# mittlere Liegedauer, Median
+median(kh$Liegedauer)
+
+# Tabellarische Darstellung
+summary(as.numeric(kh$Liegedauer))
+
+# graphische Darstellung
+boxplot(kh$Liegedauer)
+hist(as.numeric(kh$Liegedauer))
+``` 
+Es fällt auf, dass sehr viele Ausreißer enthalten sind.
+:::
+
+
+
+::: {.callout-tip}
+## p) Unterscheiden sich Männer und Frauen hinsichtlich der Liegedauer? Stellen Sie den Unterschied ebenfalls tabellarisch und graphisch dar.
+
+```{r}
+#| label: LoesungBB02p
+# Tabellarische Darstellung
+kh %>%
+  group_by(Geschlecht) %>%
+  summarise(Min = min(Liegedauer),
+            Q1 = quantile(Liegedauer, probs=0.25, type=6),
+            Median = median(Liegedauer),
+            Mittel = mean(Liegedauer),
+            Q3 = quantile(Liegedauer, probs=0.75, type=6),
+            Max = max(Liegedauer))
+
+# graphische Darstellung
+boxplot(Liegedauer ~ Geschlecht, data=kh)
+``` 
+Es ist kein Unterschied erkennbar.
+:::
+
+
+
+::: {.callout-tip}
+## q) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
+
+```{r}
+#| label: LoesungBB02q
+#| warning: false
+# Teste auf Normalverteilung
+ks.test(kh$Liegedauer, "pnorm")
+```
+Der Test ist signifikant, d.h. es liegt **keine** Normalverteilung vor. Als Signifikanztest ist daher der Mann-Whitney-U-Test durchzuführen
+
+```{r}
+#| label: LoesungBB02q2
+# Vorbereitung
+kh$Liegedauer <- as.numeric(kh$Liegedauer)
+m <- subset(kh, Geschlecht=="m")
+w <- subset(kh, Geschlecht=="w")
+
+# Mann-Whitney-U-Test
+wilcox.test(w$Liegedauer, m$Liegedauer)
+``` 
+Das Ergebnis ist signifikant. Es scheint doch einen Unterschied zwischen Männern und Frauen zu geben.
+:::
+

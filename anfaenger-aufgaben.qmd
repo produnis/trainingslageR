@@ -241,3 +241,85 @@ Lösung siehe @sec-LAA07
 
 
 
+
+### Aufgabe [-@sec-AAA08] Zusatzpaket {#sec-AAA08}
+
+::: {.callout-note appearance="simple"}
+Das Zusatzpaket `jgsbook` enthält Funktionen und Datensätze aus dem freien Buch von @grSchlR.
+
+a) Installieren Sie das Zusatzpaket `jgsbook` mit allen Abhängigkeiten.
+b) Welche Datensätze sind in dem Paket enthalten?
+c) Speichern Sie den Datensatz `pf8` aus dem `jgsbook` in das Objekt `df`. Welche Variablen sind im Datensatz enthalten?
+d) Rufen Sie Dokumentation für das `jgsbook`-Paket auf.
+e) Wenden Sie die Funktion `freqTable()` aus dem Paket `jgsbook` auf die Variable `df$Kinder` an, **ohne** das Paket vorher per `library()` zu aktivieren.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA08
+:::
+
+
+
+### Aufgabe [-@sec-AAA09] Daten laden {#sec-AAA09}
+
+::: {.callout-note appearance="simple"}
+Laden Sie die folgenden Datensätz jeweils in ein R-Objekt und passen Sie die Datenklassen der Variablen entsprechend des Skalenniveaus an.
+
+a) <https://www.produnis.de/R/data/Datentabelle.txt>
+b) <https://www.produnis.de/R/data/anwesenheitnoten.csv>
+c) <https://www.produnis.de/R/data/alteDaten-kurz.sav> 
+d) <https://www.produnis.de/R/data/Testdatumdaten.xlsx> 
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAA09
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+## Deskriptive Statistik {#sec-AufgabenAnfangB}
+
+In diesem Abschnitt üben Sie typische Funktionen und Arbeitsfolgen zur deskriptiven Auswertung der Daten.
+
+
+### Aufgabe [-@sec-AAB01] Histogram {#sec-AAB01}
+
+::: {.callout-note appearance="simple"}
+
+a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB01
+:::
+
+
+

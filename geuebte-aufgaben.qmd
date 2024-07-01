@@ -75,3 +75,90 @@ Lösung siehe @sec-LBA01
 
 
 
+### Aufgabe [-@sec-ABA02] Aufnahme und Entlassung {#sec-ABA02}
+
+::: {.callout-note appearance="simple"}
+Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/R/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten.
+
+a) Laden Sie den Datensatz `Krankenhaus.RData` in Ihre R-Session.
+b) Ein Variablenname enthält einen Tippfehler. Reparieren Sie auch die Datenklassen der Variablen. Entfernen Sie alle Einträge mit ungültigen Zeitstempeln. 
+c) Erstellen Sie die neue Variable `Liegedauer`, welche die Aufenthaltsdauer in Tagen beinhaltet.
+d) Über welchen Zeitraum wurden die Daten erhoben?
+e) Klassieren Sie die Daten der Aufnahme mit einer neuen Variable `Kalenderjahr`. 
+f) Klassieren Sie die Daten der Entlassung je mit einer neuen Variable `Wochentag` und `Monat`. 
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LBA02
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+## Datensätze auswerten {#sec-AufgabenGeuebtB}
+
+### Aufgabe [-@sec-ABB01] Aufnahme und Entlassung {#sec-ABB01}
+
+
+::: {.callout-note appearance="simple"}
+
+Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/R/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten, die an einer bestimmten Krankheit leiden.
+
+a) Laden Sie den Datensatz `Krankenhaus.RData` in Ihre R-Session, korrigieren Sie den Tippfehler der Variable `ALter`, reparieren Sie die Datenklassen der Variablen und entfernen Sie alle Einträge mit ungültigen Zeitstempeln. 
+b) Plotten Sie die absoluten Häufigkeiten der Aufnahmen und Entlassungen pro Kalendertag. Was fällt Ihnen auf?
+c) Plotten Sie die durchschnittlichen absoluten Häufigkeiten an täglichen Aufnahmen und Entlassungen pro Wochentag. Was fällt Ihnen auf?
+d) Plotten Sie die durchschnittlichen absoluten Häufigkeiten an täglichen Aufnahmen und Entlassungen pro Monat sowie die absoluten Häufigkeiten pro Tagesstunde.
+e) Erstellen Sie ein Poissionregressionsmodell für die Anzahl der täglichen Aufnahmen erklärt durch den Wochentag. Ist das Modell überdispersioniert? Wieviele Aufnahmen sind an einem Dienstag und an einem Sonntag zu erwarten?
+f) Fügen Sie den Monat als weiteren Prädiktor hinzu. Wird das Modell dadurch besser? Wieviele Aufnahmen sind an einem Donnerstag im Mai zu erwarten, und wieviele im September?
+g) Wie groß ist die Wahrscheinlichkeit, dass an einem Mittwoch im Mai 10 Patienten aufgenommen werden? 
+h) Wie groß ist die Wahrscheinlichkeit, dass an einem Mittwoch im Mai zwischen 4 und 7 Patienten aufgenommen werden?
+i) Wie groß ist die Wahrscheinlichkeit, dass an einem Montag im Januar maximal 2 Patienten aufgenommen werden?
+j) Erzeugen Sie ein Histogramm des Alters der Probanden. Was fällt Ihnen auf? Korrigieren Sie wenn nötig die Daten. Ist das Alter der Probanden normalverteilt?
+k) Stellen Sie das Alter der Männern und Frauen tabellarisch und graphisch dar. Unterscheidet sich das Alter der Probanden zwischen Männern und Frauen? 
+l) Ist der Unterschied signifikant? 
+m) Ab welchem Alter sind 10\% der Männer älter als dieser Wert?
+n) Ab welchem Alter sind 80\% der Frauen jünger als dieser Wert?
+o) Wie groß ist die mittlere Liegedauer in Tagen? Stellen Sie die Liegedauer mittels Kennwerten sowie graphisch dar. Was fällt Ihnen auf?
+p) Unterscheiden sich Männer und Frauen hinsichtlich der Liegedauer? Stellen Sie den Unterschied ebenfalls tabellarisch und graphisch dar.
+q) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LBB01
+:::
+
+
+

@@ -28,7 +28,7 @@ book:
       affiliation: Hochschule Niederrhein
       affiliation-url: https://www.hs-niederrhein.de
       orcid: 0000-0002-3634-7722
-  date: "2024-06-27"
+  date: "2024-07-01"
   date-format: "DD.MM.YYYY"
   chapters:
     - index.qmd

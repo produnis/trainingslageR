@@ -606,3 +606,276 @@ male
 
 
 
+
+
+### Lösung zur Aufgabe [-@sec-AAA08] Zusatzpaket {#sec-LAA08}
+
+::: {.callout-tip}
+## a) Installieren Sie das Zusatzpaket `jgsbook` mit allen Abhängigkeiten
+
+```{r}
+#| label: LoesungAA08a
+#| eval: false
+# installiere inkl Abhängigkeiten
+install.packages("jgsbook", dependencies = TRUE)
+```
+:::
+
+::: {.callout-tip}
+## b) Welche Datensätze sind in dem Paket enthalten?
+
+Der folgende Befehl öffnet einen neuen Tab in RStudio:
+```{r}
+#| label: LoesungAA08b
+#| eval: false
+# Zeige die enthaltenen Datensätze graphisch an
+data(package = "jgsbook")
+```
+
+Für die Ausgabe auf der Konsole können wir so vorgehen.
+```{r}
+#| label: LoesungAA08b2
+#| eval: true
+# Zeige die enthaltenen Datensätze auf Konsole
+a <- data(package = "jgsbook")
+as.data.frame(a$results[, 3:4])
+```
+:::
+
+
+
+::: {.callout-tip}
+## c) Speichern Sie den Datensatz `pf8` aus dem `jgsbook` in das Objekt `df`. Welche Variablen sind im Datensatz enthalten?
+
+```{r}
+#| label: LoesungAA08c
+df <- jgsbook::pf8
+
+# anzeigen
+str(df)
+```
+:::
+
+
+::: {.callout-tip}
+## d) Rufen Sie Dokumentation für das `jgsbook`-Paket auf.
+
+```{r}
+#| label: LoesungAA08d
+help(package = "jgsbook")
+```
+:::
+
+
+::: {.callout-tip}
+## e) Wenden Sie die Funktion `freqTable()` aus dem Paket `jgsbook` auf die Variable `df$Kinder` an, **ohne** das Paket vorher per `library()` zu aktivieren.
+
+```{r}
+#| label: LoesungAA08e
+# Funktion aufrufen ohne Paket zu laden
+jgsbook::freqTable(df$Kinder)
+```
+:::
+
+
+### Lösung zur Aufgabe [-@sec-AAA09] Daten laden {#sec-LAA09}
+
+::: {.callout-tip}
+## a) `Datentabelle.txt`
+
+```{r}
+#| label: LoesungAA09a
+#| eval: false
+# Lese Daten ein
+a <- read.table("https://www.produnis.de/R/data/Datentabelle.txt", header=TRUE)
+```
+
+```{r}
+#| label: LoesungAA09a2
+#| include: false
+a <- read.table("data/Datentabelle.txt", header=TRUE)
+```
+
+```{r}
+#| label: LoesungAA09a3
+# Datenklassen anschauen
+str(a)
+
+# Geschlecht anpassen
+a$Geschlecht <- factor(a$Geschlecht)
+
+# anschaeun
+str(a)
+```
+:::
+
+
+
+
+::: {.callout-tip}
+## b) `anwesenheitnoten.csv`
+
+In der Datei werden Dezimalstellen mit "," und Feldtrenner mit ";" angegeben. Entsprechend lautet der Aufruf von `read.table()`:
+```{r}
+#| label: LoesungAA09b
+#| eval: false
+# Lese Daten ein
+b <- read.table("https://www.produnis.de/R/data/anwesenheitnoten.csv", 
+                header=TRUE, dec=",", sep=";")
+```
+
+```{r}
+#| label: LoesungAA09b2
+#| include: false
+b <- read.table("data/anwesenheitnoten.csv", header=TRUE, dec=",", sep=";")
+```
+
+```{r}
+#| label: LoesungAA09b3
+# Datenklassen anschauen
+str(b)
+
+```
+Alle Datenklassen sind korrekt (numerisch).
+:::
+
+
+
+::: {.callout-tip}
+## c) `alteDaten.sav`
+
+Dateien mit Endung `.sav` stammen von SPSS.
+```{r}
+#| label: LoesungAA09c
+#| eval: false
+# Lese Daten ein
+c <- haven::read_sav("https://www.produnis.de/R/data/alteDaten-kurz.sav")
+```
+
+```{r}
+#| label: LoesungAA09c2
+#| include: false
+c <- haven::read_sav("data/alteDaten-kurz.sav")
+```
+
+```{r}
+#| label: LoesungAA09c3
+# Datenklassen anschauen
+str(c)
+
+# Variable
+c$v1
+```
+
+Die Daten sind gelablet und scheinen ordinalskaliert zu sein.
+```{r}
+#| label: LoesungAA09c4
+# labels aufschreiben
+c.labels <- c("strongly disagree", "disagree", "agree", "strongly agree")  
+
+# Variablen in ordinale Faktoren umwandeln
+c$v1 <- factor(c$v1, ordered=TRUE, levels=c(1:4))
+c$v2 <- factor(c$v2, ordered=TRUE, levels=c(1:4))
+c$v3 <- factor(c$v3, ordered=TRUE, levels=c(1:4))
+c$v4 <- factor(c$v4, ordered=TRUE, levels=c(1:4))
+c$v5 <- factor(c$v5, ordered=TRUE, levels=c(1:4))
+c$thetruth <- factor(c$v1, ordered=TRUE, levels=c(1:4))
+
+# Levelnamen ändern
+levels(c$v1) <- c.labels
+levels(c$v2) <- c.labels
+levels(c$v3) <- c.labels
+levels(c$v4) <- c.labels
+levels(c$v5) <- c.labels
+levels(c$thetruth) <- c.labels
+
+# anschauen
+str(c)
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## d) `Testdatumdaten.xlsx`
+
+Dateien mit Endung `.sav` stammen von SPSS.
+```{r}
+#| label: LoesungAA09d
+#| eval: false
+# Lese Daten ein
+d <- openxlsx::read.xlsx("https://www.produnis.de/R/data/Testdatumdaten.xlsx")
+```
+
+```{r}
+#| label: LoesungAA09d2
+#| include: false
+d <- readxl::read_excel("data/Testdatumdaten.xlsx")
+```
+
+```{r}
+#| label: LoesungAA09d3
+# Datenklassen anschauen
+str(d)
+
+# Datenklassen anpassen
+d$Vornme <- factor(d$Vornme)
+d$Geschlecht <- factor(d$Geschlecht)
+d$Lieblingsfarbe <- factor(d$Lieblingsfarbe)
+# Zeitformat
+d$Geburtstag <- lubridate::dmy(d$Geburtstag, tz="CET")
+
+# anschauen
+str(d)
+```
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage 
+
+## Lösungen zur deskriptiven Statistik {#sec-LoesungenAnfangB}
+
+### Lösung zur Aufgabe [-@sec-AAB01] Vektoren {#sec-LAB01}
+::: {.callout-tip}
+## a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
+
+```{r}
+#| label: LoesungAB01a
+zahlen <- c(1:100)
+#anschauen
+zahlen
+```
+
+:::
+
