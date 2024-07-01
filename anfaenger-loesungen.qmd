@@ -866,16 +866,337 @@ str(d)
 
 ## Lösungen zur deskriptiven Statistik {#sec-LoesungenAnfangB}
 
-### Lösung zur Aufgabe [-@sec-AAB01] Vektoren {#sec-LAB01}
+### Lösung zur Aufgabe [-@sec-AAB01] Serumcholesterin {#sec-LAB01}
 ::: {.callout-tip}
-## a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
+## a) Überführen Sie die Daten in ein Datenframe mit der Variable `chol`.
 
 ```{r}
 #| label: LoesungAB01a
-zahlen <- c(1:100)
-#anschauen
-zahlen
+# gebe die Werte ein
+serumchol <- c(4.5, 4.9, 7.3, 5.2, 5.8, 6.2, 5.0, 5.6, 6.4, 7.6,
+               5.4, 4.4, 6.6, 5.3, 5.7, 4.7, 8.2, 6.7, 4.8, 5.9)
+
+
+# erstelle Datenframe
+df <- data.frame(chol= serumchol)
 ```
 
 :::
+
+::: {.callout-tip}
+## b) Klassieren Sie die Serumcholesterinwerte.
+
+Die Klassierung erfoglt entweder "von Hand":
+```{r}
+#| label: LoesungAB01b1
+# erstelle Werteklassen in eigener Variablenspalte
+df$cholklass[df$chol < 5] <- "4.0-4.9"                  # alle Werte kleiner 5
+df$cholklass[df$chol < 6 & df$chol  > 4.9] <- "5.0-5.9" # Werte kleiner 6 und größer 4
+df$cholklass[df$chol < 7 & df$chol  > 5.9] <- "6.0-6.9" # Werte kleiner 7 und größer 5
+df$cholklass[df$chol < 8 & df$chol  > 6.9] <- "7.0-7.9" # Werte kleiner 8 und größer 6
+df$cholklass[df$chol < 9 & df$chol  > 7.9] <- "8.0-8.9" # Werte kleiner 9 und größer 7
+df$cholklass <- factor(df$cholklass, ordered=T)
+# neue Variable anschauen
+df$cholklass
+```
+
+...oder mittels `cut()`.
+```{r}
+#| label: LoesungAB01b2
+df$cholklass2 <- cut(df$chol, breaks=c(4:9),
+                     right=FALSE,
+                     ordered_result = TRUE)
+# anzeigen
+df
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## c) Erstellen Sie eine ausreichend beschriftete Häufigkeitstabelle mit nicht kumulierten und kumulierten absoluten und relativen Häufigkeiten für die Häufigkeiten in den zuvor erstellten Serumcholesterinklassen.
+
+```{r}
+#| label: LoesungAB01c
+# erzeuge eine Häufigkeitstabelle
+jgsbook::freqTable(df$cholklass)
+```
+
+:::
+
+
+::: {.callout-tip}
+## d) Bestimmen Sie bitte folgende Kenngrößen
+
+```{r}
+#| label: LoesungAB01d
+# allgemein:
+summary(df$chol)
+
+# speziell
+psych::describe(df$chol, 
+                IQR=TRUE,
+                skew=FALSE,
+                quant = c(.10, 0.25, 0.75, .90)
+                )
+# Was fehlt noch:
+# Varianz
+var(df$chol)
+# und Median
+median(df$chol)
+```
+
+:::
+
+
+::: {.callout-tip}
+## e) Zeichnen Sie anhand der unter d) bestimmten Kenngrößen einen Boxplot
+
+```{r}
+#| label: LoesungAB01e
+boxplot(df$chol)
+
+# hübscher
+boxplot(df$chol, main="Serumcholesterinspiegel in mmol/l",
+        col="cyan", border="blue")
+```
+:::
+
+
+::: {.callout-tip}
+## f) Stellen Sie die in b) aufgelisteten absoluten nicht kumulierten Häufigkeiten als Histogramm dar.
+
+```{r}
+#| label: LoesungAB01f
+# Histogram
+hist(df$chol)
+
+# Histogram mit 5 "breaks und etwas hübscher
+hist(df$chol, breaks=5,
+     col="skyblue2",
+     main="Histogram",
+     xlab="Serumcholesterin",
+     ylab="Häufigkeit")
+
+```
+:::
+
+
+::: {.callout-tip}
+## g) Welche Form hat die Verteilung?
+
+Die Verteilung ist linksgipflig (aka rechtschief).
+
+:::
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB02] Gewichtsreduktion {#sec-LAB02}
+::: {.callout-tip}
+## a) Überführen Sie die Daten in ein Datenframe.
+
+```{r}
+#| label: LoesungAB02a
+alter <- c(4,  7  ,8,  9,  11, 12, 13, 14, 15, 16, 16, 20, 20, 
+           22, 25, 26, 26, 28, 29, 34)
+geschlecht <- c(1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 0, 2, 1, 2, 0)
+
+# Erzeuge Datenframe
+df <- data.frame(alter, geschlecht)
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Kodieren Sie der Variable "`Geschlecht`" um
+
+```{r}
+#| label: LoesungAB02b
+
+# wandle "Geschlecht"-Einträge um
+df$geschlecht[df$geschlecht == "0"] <- "divers"
+df$geschlecht[df$geschlecht == "1"] <- "männlich"
+df$geschlecht[df$geschlecht == "2"] <- "weiblich"
+
+# wandle in factor() um
+df$geschlecht <- factor(df$geschlecht)
+
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## c) Klassieren Sie das Alter der Probanden
+
+Die Altersklassierung erfolgt entweder "von Hand"...
+```{r}
+#| label: LoesungAB02c
+# klassiere die Daten in eigener Spaltenvariable
+df$alterk[df$alter < 6] <- "0-5" # alle Werte kleiner 6 
+df$alterk[df$alter < 11 & df$alter > 5] <- "6-10" # Werte kleiner 11 und größer 5
+df$alterk[df$alter < 16 & df$alter > 10] <- "11-15" # Werte kleiner 16 und größer 10 
+df$alterk[df$alter < 21 & df$alter > 15] <- "16-20" # Werte kleiner 21 und größer 15 
+df$alterk[df$alter < 26 & df$alter > 20] <- "21-25" # Werte kleiner 26 und größer 20
+df$alterk[df$alter < 31 & df$alter > 25] <- "26-30" # Werte kleiner 31 und größer 25
+df$alterk[df$alter > 30] <- "31-35" # Werte größer 30 werden zu "31-35"
+
+# ordinaler Faktor der Werteklassen
+df$alterk <- factor(df$alterk,
+                    levels=c("0-5", "6-10", "11-15", "16-20", "21-25", 
+                             "26-30", "31-35"),
+                    ordered=TRUE)
+```
+
+... oder per `cut()`-Funktion.
+```{r}
+#| label: LoesungAB02c2
+df$alterk2 <- cut(df$alter, breaks = seq(0,35,by=5),
+                            ordered=TRUE)
+#anzeigen
+df
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## d) Bestimmen Sie folgende Stichprobenkennzahlen für das Merkmal '`Alter`'.
+
+```{r}
+#| label: LoesungAB02d
+# allgemein
+summary(df$alter)
+
+# Minimum
+min(df$alter)
+
+# Perzentile und Quartile
+quantile(df$alter, probs = c(0.05, 0.25, 0.75, 0.95))
+
+# Perzentile und Quartile
+# mit SPSS-Rechenmethode (type=6)
+quantile(df$alter, probs = c(0.05, 0.25, 0.75, 0.95), type=6)
+
+# Median
+median(df$alter)
+
+# ar.Mittel
+mean(df$alter)
+
+# Maximum
+max(df$alter)
+
+# Interquartilsabstand
+IQR(df$alter)
+# Interquartilsabstand
+# SPSS-Rechenmethode (type=6)
+IQR(df$alter, type=6)
+```
+
+Berechne (fast) alles auf einmal:
+```{r}
+#| label: LoesungAB02d2
+# oder einfach
+psych::describe(df$alter,
+                quant = c(0.05, 0.25, 0.75, 0.95),
+                skew=FALSE,
+                IQR=TRUE)
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## e) Zeichnen Sie ein Histogramm und ein Balkendiagramm für die nicht kumulierten absoluten Häufigkeiten zur Anzahl der Studienteilnehmer in den zuvor gebildeten Altersklassen.
+
+Die Funktion `hist()` kann nur metrische Daten verarbeiten. Daher nehmen wir die Variable "`alter`" (und nicht "`alterk`") und stellen die Abstände auf 5 (Jahre).
+
+```{r}
+#| label: LoesungAB02e
+# Histogram geht mit R-base hist() nur bei metrischen Daten!!
+# Die Werteklassen können per "breaks"-Parameter angegeben werden.
+hist(df$alter)
+
+# etwas hübscher
+hist(df$alter, breaks = 5, col="cyan",
+     main="Histogram",
+     xlab="Alter",
+     ylab="Häufigkeit") # 5er-Schritte
+
+```
+
+Für das Balkendiagramm nutzen wir die Funktion `table()` auf die Variable "`alterk`".
+```{r}
+#| label: LoesungAB02e2
+# Häufigkeitstabelle von "alterk"
+table(df$alterk)
+
+# Balkendiagramm
+barplot(table(df$alterk), horiz = TRUE)
+
+# etwas hübscher
+barplot(table(df$alterk), horiz = TRUE,
+        col=rainbow(7),
+        main="Häufigkeiten der Altersklassen")
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## f) Erstellen Sie eine Kontingenztafel zur gleichzeitigen Darstellung der beiden Merkmale `Altersgruppe` und `Geschlecht`.
+
+```{r}
+#| label: LoesungAB02f
+# Kontingenztafel
+# entweder mit table()
+table(df$alterk, df$geschlecht)
+# oder mit xtabs()
+xtabs(~df$alterk+df$geschlecht)
+
+# in Dezimal-Prozent
+prop.table(table(df$alterk, df$geschlecht))
+
+# in Prozent
+prop.table(table(df$alterk, df$geschlecht))*100
+```
+:::
+
+
+::: {.callout-tip}
+## g) Stellen Sie die Häufigkeitsverteilung der beiden Merkmale `Altersgruppe` und `Geschlecht` in einer geeigneten Graphik dar.
+
+Geeignet ist ein geschichtetes Barplot.
+```{r}
+#| label: LoesungAB02g
+# Barplot
+barplot(table(df$geschlecht, df$alterk))
+# mit Legendenbox
+barplot(table(df$geschlecht, df$alterk), legend.text = levels(df$geschlecht))
+
+# hübscher
+barplot(table(df$geschlecht, df$alterk),
+        legend.text = levels(df$geschlecht),
+        main="Altersklassen nach Geschlecht",
+        col=c("orange", "skyblue", "pink")
+        )
+
+# variante "beside=TRUE"
+barplot(table(df$geschlecht, df$alterk),
+        legend.text = levels(df$geschlecht),
+        beside = TRUE,
+        col=c("orange", "skyblue", "pink")
+        )
+```
+:::
+
+
 

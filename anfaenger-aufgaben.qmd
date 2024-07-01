@@ -309,16 +309,75 @@ Lösung siehe @sec-LAA09
 In diesem Abschnitt üben Sie typische Funktionen und Arbeitsfolgen zur deskriptiven Auswertung der Daten.
 
 
-### Aufgabe [-@sec-AAB01] Histogram {#sec-AAB01}
+### Aufgabe [-@sec-AAB01] Serumcholesterin {#sec-AAB01}
 
 ::: {.callout-note appearance="simple"}
 
-a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
+Ein Internist misst bei 20 seiner Patienten folgende Serumcholesterinspiegel in mmol/l
 
+```
+4,5  4,9  7,3  5,2  5,8  6,2  5,0  5,6  6,4  7,6
+5,4  4,4  6,6  5,3  5,7  4,7  8,2  6,7  4,8  5,9
+
+```
+
+a) Überführen Sie die Daten in ein Datenframe mit der Variable `chol`.
+b) Klassieren Sie die Serumcholesterinwerte nach folgendem Schema: 
+   - 4,0 bis 4,9; 
+   - 5,0 bis 5,9; 
+   - …..mmol/l
+c) Erstellen Sie eine ausreichend beschriftete Häufigkeitstabelle mit nicht kumulierten und kumulierten absoluten und relativen Häufigkeiten für die Häufigkeiten in den zuvor erstellten Serumcholesterinklassen.
+d) Bestimmen Sie bitte folgende Kenngrößen:
+   - Median arithmetisches Mittel Spannweite
+   - Varianz und Standardabweichung
+   - Minimum  10. Perzentil  1. Quartil  3. Quartil  90. Perzentil  Maximum
+   - Interquartilsabstand
+e) Zeichnen Sie anhand der unter d) bestimmten Kenngrößen einen Boxplot
+f) Stellen Sie die in a) aufgelisteten absoluten nicht kumulierten Häufigkeiten als Histogramm dar.
+g) Welche Form hat die Verteilung?
 :::
 
 ::: {.callout-tip appearance="simple"}
 Lösung siehe @sec-LAB01
+:::
+
+
+
+
+### Aufgabe [-@sec-AAB02] Gewichtsreduktion {#sec-AAB02}
+
+::: {.callout-note appearance="simple"}
+Zu einer Gruppe von 20 Teilnehmern an einem Kurs zur Gewichtsreduktion liegen Ihnen die Angaben zu Alter [Jahren] und Geschlecht [1: männlich; 2: weiblich] vor.
+```
+Alter:       4  7  8  9  11 12 13 14 15 16 16 20 20 22 25 26 26 28 29 34
+Geschlecht:  1  2  2  2   1 1   2  2  2  1  1  2  2  2  1  0  2  1  2  0
+```
+
+a) Übertragen Sie die Daten in ein R-Datenframe.
+b) Geben Sie der Variable "`Geschlecht`" die Werte 
+```
+                 'männlich' (statt 1)
+                 'weiblich' (statt 2)
+                 'divers'   (statt 0)
+```
+c) Klassieren Sie das Alter der Probanden nach folgendem Schema:
+```
+                 0-5     6-10   
+                11-15   16-20   
+                21-25   26-30   
+                31-35
+```
+d) Bestimmen Sie folgende Stichprobenkennzahlen für das Merkmal '`Alter`':
+   - Minimum 5. Perzentil   1. Quartil   Median   Mittelwert
+   - 3. Quartil   95. Perzentil   Maximum   Interquartilsabstand
+e) Zeichnen Sie ein Histogramm und ein Balkendiagramm für die nicht kumulierten absoluten Häufigkeiten zur Anzahl der Studienteilnehmer in den zuvor gebildeten Altersklassen.
+f) Erstellen Sie eine Kontingenztafel zur gleichzeitigen Darstellung der beiden Merkmale `Altersgruppe` und `Geschlecht`.
+g) Stellen Sie die Häufigkeitsverteilung der beiden Merkmale `Altersgruppe` und `Geschlecht` in einer geeigneten Graphik dar.
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB02
 :::
 
 
