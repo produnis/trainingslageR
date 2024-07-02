@@ -784,11 +784,33 @@ Es fällt auf, dass sehr viele Ausreißer enthalten sind.
 
 
 
+
+
+
+
+
+
+
 ::: {.callout-tip}
-## p) Unterscheiden sich Männer und Frauen hinsichtlich der Liegedauer? Stellen Sie den Unterschied ebenfalls tabellarisch und graphisch dar.
+## p) Wie viel Prozent der Patienten haben eine Liegedauer von mehr als 7 Tagen?
 
 ```{r}
 #| label: LoesungBB02p
+sum(kh$Liegedauer > 7) / length(kh$Liegedauer)
+``` 
+Im Datensatz haben 37,23 \% der Patienten eine Liegedauer von mehr als 7 Tagen.
+:::
+
+
+
+
+
+
+::: {.callout-tip}
+## q) Unterscheiden sich Männer und Frauen hinsichtlich der Liegedauer? Stellen Sie den Unterschied ebenfalls tabellarisch und graphisch dar.
+
+```{r}
+#| label: LoesungBB02q
 # Tabellarische Darstellung
 kh %>%
   group_by(Geschlecht) %>%
@@ -808,10 +830,10 @@ Es ist kein Unterschied erkennbar.
 
 
 ::: {.callout-tip}
-## q) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
+## r) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
 
 ```{r}
-#| label: LoesungBB02q
+#| label: LoesungBB02r
 #| warning: false
 # Teste auf Normalverteilung
 ks.test(kh$Liegedauer, "pnorm")
@@ -819,7 +841,7 @@ ks.test(kh$Liegedauer, "pnorm")
 Der Test ist signifikant, d.h. es liegt **keine** Normalverteilung vor. Als Signifikanztest ist daher der Mann-Whitney-U-Test durchzuführen
 
 ```{r}
-#| label: LoesungBB02q2
+#| label: LoesungBB02r2
 # Vorbereitung
 kh$Liegedauer <- as.numeric(kh$Liegedauer)
 m <- subset(kh, Geschlecht=="m")

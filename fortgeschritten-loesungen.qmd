@@ -19,3 +19,46 @@ library(tibble)
 :::
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Lösungen zu den Datensatzauswertungen  {#sec-LoesungenFortschrittB}
+
+### Lösung zur Aufgabe [-@sec-ACB01] Hogwarts-Kurse {#sec-LCB01}
+::: {.callout-tip}
+## a) Benutzen Sie die `tribble()`-Funktion, um die Daten in die Objekte `tab1` und `tab2` zu überführen.
+
+```{r}
+#| label: LoesungCB01a
+#| paged.print: FALSE
+library(tibble)
+```
+
+:::
+

@@ -332,7 +332,7 @@ d) Bestimmen Sie bitte folgende Kenngrößen:
    - Varianz und Standardabweichung
    - Minimum  10. Perzentil  1. Quartil  3. Quartil  90. Perzentil  Maximum
    - Interquartilsabstand
-e) Zeichnen Sie anhand der unter d) bestimmten Kenngrößen einen Boxplot
+e) Erstellen Sie  einen Boxplot der Werte.
 f) Stellen Sie die in a) aufgelisteten absoluten nicht kumulierten Häufigkeiten als Histogramm dar.
 g) Welche Form hat die Verteilung?
 :::
@@ -342,6 +342,8 @@ Lösung siehe @sec-LAB01
 :::
 
 
+
+\newpage
 
 
 ### Aufgabe [-@sec-AAB02] Gewichtsreduktion {#sec-AAB02}
@@ -378,6 +380,78 @@ g) Stellen Sie die Häufigkeitsverteilung der beiden Merkmale `Altersgruppe` und
 
 ::: {.callout-tip appearance="simple"}
 Lösung siehe @sec-LAB02
+:::
+
+
+
+\newpage
+
+
+### Aufgabe [-@sec-AAB03] Anscombe-Quartett {#sec-AAB03}
+
+::: {.callout-note appearance="simple"}
+Das Anscombe-Quartett ist ein bekannter Datensatz in der Statistik. Lesen Sie sich zunächst den Wikipedia-Artikel durch, siehe <https://de.wikipedia.org/wiki/Anscombe-Quartett>.
+
+Der dazugehörige Datensatz ist in der `R`-Standardinstallation bereits implementiert und heisst `anscombe`.
+
+a) Laden Sie den Datensatz `anscombe` in Ihre R-Session. 
+b) Schreiben Sie die 4 Anscombe-Datensätze (`x1` bis `x4` und `y1` bis `y4`) in 4 neue Datenframes mit den Namen `Anscombe1` bis `Anscombe4`. Die enthaltenen Spalten sollten jeweils `x` und `y` heissen.
+c) Führen Sie für jedes Datenframe die Berechnungen von Anscombe durch (Mittelwert, Varianz, Korrelation und lineare Regression), wobei Sie Ihre Ergebnisse auf 2 Stellen runden sollen. 
+d) Erzeugen Sie die 4 Anscombe-Diagramme (Punktwolke und Regressionsgerade) mit der `plot()`-Funktion, und hübschen Sie die Plots mit etwas Farbe auf.
+e) Erzeugen Sie die 4 Anscombe-Diagramme mittels `ggplot()`, wobei alle 4 Diagramme mit einem Plotaufruf erzeugt werden sollen.  Dies geht am einfachsten, wenn der Datensatz im Tidy-Data-Format (long table) vorliegt.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB03
+:::
+
+
+
+
+### Aufgabe [-@sec-AAB04] Kinder und Wohnräume {#sec-AAB04}
+
+::: {.callout-note appearance="simple"}
+Man befragt 5 Ehepaare, bei denen beide Partner zwischen 20 und 40 Jahre alt sind, nach der Anzahl der im Haushalt lebenden Kinder (`X`) und nach der Anzahl der Wohnräume der Wohnung (`Y`).
+Die Antworten lauten:
+
+```
+Ehepaar                        1  2  3  4  5
+Anzahl Kinder im Haushalt (X)  0  2  3  0  1
+Anzahl der Wohnräume (Y)       1  4  3  2  3
+```
+
+a) Berechnen Sie den Korrelationskoeffizienten `r`
+b) Berechnen Sie die Regressionsgerade und erstellen Sie die Graphik dazu!
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB04
+:::
+
+
+\newpage
+
+
+### Aufgabe [-@sec-AAB05] Kinder und Geschwister {#sec-AAB05}
+
+::: {.callout-note appearance="simple"}
+Man befragt 5 verheiratete Personen im Alter von mindestens 50 Jahren nach der Anzahl ihrer eigenen Kinder (`X`) und nach der Anzahl ihrer Geschwister (`Y`).
+Die Antworten lauten:
+
+```
+Person                          1  2  3  4  5
+Anzahl eigener Kinder (X)       1  0  3  2  1
+Anzahl eigener Geschwister (Y)  0  1  4  1  2
+```
+
+a) Berechnen Sie den Korrelationskoeffizienten `r`
+b) Berechnen Sie die Gleichung der Regressionsgeraden und erstellen Sie die Graphik dazu!
+c) Was geschieht mit `r` und mit der Regressionsgeraden, falls Sie die Angaben der 3. Person streichen und dann die Auswertung wiederholen?
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB05
 :::
 
 

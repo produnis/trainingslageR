@@ -17,3 +17,44 @@ Lösung siehe @sec-LCA01
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Datensätze auswerten {#sec-AufgabenFortschrittB}
+
+### Aufgabe [-@sec-ACB01] Kurse {#sec-ACB01}
+
+::: {.callout-note appearance="simple"}
+
+\smallskip\ 
+
+a) Benutzen Sie die `tribble()`-Funktion, um die Daten in die Objekte `tab1` und `tab2` zu überführen.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LCB01
+:::
+
+
+

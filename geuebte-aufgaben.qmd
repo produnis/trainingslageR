@@ -78,7 +78,7 @@ Lösung siehe @sec-LBA01
 ### Aufgabe [-@sec-ABA02] Aufnahme und Entlassung {#sec-ABA02}
 
 ::: {.callout-note appearance="simple"}
-Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/R/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten.
+Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/R/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten, die an einer bestimmten Krankheit leiden.
 
 a) Laden Sie den Datensatz `Krankenhaus.RData` in Ihre R-Session.
 b) Ein Variablenname enthält einen Tippfehler. Reparieren Sie auch die Datenklassen der Variablen. Entfernen Sie alle Einträge mit ungültigen Zeitstempeln. 
@@ -151,8 +151,9 @@ l) Ist der Unterschied signifikant?
 m) Ab welchem Alter sind 10\% der Männer älter als dieser Wert?
 n) Ab welchem Alter sind 80\% der Frauen jünger als dieser Wert?
 o) Wie groß ist die mittlere Liegedauer in Tagen? Stellen Sie die Liegedauer mittels Kennwerten sowie graphisch dar. Was fällt Ihnen auf?
-p) Unterscheiden sich Männer und Frauen hinsichtlich der Liegedauer? Stellen Sie den Unterschied ebenfalls tabellarisch und graphisch dar.
-q) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
+p) Wie viel Prozent der Patienten haben eine Liegedauer von mehr als 7 Tagen?
+q) Unterscheiden sich Männer und Frauen hinsichtlich der Liegedauer? Stellen Sie den Unterschied ebenfalls tabellarisch und graphisch dar.
+r) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
 
 :::
 

@@ -951,7 +951,7 @@ median(df$chol)
 
 
 ::: {.callout-tip}
-## e) Zeichnen Sie anhand der unter d) bestimmten Kenngrößen einen Boxplot
+## e) Erstellen Sie einen Boxplot der Werte.
 
 ```{r}
 #| label: LoesungAB01e
@@ -986,8 +986,18 @@ hist(df$chol, breaks=5,
 ::: {.callout-tip}
 ## g) Welche Form hat die Verteilung?
 
-Die Verteilung ist linksgipflig (aka rechtschief).
+```{r}
+#| label: LoesungAB01g
+# "Schiefe" berechnen
+psych::skew(df$chol)
 
+# "Spitzigkeit" berechnen
+psych::kurtosi(df$chol)
+```
+
+Die Skewness ist positiv, d.h. die Verteilung ist linksgipflig (aka rechtschief).
+
+Die Kurtosis von -0,63 zeigt an, dass die Daten flacher und breiter als eine Normalverteilung sind.
 :::
 
 
@@ -1200,3 +1210,355 @@ barplot(table(df$geschlecht, df$alterk),
 
 
 
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB03] Anscombe-Quartett {#sec-LAB03}
+::: {.callout-tip}
+## a) Laden Sie den Datensatz `anscombe` in Ihre R-Session. 
+
+```{r}
+#| label: LoesungAB03a
+# Lade Datensatz
+data("anscombe")
+
+# anschauen
+str(anscombe)
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Schreiben Sie die 4 Anscombe-Datensätze (`x1` bis `x4` und `y1` bis `y4`) in 4 neue Datenframes mit den Namen `Anscombe1` bis `Anscombe4`. Die enthaltenen Spalten sollten jeweils `x` und `y` heissen.
+
+```{r}
+#| label: LoesungAB03b
+Anscombe1 <- data.frame(x=anscombe$x1, y=anscombe$y1)
+Anscombe2 <- data.frame(x=anscombe$x2, y=anscombe$y2)
+Anscombe3 <- data.frame(x=anscombe$x3, y=anscombe$y3)
+Anscombe4 <- data.frame(x=anscombe$x4, y=anscombe$y4)
+
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## c) Führen Sie für jedes Datenframe die Berechnungen von Anscombe durch (Mittelwert, Varianz, Korrelation und lineare Regression), wobei Sie Ihre Ergebnisse auf 2 Stellen runden sollen. 
+
+
+```{r}
+#| label: LoesungAB03c1
+### Datensatz Anscombe1
+# Mittelwert für x, gerundet auf 2 Stellen
+round(mean(Anscombe1$x), 2)
+
+# Varianz für x
+round(var(Anscombe1$x), 2)
+
+# Mittelwert für y
+round(mean(Anscombe1$y), 2)
+
+# Varianz für y
+round(var(Anscombe1$y), 2)
+
+# Korrelationskoeffizient
+round(cor(Anscombe1$x, Anscombe1$y), 2)
+
+# Regression
+fit <- lm(Anscombe1$y ~ Anscombe1$x)
+round(fit$coefficients, 2)
+
+```
+
+
+
+```{r}
+#| label: LoesungAB03c2
+### Datensatz Anscombe2
+# Mittelwert für x, gerundet auf 2 Stellen
+round(mean(Anscombe2$x), 2)
+
+# Varianz für x
+round(var(Anscombe2$x), 2)
+
+# Mittelwert für y
+round(mean(Anscombe2$y), 2)
+
+# Varianz für y
+round(var(Anscombe2$y), 2)
+
+# Korrelationskoeffizient
+round(cor(Anscombe2$x, Anscombe2$y), 2)
+
+# Regression
+fit <- lm(Anscombe2$y ~ Anscombe2$x)
+round(fit$coefficients, 2)
+
+```
+
+
+
+
+```{r}
+#| label: LoesungAB03c3
+### Datensatz Anscombe3
+# Mittelwert für x, gerundet auf 2 Stellen
+round(mean(Anscombe3$x), 2)
+
+# Varianz für x
+round(var(Anscombe3$x), 2)
+
+# Mittelwert für y
+round(mean(Anscombe3$y), 2)
+
+# Varianz für y
+round(var(Anscombe3$y), 2)
+
+# Korrelationskoeffizient
+round(cor(Anscombe3$x, Anscombe3$y), 2)
+
+# Regression
+fit <- lm(Anscombe3$y ~ Anscombe3$x)
+round(fit$coefficients, 2)
+
+```
+
+
+
+```{r}
+#| label: LoesungAB03c4
+### Datensatz Anscombe4
+# Mittelwert für x, gerundet auf 2 Stellen
+round(mean(Anscombe4$x), 2)
+
+# Varianz für x
+round(var(Anscombe4$x), 2)
+
+# Mittelwert für y
+round(mean(Anscombe4$y), 2)
+
+# Varianz für y
+round(var(Anscombe4$y), 2)
+
+# Korrelationskoeffizient
+round(cor(Anscombe4$x, Anscombe4$y), 2)
+
+# Regression
+fit <- lm(Anscombe4$y ~ Anscombe4$x)
+round(fit$coefficients, 2)
+
+```
+
+:::
+
+
+
+
+::: {.callout-tip}
+## d) Erzeugen Sie die 4 Anscombe-Diagramme (Punktwolke und Regressionsgerade) mit der `plot()`-Funktion, und hübschen Sie die Plots mit etwas Farbe auf.
+
+
+```{r}
+#| label: LoesungAB03d
+#| layout-ncol: 2
+# Datensatz Anscombe1
+plot(Anscombe1$x, Anscombe1$y,
+     xlim = c(0,20),  xlab="x",
+     ylim = c(0,13),  ylab="y",
+     col="darkblue")
+abline(lm(Anscombe1$y ~ Anscombe1$x), col="red")
+
+# Datensatz Anscombe2
+plot(Anscombe2$x, Anscombe2$y,
+     xlim = c(0,20),  xlab="x",
+     ylim = c(0,13),  ylab="y",
+     col="darkblue")
+abline(lm(Anscombe2$y ~ Anscombe2$x), col="red")
+
+# Datensatz Anscombe3
+plot(Anscombe3$x, Anscombe3$y,
+     xlim = c(0,20),  xlab="x",
+     ylim = c(0,13),  ylab="y",
+     col="darkblue")
+abline(lm(Anscombe3$y ~ Anscombe3$x), col="red")
+
+# Datensatz Anscombe4
+plot(Anscombe4$x, Anscombe4$y,
+     xlim = c(0,20),  xlab="x",
+     ylim = c(0,13),  ylab="y",
+     col="darkblue")
+abline(lm(Anscombe4$y ~ Anscombe4$x), col="red")
+```
+
+:::
+
+
+::: {.callout-tip}
+## e) Erzeugen Sie die 4 Anscombe-Diagramme mittels `ggplot()`, wobei alle 4 Diagramme mit einem Plotaufruf erzeugt werden sollen.  Dies geht am einfachsten, wenn der Datensatz im Tidy-Data-Format (long table) vorliegt.
+
+```{r}
+#| label: LoesungAB03e
+## Tidy-Longtable erzeugen
+# Gruppen separieren
+Anscombe1 <- data.frame(x=anscombe$x1, y=anscombe$y1, Gruppe="Anscombe1")
+Anscombe2 <- data.frame(x=anscombe$x2, y=anscombe$y2, Gruppe="Anscombe2")
+Anscombe3 <- data.frame(x=anscombe$x3, y=anscombe$y3, Gruppe="Anscombe3")
+Anscombe4 <- data.frame(x=anscombe$x4, y=anscombe$y4, Gruppe="Anscombe4")
+
+# alles zusammenfügen
+df <- rbind(Anscombe1, Anscombe2, Anscombe3, Anscombe4)
+
+# anschauen
+str(df)
+
+# plotten
+library(ggplot2)
+ggplot(df) +
+  aes(x=x, y=y) +
+  xlim(0,20) +
+  ylim(0,13) +
+  geom_point(color="darkblue")+
+  geom_smooth(method="lm", color="red", se=FALSE) +
+  facet_wrap(~ Gruppe)
+```
+
+:::
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB04] Kinder und Wohnräume {#sec-LAB04}
+::: {.callout-tip}
+## a) Berechnen Sie den Korrelationskoeffizienten `r`
+
+```{r}
+#| label: LoesungAB04a
+df <- data.frame(ehepaar = c(1:5),
+                 kinder  = c(0, 2, 3, 0, 1),
+                 raeume  = c(1, 4, 3, 2, 3))
+
+# Korreltation nach Pearson
+cor(df$kinder, df$raeume)
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Berechnen Sie die Regressionsgerade und erstellen Sie die Graphik dazu!
+
+```{r}
+#| label: LoesungAB04b
+# regressionsmodelle immer in variable speichern
+fit <- lm(raeume~kinder, data=df)
+
+# Modellübersicht
+summary(fit)
+
+# regressionsmodell plotten
+plot(raeume~kinder, data=df) # Punktwolke
+abline(fit)                  # Regressionsgerade hinzufügen
+
+# etwas hübscher
+plot(raeume~kinder, data=df,
+     col="skyblue",
+     pch=16,
+     main="Regressionsgerade",
+     xlab="Anzahl Kinder",
+     ylab="Anzahl Räume")
+abline(fit, col="red")
+```
+
+:::
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB05] Kinder und Geschwister {#sec-LAB05}
+::: {.callout-tip}
+## a) Berechnen Sie den Korrelationskoeffizienten `r`
+
+```{r}
+#| label: LoesungAB05a
+df <- data.frame(person = c(1:5),
+                 kinder  = c(1,  0,  3,  2,  1),
+                 geschwister  = c(0,  1,  4 , 1,  2))
+
+# Korrelation                 
+cor(df$kinder, df$geschwister)
+```
+
+:::
+
+::: {.callout-tip}
+## b) Berechnen Sie die Gleichung der Regressionsgeraden und erstellen Sie die Graphik dazu!
+
+```{r}
+#| label: LoesungAB05b
+# regressionsmodelle immer in variable speichern
+fit <- lm(geschwister~kinder, data=df)
+
+# Modellübersicht
+summary(fit)
+```
+
+
+Die Gleichung der Regressionsgeraden lautet $y = 0,3077\ + 0,9231\cdot x$.
+
+```{r}
+#| label: LoesungAB05b2
+# regressionsmodell plotten
+plot(geschwister~kinder, data=df) # Punktwolke
+abline(fit)                  # Regressionsgerade hinzufügen
+
+# etwas hübscher
+plot(geschwister~kinder, data=df,
+     col="skyblue",
+     pch=16,
+     main="Regressionsgerade",
+     xlab="Anzahl Kinder",
+     ylab="Anzahl Geschwister")
+abline(fit, col="red")
+```
+
+
+:::
+
+
+
+
+::: {.callout-tip}
+## c) Was geschieht mit `r` und mit der Regressionsgeraden, falls Sie die Angaben der 3. Person streichen und dann die Auswertung wiederholen?
+
+```{r}
+#| label: LoesungAB05c
+# dritte Person streichen
+df <- df[-3,]
+
+# Korrelation
+cor(df$kinder, df$geschwister)
+
+# Regression
+fit <- lm(geschwister~kinder, data=df)
+
+# Modellübersicht
+summary(fit)
+
+# etwas hübscher
+plot(geschwister~kinder, data=df,
+     col="skyblue",
+     pch=16,
+     main="Regressionsgerade",
+     xlab="Anzahl Kinder",
+     ylab="Anzahl Geschwister")
+abline(fit, col="red")
+```
+
+Wenn die 3. Person aus dem Datensatz entfernt wird, kann kein Zusammenhang zwischen `geschwister` und `kinder` gezeigt werden (`r=0`). Die Regressionsgerade verläuft parallel zur X-Achse, so dass `Y` für jedes `X` gleich ist.
+:::
