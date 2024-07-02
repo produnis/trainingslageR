@@ -1562,3 +1562,88 @@ abline(fit, col="red")
 
 Wenn die 3. Person aus dem Datensatz entfernt wird, kann kein Zusammenhang zwischen `geschwister` und `kinder` gezeigt werden (`r=0`). Die Regressionsgerade verläuft parallel zur X-Achse, so dass `Y` für jedes `X` gleich ist.
 :::
+
+
+
+\bigskip\ 
+
+
+### Lösung zur Aufgabe [-@sec-AAB06] Tribble Tibble {#sec-LAB06}
+
+```{r}
+#| label: LoesungAB06Setup
+# erstellen des Datensatzes mittels tribble()
+library(tibble)
+df <- tribble(
+  ~Vorname, ~Geschlecht, ~Alter, ~Wohnort, ~Groesse, ~Gewicht, ~Rauchen,
+  "Hannah", "weiblich", 25, "Berlin", 1.75, 65, FALSE,
+  "Max", "maennlich", 30, "Hamburg", 1.85, 75, TRUE,
+  "Sophia", "weiblich", 20, "Muenchen", 1.65, 55, FALSE,
+  "Lukas", "maennlich", 35, "Frankfurt", 1.95, 85, TRUE,
+  "Emma", "weiblich", 18, "Stuttgart", 1.70, 60, FALSE,
+  "Jonas", "maennlich", 40, "Duesseldorf", 1.80, 70, TRUE,
+  "Lea", "weiblich", 22, "Hannover", 1.60, 50, FALSE,
+  "Jan", "divers", 28, "Nuernberg", 1.90, 80, TRUE,
+  "Mia", "weiblich", 24, "Bremen", 1.73, 63, FALSE,
+  "Luca", "maennlich", 33, "Gelsenkirchen", 1.88, 78, TRUE
+)
+```
+
+
+::: {.callout-tip}
+## a) Wandeln Sie mittels `mutate()` die Variablen `Geschlecht` und `Wohnort` in Faktoren um.
+
+```{r}
+#| label: LoesungAB06a
+#| warning: false
+library(dplyr)
+df <- df %>%
+  mutate(Geschlecht = factor(Geschlecht),
+         Wohnort = factor(Wohnort))
+
+# anzeigen 
+glimpse(df)
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## b) Verwenden Sie `filter()`, um nur die Fälle anzuzeigen, die Raucher sind.
+
+```{r}
+#| label: LoesungAB06b
+df %>%
+  filter(Rauchen == TRUE)
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Verwenden Sie `group_by()` und `summarise()`, um Mittelwert, Standardabweichung und Median der Variable  `Alter` für jedes Geschlecht zu berechnen.
+
+```{r}
+#| label: LoesungAB06c
+df %>%
+  group_by(Geschlecht) %>%
+  summarise(MW = mean(Alter),
+            SD = sd(Alter),
+            Median = median(Alter))
+
+```
+
+:::
+
+::: {.callout-tip}
+## d) Verwenden Sie `arrange()`, um den Datensatz nach Wohnort in alphabetischer Reihenfolge zu sortieren.
+
+```{r}
+#| label: LoesungAB06d
+df %>%
+  arrange(Wohnort)
+```
+
+:::
+

@@ -49,4 +49,3 @@ große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger*
 \newpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\renewcommand\pagemark{{\usekomafont{pagenumber}\thepage\ von \pageref{LastPage}}}

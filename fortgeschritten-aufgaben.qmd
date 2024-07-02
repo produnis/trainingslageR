@@ -1,4 +1,4 @@
-# Aufgaben für fortgeschrittene Anwender:innen {#sec-AufgabeFortschritt}
+# Aufgaben für fortgeschrittene User:innen {#sec-AufgabeFortschritt}
 
 ## Objekte in R {#sec-AufgabenFortschrittA}
 

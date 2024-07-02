@@ -28,7 +28,7 @@ book:
       affiliation: Hochschule Niederrhein
       affiliation-url: https://www.hs-niederrhein.de
       orcid: 0000-0002-3634-7722
-  date: "2024-07-01"
+  date: "2024-07-02"
   date-format: "DD.MM.YYYY"
   chapters:
     - index.qmd
@@ -62,11 +62,11 @@ format:
       papersize: a4paper
       fontsize: 11pt
       geometry:
-        - top=30mm
-        - bottom=30mm
-        - left=20mm
-        - right=20mm
-        - headsep=15mm
+        - top=20mm
+        - bottom=25mm
+        - left=15mm
+        - right=15mm
+        - headsep=10mm
       lang: de
       linkcolor: black
       link-citations: true

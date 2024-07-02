@@ -1,4 +1,4 @@
-# Lösungswege zu den Aufgaben für geübte User:innen {#sec-LoesungGeuebt}
+# Lösungswege zu den Aufgaben für geübte Anwender:innen {#sec-LoesungGeuebt}
 
 ::: {.callout-note appearance="simple"}
 Wenn Ihr `R`-Code eleganter ist als die hier präsentierten Lösungswege, dann freuen Sie sich! Wenn Sie meinen, Ihr Code sei zu klobig und umständlich, dann Kopf hoch: wenn er tut, was er soll, dann ist er genau richtig.
@@ -326,7 +326,7 @@ glimpse(kh)
 ## b) Plotten Sie die absoluten Häufigkeiten der Aufnahmen und Entlassungen pro Kalendertag. Was fällt Ihnen auf?
 
 ```{r}
-#| label: LoesungBB02a
+#| label: LoesungBB01b
 #| warning: false
 library(ggplot2)
 # Hilfsdatenframe mit Anzahl Aufnahmen pro Tag
@@ -366,7 +366,7 @@ Es fällt auf, dass für das Jahr 2019 keine Daten zur Verfügung stehen.
 ## c) Plotten Sie die durchschnittlichen (arithmetisches Mittel) absoluten Häufigkeiten an täglichen Aufnahmen und Entlassungen pro Wochentag. Was fällt Ihnen auf?
 
 ```{r}
-#| label: LoesungBB02b
+#| label: LoesungBB01c
 #| warning: false
 # nochmal Hilfsdatenframe mit Anzahl Aufnahmen pro Tag
 Aufnahmen <- kh %>%
@@ -414,7 +414,7 @@ An Sonn- und Montag gibt es deutlich mehr Aufnahmen als Entlassungen.
 ## d) Plotten Sie die durchschnittlichen absoluten Häufigkeiten an täglichen Aufnahmen und Entlassungen pro Monat sowie die absoluten Häufigkeiten pro Tagesstunde.
 
 ```{r}
-#| label: LoesungBB02d
+#| label: LoesungBB01d
 #| warning: false
 # nochmal Hilfsdatenframe mit Anzahl Aufnahmen pro Monat
 Aufnahmen <- kh %>%
@@ -459,7 +459,7 @@ ggplot(Monate, aes(x=Monat, y=freq, fill=Typ)) +
 
 Wiederholen wir nun den Vorgang für die Häufigkeiten pro Tagesstunde.
 ```{r}
-#| label: LoesungBB02d1
+#| label: LoesungBB01d1
 #| warning: false
 # nochmal Hilfsdatenframe mit Anzahl Aufnahmen pro Tagesstunde
 kh$Aufnahmestunde <- hour(kh$Aufnahme)
@@ -497,7 +497,7 @@ ggplot(Stunden, aes(x=Stunde, y=freq, fill=Typ)) +
 ## e) Erstellen Sie ein Poissionregressionsmodell für die Anzahl der täglichen Aufnahmen erklärt durch den Wochentag. Ist das Modell überdispersioniert? Wieviele Aufnahmen sind an einem Dienstag und an einem Sonntag zu erwarten?
 
 ```{r}
-#| label: LoesungBB02e
+#| label: LoesungBB01e
 #| warning: false
 # nur Aufnahmen
 dfA <- subset(Wochentage, Typ=="Aufnahme")
@@ -517,7 +517,7 @@ summary(fit)
 
 
 ```{r}
-#| label: LoesungBB02eB
+#| label: LoesungBB01eB
 # alternative Zusammenfassung
 sjPlot::tab_model(fit)
 ```
@@ -525,12 +525,12 @@ sjPlot::tab_model(fit)
 
 Testen wir, ob das Modell überdispersioniert ist.
 ```{r}
-#| label: LoesungBB02e2
+#| label: LoesungBB01e2
 AER::dispersiontest(fit, trafo=1)
 ```
 Der Test ist signifikant, d.h. das Modell **ist** überdispersioniert. Wir müssen das Modell daher anpassen:
 ```{r}
-#| label: LoesungBB02e3
+#| label: LoesungBB01e3
 fit <- glm(freq ~ Tag, data=dfA, family = quasipoisson)
 summary(fit)
 ```
@@ -539,7 +539,7 @@ summary(fit)
 
 Mit dem neuen Modell können nun die Vorhersagen erfolgen.
 ```{r}
-#| label: LoesungBB02e4
+#| label: LoesungBB01e4
 # Vorhersage Dienstag
 predict(fit, list(Tag="Di"), type = "response")
 
@@ -555,7 +555,7 @@ predict(fit, list(Tag="So"), type = "response")
 ## f) Fügen Sie den Monat als weiteren Prädiktor hinzu. Wird das Modell dadurch besser? Wieviele Aufnahmen sind an einem Donnerstag im Mai zu erwarten, und wieviele im September?
 
 ```{r}
-#| label: LoesungBB02f
+#| label: LoesungBB01f
 #| warning: false
 dfA$Monat <- month(dfA$Datum, label=TRUE)
 dfA$Monat <- factor(dfA$Monat, ordered=FALSE)
@@ -570,14 +570,14 @@ Das Modell hat einen größeren AIC-Wert als das alte.
 
 Testen wir, ob das Modell überdispersioniert ist.
 ```{r}
-#| label: LoesungBB02f2
+#| label: LoesungBB01f2
 AER::dispersiontest(fit, trafo=1)
 ```
 
 Der Test ist signifikant, d.h. das Modell **ist** überdispersioniert. Wir müssen das Modell anpassen.
 
 ```{r}
-#| label: LoesungBB02f3
+#| label: LoesungBB01f3
 fit <- glm(freq ~ Tag + Monat, data=dfA, family = quasipoisson)
 summary(fit)
 ```
@@ -586,25 +586,19 @@ summary(fit)
 
 Mit dem neuen Modell können wir nun die Vorhersagen treffen.
 ```{r}
-#| label: LoesungBB02f4
+#| label: LoesungBB01f4
 # Vorhersagen
 predict(fit, list(Tag="Do", Monat="Mai"), type = "response")
 predict(fit, list(Tag="Do", Monat="Sep"), type = "response")
 ```
-
-
 :::
-
-
-
-
 
 
 ::: {.callout-tip}
 ## g) Wie groß ist die Wahrscheinlichkeit, dass an einem Mittwoch im Mai 10 Patienten aufgenommen werden? 
 
 ```{r}
-#| label: LoesungBB02g
+#| label: LoesungBB01g
 #| warning: false
 # Schätzen der mittleren Häufigkeit
 mu <- predict(fit, list(Tag="Mi", Monat="Mai"), type = "response")
@@ -621,7 +615,7 @@ Die Wahrscheinlichkeit liegt bei 2,3\%.
 ## h) Wie groß ist die Wahrscheinlichkeit, dass an einem Mittwoch im Mai zwischen 4 und 7 Patienten aufgenommen werden?
 
 ```{r}
-#| label: LoesungBB02h
+#| label: LoesungBB01h
 #| warning: false
 # Schätzen der mittleren Häufigkeit
 mu <- predict(fit, list(Tag="Mi", Monat="Mai"), type = "response")
@@ -641,7 +635,7 @@ Die Wahrscheinlichkeit liegt bei 60,76\%.
 ## i) Wie groß ist die Wahrscheinlichkeit, dass an einem Montag im Januar maximal 2 Patienten aufgenommen werden?
 
 ```{r}
-#| label: LoesungBB02i
+#| label: LoesungBB01i
 #| warning: false
 # Schätzen der mittleren Häufigkeit
 mu <- predict(fit, list(Tag="Mo", Monat="Jan"), type = "response")
@@ -658,7 +652,7 @@ Die Wahrscheinlichkeit liegt bei 0,98\%.
 ## j) Erzeugen Sie ein Histogramm des Alters der Probanden. Was fällt Ihnen auf? Korrigieren Sie wenn nötig die Daten. Ist das Alter der Probanden normalverteilt?
 
 ```{r}
-#| label: LoesungBB02j
+#| label: LoesungBB01j
 #| warning: false
 # Histogramm mit Rbase
 hist(kh$Alter)
@@ -668,7 +662,7 @@ ppois(2, lambda = mu)
 Es fällt auf, dass es viele Probanden mit `Alter=0` gibt. Diese sollten in `NA` umgewandelt werden.
 
 ```{r}
-#| label: LoesungBB02j2
+#| label: LoesungBB01j2
 kh$Alter[kh$Alter==0] <- NA
 
 # Histogram wiederholen
@@ -682,16 +676,11 @@ Der Test ist signifikant, das heisst, es liegt **keine** Normalverteilung vor.
 
 
 
-
-
-
-
-
 ::: {.callout-tip}
 ## k) Stellen Sie das Alter der Männern und Frauen tabellarisch und graphisch dar. Unterscheidet sich das Alter der Probanden zwischen Männern und Frauen? 
 
 ```{r}
-#| label: LoesungBB02k
+#| label: LoesungBB01k
 #| warning: false
 # Tabellarisch
 kh %>%
@@ -716,7 +705,7 @@ Männer und Frauen unterscheiden sich nicht hinsichtlich des Alters.
 ## l) Ist der Unterschied signifikant? 
 
 ```{r}
-#| label: LoesungBB02l
+#| label: LoesungBB01l
 #| warning: false
 # subsets vorbereiten
 m <- subset(kh, Geschlecht=="m")
@@ -735,7 +724,7 @@ Der Test ist nicht signifikant, es liegt kein Unterschied vor.
 ## m) Ab welchem Alter sind 10\% der Männer älter als dieser Wert?
 
 ```{r}
-#| label: LoesungBB02m
+#| label: LoesungBB01m
 # nur Männer
 m <- subset(kh, Geschlecht=="m")
 # beim 90. Perzentil liegen 10% der Werte darüber
@@ -750,7 +739,7 @@ Es sind 10\% der Männer älter als 86 Jahre.
 ## n) Ab welchem Alter sind 80\% der Frauen jünger als dieser Wert?
 
 ```{r}
-#| label: LoesungBB02n
+#| label: LoesungBB01n
 # nur Frauen
 w <- subset(kh, Geschlecht=="w")
 # beim 90. Perzentil liegen 10% der Werte darüber
@@ -764,7 +753,7 @@ Es sind 80\% der Frauen jünger als 83 Jahre.
 ## o) Wie groß ist die mittlere Liegedauer in Tagen? Stellen Sie die Liegedauer mittels Kennwerten sowie graphisch dar. Was fällt Ihnen auf?
 
 ```{r}
-#| label: LoesungBB02o
+#| label: LoesungBB01o
 # Liegedauer berechnen
 kh$Liegedauer <- as_date(kh$Entlassung) - as_date(kh$Aufnahme)
 # mittlere Liegedauer, Median
@@ -783,34 +772,22 @@ Es fällt auf, dass sehr viele Ausreißer enthalten sind.
 :::
 
 
-
-
-
-
-
-
-
-
 ::: {.callout-tip}
 ## p) Wie viel Prozent der Patienten haben eine Liegedauer von mehr als 7 Tagen?
 
 ```{r}
-#| label: LoesungBB02p
+#| label: LoesungBB01p
 sum(kh$Liegedauer > 7) / length(kh$Liegedauer)
 ``` 
 Im Datensatz haben 37,23 \% der Patienten eine Liegedauer von mehr als 7 Tagen.
 :::
 
 
-
-
-
-
 ::: {.callout-tip}
 ## q) Unterscheiden sich Männer und Frauen hinsichtlich der Liegedauer? Stellen Sie den Unterschied ebenfalls tabellarisch und graphisch dar.
 
 ```{r}
-#| label: LoesungBB02q
+#| label: LoesungBB01q
 # Tabellarische Darstellung
 kh %>%
   group_by(Geschlecht) %>%
@@ -833,7 +810,7 @@ Es ist kein Unterschied erkennbar.
 ## r) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
 
 ```{r}
-#| label: LoesungBB02r
+#| label: LoesungBB01r
 #| warning: false
 # Teste auf Normalverteilung
 ks.test(kh$Liegedauer, "pnorm")
@@ -841,7 +818,7 @@ ks.test(kh$Liegedauer, "pnorm")
 Der Test ist signifikant, d.h. es liegt **keine** Normalverteilung vor. Als Signifikanztest ist daher der Mann-Whitney-U-Test durchzuführen
 
 ```{r}
-#| label: LoesungBB02r2
+#| label: LoesungBB01r2
 # Vorbereitung
 kh$Liegedauer <- as.numeric(kh$Liegedauer)
 m <- subset(kh, Geschlecht=="m")
@@ -852,4 +829,189 @@ wilcox.test(w$Liegedauer, m$Liegedauer)
 ``` 
 Das Ergebnis ist signifikant. Es scheint doch einen Unterschied zwischen Männern und Frauen zu geben.
 :::
+
+
+
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-ABB02] Lungenkapazität {#sec-LBB02}
+::: {.callout-tip}
+## a) Laden Sie den Datensatz `lungcap` in Ihre R-Session.
+
+```{r}
+#| label: LoesungBB02setupA
+# aktiviere den Datensatz
+library(GLMsData)
+data("lungcap")
+
+# anschauen
+str(lungcap)
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Erzeugen Sie eine neue Variable, welche die Körpergröße in Zentimetern enthält (1 Zoll =  2,54cm)
+
+```{r}
+#| label: LoesungBB02b
+lungcap$Körpergröße <- lungcap$Ht*2.54
+
+# anschauen
+str(lungcap)
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Plotten Sie nebeneinander die Boxplots der Lungenkapazität nichtrauchenden und rauchenden Kindern. Legt das Diagramm einen Zusammenhang nahe?
+
+```{r}
+#| label: LoesungBB02c
+boxplot(lungcap$FEV ~ lungcap$Smoke,
+        col=c("darkgreen", "orchid"))
+```
+Es scheint, als ob rauchende Kinder eine größere Lungenkapazität hätten.
+:::
+
+::: {.callout-tip}
+## d) Führen Sie einen Signifikanztest durch, um zu überprüfen, ob sich die Lungenkapazitäten in Abhängigkeit zu `Smoke` unterscheidet.
+
+```{r}
+#| label: LoesungBB02d
+# Prüfe auf Normalverteilung
+shapiro.test(lungcap$FEV)
+```
+Der Test ist signifikant, d.h. `FEV` ist nicht normalverteilt. Wir müssen daher den Mann-Whitney-U-Test verwenden.
+```{r}
+#| label: LoesungBB02d2
+raucher <- subset(lungcap, Smoke==1)
+nraucher <- subset(lungcap, Smoke==0)
+wilcox.test(raucher$FEV, nraucher$FEV, alternative = "greater")
+```
+Der Test ist signifikant. Die Raucher haben eine größere Lungenkapazität als Nichtraucher.
+
+:::
+
+
+
+::: {.callout-tip}
+## e) Erzeugen Sie eine Punktwole des Lungenvolumens und des Alters. Legt das Diagramm einen Zusammenhang nahe?
+
+```{r}
+#| label: LoesungBB02e
+plot(lungcap$Age, lungcap$FEV, col="skyblue2")
+```
+Es scheint einen linearen Zusammenhang zwischen dem Alter und der Lungenkapazität zu geben.
+:::
+
+
+
+::: {.callout-tip}
+## f) Erzeugen Sie eine Punktwole des Lungenvolumens und der Körpergröße. Legt das Diagramm einen Zusammenhang nahe?
+
+```{r}
+#| label: LoesungBB02f
+plot(lungcap$Körpergröße, lungcap$FEV, col="thistle")
+```
+Es scheint einen linearen Zusammenhang zwischen der Körpergröße und der Lungenkapazität zu geben.
+:::
+
+
+
+::: {.callout-tip}
+## g) Welches Regressionsmodell ist am besten geeignet, um `FEV erklärt durch Alter` zu bestimmen?
+
+```{r}
+#| label: LoesungBB02g
+jgsbook::compare.lm(lungcap$FEV, lungcap$Age)
+```
+Am besten geeignet ist ein Potenzmodell.
+
+:::
+
+
+::: {.callout-tip}
+## h) Welches Regressionsmodell ist am besten geeignet, um `FEV erklärt durch Körpergröße` zu bestimmen?
+
+```{r}
+#| label: LoesungBB02h
+jgsbook::compare.lm(lungcap$FEV, lungcap$Körpergröße)
+```
+Am besten geeignet ist ein exponentielles Modell. Dabei ist R^2^ mit 0,79 größer als beim Potenzmodell des Alters (0,63).
+Die Lungenkapazität wird am besten durch die Körpergröße erklärt.
+:::
+
+
+::: {.callout-tip}
+## i) Berechnen Sie das Modell, welches `FEV` am besten erklärt.
+
+```{r}
+#| label: LoesungBB02i
+# exponentielles Modell erstellen
+fit <- lm(log(FEV) ~ Körpergröße, data=lungcap)
+summary(fit)
+```
+:::
+
+
+
+::: {.callout-tip}
+## j) Plotten Sie eine Punktwolke, mit `FEV` auf der Y-Achse, und dem besten Prädiktor auf der X-Achse. Färben Sie die Daten mittels der Variable `Smoke`. Fügen Sie anschließend Ihre Modelllinie dem Plot hinzu.
+
+```{r}
+#| label: LoesungBB02j
+#| layout-ncol: 2
+# Subsets
+raucher <- subset(lungcap, Smoke==1)
+nraucher <- subset(lungcap, Smoke==0)
+
+#-- Hilfswert für Modellinie
+helper <- jgsbook::compare.lm(lungcap$FEV, lungcap$Körpergröße, predict=TRUE)
+
+# plot()
+plot(nraucher$Körpergröße, nraucher$FEV, col="darkgreen", 
+     xlab="Körpergröße", ylab="Lungenkapazität")
+points(raucher$Körpergröße, raucher$FEV, col="orchid", pch=19)
+lines(helper$pred.x, helper$expo, col="blue", lwd=4)
+
+#--------
+# ggplot()
+#---------
+ggplot(lungcap, aes(x=Körpergröße, y=FEV)) +
+  geom_point(aes(color=factor(Smoke))) +
+  scale_color_manual(values=c("darkgreen", "orchid")) +
+  geom_line(data=helper, aes(x=pred.x, y=expo), color="blue")
+```
+:::
+
+
+
+::: {.callout-tip}
+## k) Fügen Sie `Smoke`, `Age` und `Gender` als weitere Prädiktor dem Modell hinzu. Hat Rauchen einen Einfluss auf `FEV`?
+
+```{r}
+#| label: LoesungBB02k
+# exponentielles Modell um "Smoke", "Age" und "Gender" erweitern
+fit  <- lm(log(FEV) ~ Körpergröße + Age + Gender + Smoke, data=lungcap)
+summary(fit)
+```
+Alle Prädiktoren sind signifikant. Der Beitrag von `Smoke` ist negativ. Dies spricht dafür, dass Rauchen die Lungenkapazität verschlechtert.
+
+```{r}
+#| label: LoesungBB02k2
+# Modelle vergleichen
+fit0 <- lm(log(FEV) ~ Körpergröße, data=lungcap)
+# R^2 vergleichen
+summary(fit0)$r.squared - summary(fit)$r.squared 
+```
+Durch Hinzunahme der Prädiktoren verbessert sich R^2^, aber nur minimal.
+:::
+
 

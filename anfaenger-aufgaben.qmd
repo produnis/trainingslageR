@@ -456,3 +456,35 @@ Lösung siehe @sec-LAB05
 
 
 
+### Aufgabe [-@sec-AAB06] Tribble Tibble {#sec-AAB06}
+
+::: {.callout-note appearance="simple"}
+Sie erzeugen mit der Funktion `tribble()` ein Tibble mit folgenden Daten:
+
+
+| Vorname | Geschlecht | Alter | Wohnort       | Groesse | Gewicht | Rauchen |
+|---------|------------|:-----:|---------------|:-------:|:-------:|---------|
+| Hannah  | weiblich   | 25    | Berlin        | 1,75    | 65      | FALSE   |
+| Max     | maennlich  | 30    | Hamburg       | 1,85    | 75      | TRUE    |
+| Sophia  | weiblich   | 20    | Muenchen      | 1,65    | 55      | FALSE   |
+| Lukas   | maennlich  | 35    | Frankfurt     | 1,95    | 85      | TRUE    |
+| Emma    | weiblich   | 18    | Stuttgart     | 1,70    | 60      | FALSE   |
+| Jonas   | maennlich  | 40    | Duesseldorf   | 1,80    | 70      | TRUE    |
+| Lea     | weiblich   | 22    | Hannover      | 1,60    | 50      | FALSE   |
+| Jan     | divers     | 28    | Nuernberg     | 1,90    | 80      | TRUE    |
+| Mia     | weiblich   | 24    | Bremen        | 1,73    | 63      | FALSE   |
+| Luca    | maennlich  | 33    | Gelsenkirchen | 1,88    | 78      | TRUE    |
+
+
+a) Wandeln Sie mittels `mutate()` die Variablen `Geschlecht` und `Wohnort` in Faktoren um.
+b) Verwenden Sie `filter()`, um nur die Fälle anzuzeigen, die Raucher sind.
+c) Verwenden Sie `group_by()` und `summarise()`, um Mittelwert, Standardabweichung und Median der Variable  `Alter` für jedes Geschlecht zu berechnen.
+d) Verwenden Sie `arrange()`, um den Datensatz nach Wohnort in alphabetischer Reihenfolge zu sortieren.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB06
+:::
+
+
+

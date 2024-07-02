@@ -1,4 +1,4 @@
-# Lösungswege zu den Aufgaben für fortgeschrittene Anwender:innen {#sec-LoesungFortschritt}
+# Lösungswege der Aufgaben für fortgeschrittene User:innen {#sec-LoesungFortschritt}
 
 ::: {.callout-note appearance="simple"}
 Wenn Ihr `R`-Code eleganter ist als die hier präsentierten Lösungswege, dann freuen Sie sich! Wenn Sie meinen, Ihr Code sei zu klobig und umständlich, dann Kopf hoch: wenn er tut, was er soll, dann ist er genau richtig.
@@ -44,6 +44,7 @@ library(tibble)
 
 
 
+\newpage
 
 
 

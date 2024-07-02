@@ -1,4 +1,4 @@
-# Aufgaben für geübte User:innen {#sec-AufgabeGeuebt}
+# Aufgaben für geübte Anwender:innen {#sec-AufgabeGeuebt}
 
 ## Objekte in R {#sec-AufgabenGeuebtA}
 
@@ -159,6 +159,35 @@ r) Ist der Unterschied der Liegedauer zwischen Männern und Frauen signifikant?
 
 ::: {.callout-tip appearance="simple"}
 Lösung siehe @sec-LBB01
+:::
+
+
+
+
+### Aufgabe [-@sec-ABB02] Lungenkapazität {#sec-ABB02}
+
+::: {.callout-note appearance="simple"}
+@tager83 haben die Auswirkungen des mütterlichen Zigarettenrauchens auf die Lungenfunktion in einer Kohorte von Kindern und Jugendlichen untersucht, die über einen Zeitraum von sieben Jahren prospektiv beobachtet wurden. Dabei wurde auch erfasst, ob die Kinder selbst rauchen oder nicht. Die dazugehörigen Daten stehen unter anderem im `GLMsData`-Zusatzpaket unter dem Namen `lungcap` zur Verfügung. Im Datensatz beschreibt `FEV` das forcierte exspiratorische Volumen in Litern, ein Maß für die Lungenkapazität. Die Variable `Ht` beschreibt die Körpergröße der Probanden in Zoll. Ob die Kinder selbst auch rauchen, ist in der Variable `Smoke` erfasst.
+
+
+a) Laden Sie den Datensatz `lungcap` in Ihre `R`-Session
+b) Erzeugen Sie eine neue Variable, welche die Körpergröße in Zentimetern enthält (1 Zoll =  2,54cm)
+c) Plotten Sie nebeneinander die Boxplots der Lungenkapazität nichtrauchenden und rauchenden Kindern. Legt das Diagramm einen Zusammenhang nahe?
+d) Führen Sie einen Signifikanztest durch, um zu überprüfen, ob sich die Lungenkapazitäten in Abhängigkeit zu `Smoke` unterscheidet.
+e) Erzeugen Sie eine Punktwole des Lungenvolumens und des Alters. Legt das Diagramm einen Zusammenhang nahe?
+f) Erzeugen Sie eine Punktwole des Lungenvolumens und der Körpergröße. Legt das Diagramm einen Zusammenhang nahe?
+g) Welches Regressionsmodell ist am besten geeignet, um `FEV erklärt durch Alter` zu bestimmen?
+h) Welches Regressionsmodell ist am besten geeignet, um `FEV erklärt durch Körpergröße` zu bestimmen?
+i) Berechnen Sie das Modell, welches `FEV` am besten erklärt.
+j) Plotten Sie eine Punktwolke, mit `FEV` auf der Y-Achse, und dem besten Prädiktor auf der X-Achse. Färben Sie die Daten mittels der Variable `Smoke`. Fügen Sie anschließend Ihre Modelllinie dem Plot hinzu.
+k) Fügen Sie `Smoke`, `Age` und `Gender` als weitere Prädiktor dem Modell hinzu. Hat Rauchen einen Einfluss auf `FEV`?
+
+@kahn05
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LBB02
 :::
 
 
