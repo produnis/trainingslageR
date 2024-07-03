@@ -267,8 +267,7 @@ Laden Sie die folgenden Datensätz jeweils in ein R-Objekt und passen Sie die Da
 
 a) <https://www.produnis.de/R/data/Datentabelle.txt>
 b) <https://www.produnis.de/R/data/anwesenheitnoten.csv>
-c) <https://www.produnis.de/R/data/alteDaten-kurz.sav> 
-d) <https://www.produnis.de/R/data/Testdatumdaten.xlsx> 
+c) <https://www.produnis.de/R/data/Testdatumdaten.xlsx> 
 :::
 
 ::: {.callout-tip appearance="simple"}

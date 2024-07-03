@@ -741,66 +741,11 @@ Alle Datenklassen sind korrekt (numerisch).
 
 
 
-::: {.callout-tip}
-## c) `alteDaten.sav`
-
-Dateien mit Endung `.sav` stammen von SPSS.
-```{r}
-#| label: LoesungAA09c
-#| eval: false
-# Lese Daten ein
-c <- haven::read_sav("https://www.produnis.de/R/data/alteDaten-kurz.sav")
-```
-
-```{r}
-#| label: LoesungAA09c2
-#| include: false
-c <- haven::read_sav("data/alteDaten-kurz.sav")
-```
-
-```{r}
-#| label: LoesungAA09c3
-# Datenklassen anschauen
-str(c)
-
-# Variable
-c$v1
-```
-
-Die Daten sind gelablet und scheinen ordinalskaliert zu sein.
-```{r}
-#| label: LoesungAA09c4
-# labels aufschreiben
-c.labels <- c("strongly disagree", "disagree", "agree", "strongly agree")  
-
-# Variablen in ordinale Faktoren umwandeln
-c$v1 <- factor(c$v1, ordered=TRUE, levels=c(1:4))
-c$v2 <- factor(c$v2, ordered=TRUE, levels=c(1:4))
-c$v3 <- factor(c$v3, ordered=TRUE, levels=c(1:4))
-c$v4 <- factor(c$v4, ordered=TRUE, levels=c(1:4))
-c$v5 <- factor(c$v5, ordered=TRUE, levels=c(1:4))
-c$thetruth <- factor(c$v1, ordered=TRUE, levels=c(1:4))
-
-# Levelnamen ändern
-levels(c$v1) <- c.labels
-levels(c$v2) <- c.labels
-levels(c$v3) <- c.labels
-levels(c$v4) <- c.labels
-levels(c$v5) <- c.labels
-levels(c$thetruth) <- c.labels
-
-# anschauen
-str(c)
-```
-
-:::
-
 
 
 ::: {.callout-tip}
-## d) `Testdatumdaten.xlsx`
+## c) `Testdatumdaten.xlsx`
 
-Dateien mit Endung `.sav` stammen von SPSS.
 ```{r}
 #| label: LoesungAA09d
 #| eval: false
