@@ -96,6 +96,25 @@ Lösung siehe @sec-LBA02
 
 
 
+### Aufgabe [-@sec-ABA03] SPSS Datensatz {#sec-ABA03}
+
+::: {.callout-note appearance="simple"}
+Gegeben ist folgender Datensatz:  <https://www.produnis.de/R/data/alteDaten-kurz.sav>.
+
+a) Laden Sie den Datensatz in ein R-Objekt
+b) Passen Sie die Datenklassen der Variablen entsprechend des Skalenniveaus an, indem Sie nur Funktionen aus der `R` Standardinstallation verwenden. Dabei sollen die Variablennamen als Labels erhalten bleiben. 
+c) Wiederholen Sie den Vorgang und verwenden dabei Funktionen aus dem `tidyverse`.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LBA03
+:::
+
+
+
+
+
+
 
 
 
@@ -182,12 +201,51 @@ i) Berechnen Sie das Modell, welches `FEV` am besten erklärt.
 j) Plotten Sie eine Punktwolke, mit `FEV` auf der Y-Achse, und dem besten Prädiktor auf der X-Achse. Färben Sie die Daten mittels der Variable `Smoke`. Fügen Sie anschließend Ihre Modelllinie dem Plot hinzu.
 k) Fügen Sie `Smoke`, `Age` und `Gender` als weitere Prädiktor dem Modell hinzu. Hat Rauchen einen Einfluss auf `FEV`?
 
-@kahn05
+Weitere Informationen zur Auswertungsstrategie finden sich bei @kahn05.
 
 :::
 
 ::: {.callout-tip appearance="simple"}
 Lösung siehe @sec-LBB02
+:::
+
+\newpage 
+
+### Aufgabe [-@sec-ABB03] Brustkrebs {#sec-ABB03}
+
+::: {.callout-note appearance="simple"}
+Die Daten von mehr als 1200 Patientinnen mit Brustkrebs finden sich im Datensatz \newline <https://www.produnis.de/R/data/breast.sav>.
+
+a) Importieren Sie den Datensatz in Ihre R-Session und machen Sie sich mit dem Datensatz vertraut.
+b) Klassieren Sie die Variablen
+  - `pathsize` in die Größen 
+    - "2cm und weniger", 
+    - "2 - 5cm" und 
+    - "> 5cm"
+  - `lnpos` in die Kategorien 
+    - "0 $\rightarrow$ nein" und 
+    - ">0 $\rightarrow$ ja"
+  - `er` in die Kategorien 
+    - "0 $\rightarrow$ negativ" und 
+    - ">0 $\rightarrow$ positiv"
+  - `pr` in die Kategorien 
+    - "0 $\rightarrow$ negativ" und 
+    - ">0 $\rightarrow$ positiv"
+c) Kodieren Sie die Variable `histgrad` um, so dass korrekte `NA`s enthalten sind.
+d) Erstellen Sie ein Überlebenszeitmodell `status erklärt durch time` und geben Sie die Überlebenstafel sowie die Kaplan-Meier-Plots der kumulierten Überlebenswahrscheinlichkeiten aus.
+e) Gruppieren Sie Ihr Modell mit den zuvor klassierten Variablen zum
+   - Lymphknotenbefall
+   - Östrogenstatus
+   - Progesteronstatus
+   - histologischen Grad
+   - Tumorgröße
+   
+   und plotten Sie jeweils die Kaplan-Meier-Kurven.
+f) Führen Sie eine Cox-Regression auf das Überleben durch, wobei die klassierten Werte der Tumorgröße, des Lymphknotenbefalls, des Östrogen- und Progesteronstatus sowie des histologischen Grades als Prädiktoren verwendet werden. Stellen Sie Ihre Ergebnisse als Forest-Plot dar.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LBB03
 :::
 
 

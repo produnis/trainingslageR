@@ -258,6 +258,108 @@ glimpse(kh)
 
 
 
+### Lösung zur Aufgabe [-@sec-ABA03] SPSS Datensatz {#sec-LBA03}
+::: {.callout-tip}
+## a) `alteDaten.sav`
+
+Dateien mit Endung `.sav` stammen von SPSS.
+```{r}
+#| label: LoesungBA03a
+#| eval: false
+# Lese Daten ein
+c <- haven::read_sav("https://www.produnis.de/R/data/alteDaten-kurz.sav")
+```
+
+```{r}
+#| label: LoesungBA03a2
+#| include: false
+c <- haven::read_sav("data/alteDaten-kurz.sav")
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Passen Sie die Datenklassen der Variablen entsprechend des Skalenniveaus an, indem Sie nur Funktionen aus der `R` Standardinstallation verwenden. Dabei sollen die Variablennamen als Labels erhalten bleiben.
+
+```{r}
+#| label: LoesungBA03b
+# Datenklassen anschauen
+str(c)
+
+# Variable
+head(c$Frage_1)
+```
+
+Die Daten sind gelabelt und scheinen ordinalskaliert zu sein.
+```{r}
+#| label: LoesungBA03b4
+# Antwortlabels von Hand aufschreiben
+c.labels <- c("nicht vorhanden", "stimme gar nicht zu", "stimme nicht zu", 
+              "weiß nicht", "stimme zu", "stimme voll zu")  
+# oder einfach
+c.labels <- names(attr(c$Frage_1, "labels"))
+
+# Variablenbezeichnung speichern
+c.vars <- c(attr(c$Frage_1, "label"), attr(c$Frage_2, "label") ,
+            attr(c$Frage_3, "label"), attr(c$Frage_4, "label"))
+
+# Variablen in ordinale Faktoren umwandeln
+c$Frage_1 <- factor(c$Frage_1, ordered=TRUE, levels=c(0:5))
+c$Frage_2 <- factor(c$Frage_2, ordered=TRUE, levels=c(0:5))
+c$Frage_3 <- factor(c$Frage_3, ordered=TRUE, levels=c(0:5))
+c$Frage_4 <- factor(c$Frage_4, ordered=TRUE, levels=c(0:5))
+
+# Levelnamen ändern
+levels(c$Frage_1) <- c.labels
+levels(c$Frage_2) <- c.labels
+levels(c$Frage_3) <- c.labels
+levels(c$Frage_4) <- c.labels
+
+# Variabeln wieder labeln
+attr(c$Frage_1, "label") <- c.vars[1]
+attr(c$Frage_2, "label") <- c.vars[2]
+attr(c$Frage_3, "label") <- c.vars[3]
+attr(c$Frage_4, "label") <- c.vars[4]
+
+# anschauen
+str(c)
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Wiederholen Sie den Vorgang und verwenden dabei Funktionen aus dem `tidyverse`.
+
+```{r}
+#| label: LoesungBA03c
+#| eval: false
+# Lese Daten ein
+c <- haven::read_sav("https://www.produnis.de/R/data/alteDaten-kurz.sav")
+```
+
+```{r}
+#| label: LoesungBA03c2
+#| include: false
+c <- haven::read_sav("data/alteDaten-kurz.sav")
+library(tidyverse)
+```
+
+```{r}
+#| label: LoesungBA03c3
+library(tidyverse)
+# wandle die Antwortlabels in Factoren um
+c <- c %>% 
+  mutate(haven::as_factor(., ordered=TRUE))
+
+# anzeigen
+str(c)
+```
+
+:::
+
+
 
 
 
@@ -1012,6 +1114,176 @@ fit0 <- lm(log(FEV) ~ Körpergröße, data=lungcap)
 summary(fit0)$r.squared - summary(fit)$r.squared 
 ```
 Durch Hinzunahme der Prädiktoren verbessert sich R^2^, aber nur minimal.
+:::
+
+
+
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-ABB03] Brustkrebs {#sec-LBB03}
+::: {.callout-tip}
+## a) Importieren Sie den Datensatz in Ihre R-Session und machen Sie sich mit dem Datensatz vertraut.
+
+```{r}
+#| label: LoesungBB03setupA
+#| eval: false
+# lade den Datensatz
+breast <- haven::read_sav("https://www.produnis.de/R/data/breast.sav")
+```
+
+
+```{r}
+#| label: LoesungBB03setupB
+#| include: false
+# lade den Datensatz
+breast <-haven::read_sav("data/breast.sav")
+```
+
+
+```{r}
+#| label: LoesungBB03a
+# anschauen
+head(breast)
+str(breast)
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Klassieren Sie die Variablen
+
+```{r}
+#| label: LoesungBB03b
+# klassieren
+library(dplyr)
+df <- breast %>%
+  mutate(tumorK = cut(pathsize, breaks= c(0,2,5,Inf)),
+         lymphK = cut(lnpos, breaks=c(0, 1, Inf), right=FALSE, 
+                      labels=c("nein", "ja")),
+         oestroK = cut(er, breaks=c(0, 1, Inf), right=FALSE, 
+                      labels=c("negativ", "positiv")),
+         progesK = cut(pr, breaks=c(0, 1, Inf), right=FALSE, 
+                      labels=c("negativ", "positiv"))
+         )
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## c) Kodieren Sie die Variable `histgrad` um, so dass korrekte `NA`s enthalten sind.
+
+```{r}
+#| label: LoesungBB03c
+# klassieren
+head(df$histgrad)
+```
+
+Alle Werte "4" entsprechen `NA`s.
+
+```{r}
+#| label: LoesungBB03c2
+# klassieren
+df <- df %>%
+  mutate(histgrad = replace(histgrad, histgrad == 4,NA),
+         histgrad = factor(histgrad))
+```
+:::
+
+
+
+::: {.callout-tip}
+## d) Erstellen Sie ein Überlebenszeitmodell `status erklärt durch time` und geben Sie die Überlebenstafel sowie die Kaplan-Meier-Plots der kumulierten Überlebenswahrscheinlichkeiten aus.
+
+```{r}
+#| label: LoesungBB03d
+# Das Gesamtmodell lässt sich nun so darstellen:
+library(survival)
+survival <- Surv(df$time, df$status)
+km_fit   <- survfit(survival ~ 1, data=df)
+summary(km_fit)
+```
+
+Die Plots können klassisch mit `plot(fit)` erzeugt werden, oder mittels `autoplot()` und `ggsurvplot()`.
+```{r}
+#| label: LoesungBB03d2
+#| layout-ncol: 2
+#| warning: false
+library(ggplot2)
+library(ggfortify) # für autoplot
+autoplot(km_fit)
+survminer::ggsurvplot(km_fit, pval=T)
+```
+
+:::
+
+
+
+
+::: {.callout-tip}
+## e) Gruppieren Sie Ihr Modell mit dem zuvor klassierten Variablen und plotten Sie jeweils die Kaplan-Meier-Kurven.
+
+```{r}
+#| label: LoesungBB03e
+#| layout-ncol: 2
+# Tumorgröße
+km_fit <- survfit(survival ~ tumorK, data=df)
+autoplot(km_fit, main="Tumorgröße")
+
+# Lymphknoten
+km_fit <- survfit(survival ~ lymphK, data=df)
+autoplot(km_fit, main="Lymphknoten")
+
+# Östrogenstatus
+km_fit <- survfit(survival ~ oestroK, data=df)
+autoplot(km_fit, main="Östrogenstatus")
+
+# Progesteronstatus
+km_fit <- survfit(survival ~ progesK, data=df)
+autoplot(km_fit, main="Progesteronstatus")
+
+# histologischer Grad
+km_fit <- survfit(survival ~ histgrad, data=df)
+autoplot(km_fit, main="histologischer Grad")
+
+# Gesamtmodell
+km_fit <- survfit(survival ~ 1, data=df)
+autoplot(km_fit, main="Gesamtmodell")
+```
+
+
+:::
+
+
+
+::: {.callout-tip}
+## f) Führen Sie eine Cox-Regression auf das Überleben durch, wobei die klassierten Werte der Tumorgröße, des Lymphknotenbefalls, des Östrogen- und Progesteronstatus sowie des histologischen Grades als Prädiktoren verwendet werden. Stellen Sie Ihre Ergebnisse als Forste-Plot dar.
+
+```{r}
+#| label: LoesungBB03f
+## Cox-Regression
+cox <- survival::coxph(survival ~ tumorK + lymphK + histgrad + oestroK + progesK, data=df)
+# Modell ausgeben
+cox
+
+```
+
+Die Spalte `exp(coef)` entspricht der Hazard-Ratio, mit welcher Richtung und Stärke des jeweiligen
+Einflusses interpretiert werden kann.
+
+```{r}
+#| label: LoesungBB03f2
+#| warning: false
+# Forest-Plot
+forestmodel::forest_model(cox)
+```
+
 :::
 
 
