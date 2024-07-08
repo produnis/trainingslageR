@@ -49,7 +49,7 @@ book:
 bibliography: literatur.bib
 nocite: |
   @waltherR22, @tidytuesday, @Rbase, @wickham23
-csl: _src/apa-single-spaced.csl
+# csl: _src/apa-single-spaced.csl
 
 language:
   crossref-sec-prefix: "Abschnitt"
@@ -62,27 +62,27 @@ format:
       toc: true
       rights: "Creative Commons BY-NC-SA 4.0"
       code-line-numbers: false
-    pdf:
-      documentclass: scrreprt
-      papersize: a4paper
-      fontsize: 11pt
-      geometry:
-        - top=20mm
-        - bottom=25mm
-        - left=15mm
-        - right=15mm
-        - headsep=10mm
-      lang: de
-      linkcolor: black
-      link-citations: true
-      toc: false
-      lof: false
-      lot: false
-      df-print: default
-      code-line-numbers: false
-      keep-tex: false # true # false
-      include-in-header: _src/in-header.tex
-      template-partials:
-        - _src/title.tex
-        - _src/before-body.tex
+    buechlein-pdf: default
+      # documentclass: scrreprt
+      # papersize: a4paper
+      # fontsize: 11pt
+      # geometry:
+      #   - top=20mm
+      #   - bottom=25mm
+      #   - left=15mm
+      #   - right=15mm
+      #   - headsep=10mm
+      # lang: de
+      # linkcolor: black
+      # link-citations: true
+      # toc: false
+      # lof: false
+      # lot: false
+      # df-print: default
+      # code-line-numbers: false
+      # keep-tex: false # true # false
+      # include-in-header: _src/in-header.tex
+      # template-partials:
+      #   - _src/title.tex
+      #   - _src/before-body.tex
 
