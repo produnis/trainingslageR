@@ -1008,7 +1008,7 @@ Der Test ist signifikant. Die Raucher haben eine größere Lungenkapazität als 
 
 ```{r}
 #| label: LoesungBB02e
-plot(lungcap$Age, lungcap$FEV, col="skyblue2")
+scatter.smooth(lungcap$Age, lungcap$FEV, col="skyblue2")
 ```
 Es scheint einen linearen Zusammenhang zwischen dem Alter und der Lungenkapazität zu geben.
 :::
@@ -1020,9 +1020,9 @@ Es scheint einen linearen Zusammenhang zwischen dem Alter und der Lungenkapazit�
 
 ```{r}
 #| label: LoesungBB02f
-plot(lungcap$Körpergröße, lungcap$FEV, col="thistle")
+scatter.smooth(lungcap$Körpergröße, lungcap$FEV, col="thistle")
 ```
-Es scheint einen linearen Zusammenhang zwischen der Körpergröße und der Lungenkapazität zu geben.
+Es scheint keinen linearen Zusammenhang zwischen der Körpergröße und der Lungenkapazität zu geben.
 :::
 
 
@@ -1155,7 +1155,7 @@ str(breast)
 
 
 ::: {.callout-tip}
-## b) Klassieren Sie die Variablen
+## b) Klassieren Sie die Variablen?
 
 ```{r}
 #| label: LoesungBB03b
