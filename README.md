@@ -1,6 +1,7 @@
 # trainingslageR
 
-![](https://i.imgur.com/6oaQi7j.png){width=200}
+<img src="https://i.imgur.com/6oaQi7j.png" width="200">
+
 
 Ein freies Übungsbuch für R-Einsteiger*innen und Fortgeschrittene.
 
