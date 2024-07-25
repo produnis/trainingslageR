@@ -1,47 +1,50 @@
 # Lizenz {.unnumbered}
 
-![](images/ccbyncsa.png){width=2.2cm}
+![](images/ccbyncsa.png){width="2.2cm"}
 
-Dieses Script ist unter der  `Creative Commons BY-NC-SA 4.0`^[siehe <https://creativecommons.org/licenses/by-nc-sa/4.0/>] lizensiert.
+Dieses Script ist unter der `Creative Commons BY-NC-SA 4.0`[^index-1] lizensiert.
+
+[^index-1]: siehe <https://creativecommons.org/licenses/by-nc-sa/4.0/>
 
 Sie dürfen:
 
-- **Teilen** — das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten.
-- **Bearbeiten** — das Material remixen, verändern und darauf aufbauen.
+-   **Teilen** — das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten.
+-   **Bearbeiten** — das Material remixen, verändern und darauf aufbauen.
 
 Unter folgenden Bedingungen:
 
-- \ccAttribution\  **Namensnennung** — Sie müssen angemessene Urheber- und Rechteangaben machen , einen Link zur Lizenz beifügen und angeben, ob Änderungen vorgenommen wurden. Diese Angaben dürfen in jeder angemessenen Art und Weise gemacht werden, allerdings nicht so, dass der Eindruck entsteht, der Lizenzgeber unterstütze gerade Sie oder Ihre Nutzung besonders.
-- \ccNonCommercialEU\  **Nicht kommerziell** — Sie dürfen das Material nicht für kommerzielle Zwecke nutzen.
-- \ccShareAlike\     **Weitergabe unter gleichen Bedingungen** — Wenn Sie das Material remixen, verändern oder anderweitig direkt darauf aufbauen, dürfen Sie Ihre Beiträge nur unter derselben Lizenz wie das Original verbreiten. 
+-   \ccAttribution  **Namensnennung** — Sie müssen angemessene Urheber- und Rechteangaben machen , einen Link zur Lizenz beifügen und angeben, ob Änderungen vorgenommen wurden. Diese Angaben dürfen in jeder angemessenen Art und Weise gemacht werden, allerdings nicht so, dass der Eindruck entsteht, der Lizenzgeber unterstütze gerade Sie oder Ihre Nutzung besonders.
+-   \ccNonCommercialEU  **Nicht kommerziell** — Sie dürfen das Material nicht für kommerzielle Zwecke nutzen.
+-   \ccShareAlike  **Weitergabe unter gleichen Bedingungen** — Wenn Sie das Material remixen, verändern oder anderweitig direkt darauf aufbauen, dürfen Sie Ihre Beiträge nur unter derselben Lizenz wie das Original verbreiten.
 
 **Keine weiteren Einschränkungen** — Sie dürfen keine zusätzlichen Klauseln oder technische Verfahren einsetzen, die anderen rechtlich irgendetwas untersagen, was die Lizenz erlaubt.
 
-\vfill
+![](images/trainingslageR-hexsticker.png){fig-align="center" width="130"}
 
-::: {.callout-tip}
+::: callout-tip
 ## **Zitationsvorschlag**
-große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger*innen und Fortgeschrittene", Hochschule Niederrhein, <https://www.produnis.de/R/trainingslager.html>
+
+große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger\*innen und Fortgeschrittene", Hochschule Niederrhein, <https://github.com/produnis/trainingslager>
 
 \scriptsize
 
-```bibtex
+``` bibtex
 @book{grSchl_exeRueb,
-	author = {{große Schlarmann}, Jörg},
-	title = {{trainingslageR}. Ein Übungsbuch für R-Einsteiger*innen und Fortgeschrittene},
-	year = {2024},
-	publisher = {Hochschule Niederrhein},
-	address = {Krefeld},
-	copyright = {CC BY-NC-SA 4.0},
-	url = {https://www.produnis.de/R/trainingslager.html},
-	language = {de},
+    author = {{große Schlarmann}, Jörg},
+    title = {{trainingslageR}. Ein Übungsbuch für R-Einsteiger*innen und Fortgeschrittene},
+    year = {2024},
+    publisher = {Hochschule Niederrhein},
+    address = {Krefeld},
+    copyright = {CC BY-NC-SA 4.0},
+    url = {github.com/produnis/trainingslager},
+    language = {de},
 }
 ```
-
 :::
 
 \normalsize
 
+```{=tex}
 \newpage
 \phantomsection
 \addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
@@ -49,3 +52,4 @@ große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger*
 \newpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
+```
