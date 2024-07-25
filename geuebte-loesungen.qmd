@@ -104,6 +104,43 @@ Kurse
 :::
 
 
+::: {.callout-tip}
+## Überführen Sie die Objekte `tab1` und `tab2` aus a) jeweils in eine `data.table`. Wiederholen Sie nun die Aufgaben c) bis e), indem Sie ausschließlich Funktionen des `data.table`-Paketes nutzen.
+
+```{r}
+#| label: LoesungBA01f
+#| warning: false
+library(data.table)
+
+# überführe in data.table Objekte
+dt1 <- as.data.table(tab1)
+dt2 <- as.data.table(tab2)
+
+# verschmelze dt2 in dt1
+dt1[, names(dt2) := dt2 ]
+
+# passe Skalenniveau an
+dt1[, let(Slytherin = factor(Slytherin),
+          Gryffindor = factor(Gryffindor),
+          Hufflepuff = factor(Hufflepuff),
+          Ravenclaw = factor(Ravenclaw))]
+
+# “Geschichte der Zauberei” => “Geisterkunde” 
+dt1[Hufflepuff == "Geschichte der Zauberei", Hufflepuff := "Geisterkunde"]
+
+# Tidy-Objekt "Kurse"
+Kurse <- melt(dt1, variable.name = "Haus", value.name = "Kurs",
+              value.factor = TRUE,
+              measure.vars = c("Hufflepuff", "Slytherin", 
+                               "Ravenclaw", "Gryffindor"))
+
+# anschauen
+Kurse
+```
+
+:::
+
+
 
 
 
@@ -1286,4 +1323,45 @@ forestmodel::forest_model(cox)
 
 :::
 
+
+
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-ABB04] `data.table` Rolling Stone {#sec-LBB04}
+::: {.callout-tip}
+## a) Importieren Sie den Datensatz als `data.table` in Ihre R-Session und machen Sie sich mit dem Datensatz vertraut.
+
+```{r}
+#| label: LoesungBB04setupA
+#| eval: false
+# aktiviere data.table
+library(data.table)
+
+# lade den Datensatz
+rs <- fread("https://www.produnis.de/R/data/rolling_stone.csv")
+
+# anzeigen
+str(rs)
+```
+
+\newpage
+
+```{r}
+#| label: LoesungBB04setupB
+#| echo: false
+#| warning: false
+# aktiviere data.table
+library(data.table)
+# lade den Datensatz
+rs <- fread("data/rolling_stone.csv")
+
+str(rs)
+```
+
+
+:::
 

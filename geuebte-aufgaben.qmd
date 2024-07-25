@@ -66,6 +66,7 @@ b) Fügen Sie `tab1` und `tab2` zu einem Objekt `Hogwarts` zusammen.
 c) Nutzen Sie die `mutate()`-Funktion, um die Datenklassen der Variablen anzupassen (Skalenniveau).
 d) Ändern Sie anschließend mit der `mutate()`-Funktion den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um.
 e) Die Daten liegen nicht im Tidy-Data-Format vor. Erzeugen Sie ein neues Objekt `Kurse` mit den Variablen `Haus` und `Kurs`.
+f) Überführen Sie die Objekte `tab1` und `tab2` aus a) jeweils in eine `data.table`. Wiederholen Sie nun die Aufgaben b) bis e), indem Sie ausschließlich Funktionen des `data.table`-Paketes nutzen.
 :::
 
 
@@ -249,4 +250,17 @@ Lösung siehe @sec-LBB03
 :::
 
 
+\newpage
+
+### Aufgabe [-@sec-ABB04] `data.table` Rolling Stone {#sec-ABB04}
+
+In dieser Aufgabe soll der Tidy Tuesday Datensatz "Rolling Stone" vom 07.05.2024^[siehe <https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-05-07>] mit dem Paket `data.table` ausgewertet werden. Er enthält die „500 besten Alben aller Zeiten“-Listen des Rolling Stone Magazine aus den Jahren 2003, 2012 und 2020. 
+
+a) Laden Sie den Datensatz als `data.table` von <https://www.produnis.de/R/data/rolling_stone.csv> in Ihre R-Session, und machen Sie sich mit den Daten vertraut.
+
+
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LBB04
+:::
 
