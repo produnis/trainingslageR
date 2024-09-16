@@ -1,3 +1,4 @@
+\setlength\parindent{0pt}      % Keine Texteinrückung am Absatzanfang
 \begin{titlepage}
 
   \begin{center}
@@ -28,9 +29,30 @@
 \end{titlepage}
 \pagenumbering{roman}
 %-------------------------
-\pagestyle{fancy}
-\fancyhead[L]{\leftmark}  % Kapitelname links
-\fancyhead[R]{$title$}  % Titel rechts
-\fancyfoot[C]{Seite \thepage\ von \pageref{LastPage}}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
+
+%--------- Ende der Titelseit -----------------------------
+\clearpage
+\pagenumbering{roman}
+\bibliographystyle{apalike}
+%--------------------------
+\normalsize
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+%------------------------------------------------------------------------------------------
+% --- Page-Heading--------------------
+\clearpairofpagestyles
+\ihead{}
+% \ihead{\thechapter}
+\ohead{\rightmark}
+%\ifoot*{$kurztitel$}
+\ofoot*{\footnotesize\pagemark}
+%-------------------------------------
+
+
+
+

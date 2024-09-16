@@ -14,12 +14,16 @@ contributes:
         - left=15mm
         - right=15mm
         - headsep=10mm
+      number-sections: true # Nummerierung der Sektionen erzwingen
       lang: de
       linkcolor: black
       link-citations: true
-      toc: false
-      lof: false
-      lot: false
+      bookmarks: true
+      plainpages: false
+      hypertexnames: true
+      toc: false # alles auf false, damit die Seitennummerierung roman/arabic passt
+      lof: false # die verzeichnisse werden in der before-body.tex von hand
+      lot: false # eingefügt
       df-print: default
       code-line-numbers: false
       keep-tex: false # true # false

@@ -43,13 +43,3 @@ große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger\
 :::
 
 \normalsize
-
-```{=tex}
-\newpage
-\phantomsection
-\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
-\tableofcontents
-\newpage
-\pagenumbering{arabic}
-\setcounter{page}{1}
-```

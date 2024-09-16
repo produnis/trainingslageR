@@ -1,6 +1,16 @@
 % \usepackage{tikz,fouriernc}
 % \usetikzlibrary{calc}
 \usepackage[scale=1]{ccicons}
+%% Packete laden und Einstellungen machen -----------------
+\usepackage{lipsum}
+\usepackage{acronym}
+\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+\automark[chapter]{chapter}
+\renewcommand*{\partmark}[1]{}
+\setkomafont{pageheadfoot}{\normalcolor\footnotesize\scshape}
+\setkomafont{pagenumber}{\normalfont\normalsize}
+\ModifyLayer[addvoffset=-.6ex]{scrheadings.foot.above.line}% Linie verschieben
+%----------------------------------------------------------
  % === HSNR colors ==============================
 \definecolor{linkblue}{RGB}{17, 40, 73}
 \definecolor{HSNRblue1}{RGB}{24,81,145}
@@ -19,6 +29,11 @@
 \addtokomafont{subsection}{\color{HSNRblue2}}
 \addtokomafont{subsubsection}{\color{HSNRblue2}}
 \addtokomafont{paragraph}{\color{HSNRblue2}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcommand{\R}[0]{\includegraphics[width=0.025\textwidth]{images/gnurlogo.png}\ }
+
 %---- mehr Farben ----
 \definecolor{lime}{RGB}{0,0,128}
 \definecolor{silver}{HTML}{999999}
@@ -90,7 +105,7 @@
 	\definecolor{Torangelight}{HTML}{FCAF3E}% tango orange 3
 %--- ENDE Tango-Colors -----------------------------------------------
 % ==============================================
-\usepackage{fancyhdr}
+%\usepackage{fancyhdr}
 \usepackage{lastpage} %fancy footer and header
 \usepackage{lipsum}
 \usepackage{multirow}
@@ -99,5 +114,4 @@
 \usepackage{graphicx}
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
-\setsansfont{Times New Roman}
 
