@@ -1,3 +1,20 @@
+**Willkommen im trainingslageR!**
+
+In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten. Für Ihre Lösungswege kann das freie Nachschlagewerk von @grSchlR hilfreich sein.
+
+Lassen Sie sich nicht entmutigen, `R` hat eine steile Lernkurve.
+
+Falls Sie nach diesen Übungen immer noch nicht genug haben, finden Sie weitere Aufgabenstellungen bei @grSchlRuebung.
+
+Der Quelltext dieses Buchs ist bei GitHub verfügbar, siehe <https://github.com/produnis/trainingslageR>.
+
+- Eine aktuelle epub-Version finden Sie unter: <https://www.produnis.de/trainingslager/trainingslager.epub>
+- Eine aktuelle PDF-Version finden Sie unter: <https://www.produnis.de/trainingslager/trainingslager.pdf>
+- Kritik und Diskussion sind per Mastodon möglich: <https://mastodon.social/@rbuch>
+
+
+
+
 # Lizenz {.unnumbered}
 
 ![](images/ccbyncsa.png){width="2.2cm"}

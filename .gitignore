@@ -9,3 +9,7 @@ notizen.R
 .Rhistory
 _freeze
 *_files/
+BOOK/*.html
+BOOK/images
+BOOK/site_libs
+BOOK/*json

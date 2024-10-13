@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: PDF
+  output-dir: BOOK
 
 author:
     - name: Prof. Dr. Jörg große Schlarmann
@@ -17,6 +17,9 @@ citation:
   language: de
   status: "advance online publication"
   license: "CC BY-NC-SA 4.0"
+  url: https://github.com/produnis/trainingslager
+  public-url: https://www.produnis.de/trainingslager
+  fulltext-url: https://www.produnis.de/trainingslager
 
 book:
   title: "trainingslageR"
@@ -30,6 +33,19 @@ book:
       orcid: 0000-0002-3634-7722
   date: "2024-07-03"
   date-format: "DD.MM.YYYY"
+  cover-image: images/Titelbild.png
+  output-file: trainingslager
+  sidebar:
+    collapse-level: 4
+  downloads:
+    - pdf
+    - epub
+  open-graph:
+    image: "https://www.produnis.de/trainingslager/images/Titelbild.png"
+    locale: de_DE
+  twitter-card:
+    image: "https://www.produnis.de/trainingslager/images/Titelbild.png"
+    creator: "produnis"
   chapters:
     - index.qmd
     - einleitung.qmd
@@ -47,9 +63,10 @@ book:
     - credits.qmd
 
 bibliography: literatur.bib
+csl: apa-single-spaced.csl
 nocite: |
   @waltherR22, @tidytuesday, @Rbase, @wickham23
-# csl: _src/apa-single-spaced.csl
+lang: de
 
 language:
   crossref-sec-prefix: "Abschnitt"
@@ -63,3 +80,7 @@ format:
       toc: true
       rights: "Creative Commons BY-NC-SA 4.0"
       code-line-numbers: false
+      language: de
+    html:
+      theme: yeti
+      language: de
