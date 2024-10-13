@@ -20,7 +20,7 @@ Ein freies Übungsbuch für R-Einsteiger*innen und Fortgeschrittene.
 
 Das Buch ist mit `quarto` erstellt worden, siehe <https://quarto.org>. Wenn Sie RStudio installiert haben, können Sie das Projekt über die Datei `_trainingslageR.Rproj` laden und das Buch rendern.
 
-Eine fertig gerenderte PDF-Datei steht im Unterornder `PDF` zur Verfügung.
+Eine fertig gerenderte EPUB- und PDF-Datei steht im Unterornder `BOOK` zur Verfügung.
 
 
 ## siehe auch
