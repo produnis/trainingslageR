@@ -75,12 +75,6 @@ freeze: auto
 
 format:
     buechlein-pdf: default
-    epub:
-      theme: default
-      toc: true
-      rights: "Creative Commons BY-NC-SA 4.0"
-      code-line-numbers: false
-      language: de
-    html:
+    buechlein-epub: default
+    buechlein-html:
       theme: yeti
-      language: de

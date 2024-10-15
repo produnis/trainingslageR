@@ -32,3 +32,11 @@ contributes:
       template-partials:
         - title.tex
         - before-body.tex
+    html:
+      lang: de
+      rights: "Creative Commons BY-NC-SA 4.0"
+    epub:
+      toc: true
+      rights: "Creative Commons BY-NC-SA 4.0"
+      code-line-numbers: false
+      lang: de
