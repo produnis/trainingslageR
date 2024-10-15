@@ -1059,7 +1059,7 @@ Es scheint einen linearen Zusammenhang zwischen dem Alter und der Lungenkapazit�
 #| label: LoesungBB02f
 scatter.smooth(lungcap$Körpergröße, lungcap$FEV, col="thistle")
 ```
-Es scheint keinen linearen Zusammenhang zwischen der Körpergröße und der Lungenkapazität zu geben.
+Es scheint einen linearen Zusammenhang zwischen der Körpergröße und der Lungenkapazität zu geben.
 :::
 
 
