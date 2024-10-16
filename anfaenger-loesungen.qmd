@@ -6,6 +6,30 @@ Gerade als Anfänger:in sollten Sie zumindest *versuchen*, die Aufgaben selbstst
 
 ## Lösungen zu Objekten in R {#sec-LoesungenAnfangA}
 
+### Lösung zur Aufgabe [-@sec-AAA00] Vektoren {#sec-LAA00}
+::: {.callout-tip}
+## R als Taschenrechner
+
+```{r}
+#| label: LoesungAA00a
+# a)
+(15.4 + 0.2) * (7-10.2) / 9
+
+# b)
+5/10 + 11/7 - 8/3
+
+# c)
+(13+2)^3 * (17-8)^2 / 9
+
+# d)
+sqrt( ((1+3)*25) / (5*5-15)^2 )
+```
+
+:::
+
+
+
+
 ### Lösung zur Aufgabe [-@sec-AAA01] Vektoren {#sec-LAA01}
 ::: {.callout-tip}
 ## a) Erzeugen Sie mit möglichst wenig Aufwand einen Datenvektor aus den Zahlen 1 bis 100.
@@ -289,11 +313,44 @@ Schulnoten
 
 :::
 
-::: {.callout-tip}
-## c) Erzeugen Sie aus den folgenden Daten einen ordinalen Faktor mit korrekter Levelreihenfolge
 
+::: {.callout-tip}
+## c) Erzeugen Sie einen ordinalen Factor `woche`, welcher die Wochentagen von Montag bis Sonntag mit korrekter Levelreihenfolge enthält.
+
+Um etwas Schreibarbeit zu sparen, schreiben wir die Tage in ein eigenes Objekt. Dieses kann dann für `factor()` und `levels` genutzt werden.
 ```{r}
 #| label: LoesungAA05c
+# Tage in Objekt speichern
+tage <- c("Montag", "Dienstag", "Mittwoch", 
+          "Donnerstag", "Freitag", "Samstag", "Sonntag")
+# Dieses Objekt dann wiederverwenden
+woche <- factor(tage, 
+                ordered = TRUE,
+                levels=tage) 
+# anzeigen
+woche
+```
+
+:::
+
+::: {.callout-tip}
+## d) Ändern Sie die Levelnamen so um, dass nun die Wochentage in englischer Sprache (Monday to Sunday) enthalten sind.
+
+```{r}
+#| label: LoesungAA05d
+levels(woche) <- c("Monday", "Tuesday", "Wednesday", "Thursday", 
+                   "Friday", "Saturday", "Sunday")
+# anzeigen
+woche
+```
+
+:::
+
+::: {.callout-tip}
+## e) Erzeugen Sie aus den folgenden Daten einen ordinalen Faktor mit korrekter Levelreihenfolge
+
+```{r}
+#| label: LoesungAA05e
 # ordinaler Faktor
 f <- factor(c("vielleicht", "glaube nicht", "nein", "glaube nicht", 
               "ja", "glaube schon", "vielleicht", "nein", "glaube nicht",
@@ -315,10 +372,10 @@ f
 
 
 ::: {.callout-tip}
-## d) Ändern Sie die Levelnamen in `-2`, `-1`, `0`, `1`, `2`.
+## f) Ändern Sie die Levelnamen in `-2`, `-1`, `0`, `1`, `2`.
 
 ```{r}
-#| label: LoesungAA05d
+#| label: LoesungAA05f
 # Levelnamen ändern
 levels(f) <- c("-2", "-1", "0", "1", "2")
 
@@ -328,6 +385,101 @@ f
 
 :::
 
+
+
+
+### Lösung zur Aufgabe [-@sec-AAA05B] kleines Datenframe {#sec-LAA05B}
+
+::: {.callout-tip}
+## a) Erstellen Sie ein Dataframe mit den Spalten "`Name`", "`Alter`" und "`Geschlecht`" und fügen Sie drei Beispielzeilen mit Daten hinzu.
+
+```{r}
+#| label: LoesungAA05Ba
+df <- data.frame(Name = c("Max", "Lisa", "Tom"),
+                 Alter = c(22, 25, 30),
+                 Geschlecht = factor(c("m", "w", "m")))
+# anzeigen
+df
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Fügen Sie eine neue Spalte "`Hobbys`" hinzu und füllen Sie diese mit drei Beispielwerten.
+
+```{r}
+#| label: LoesungAA05Bb
+df$Hobbys <- c("Sport", "Musik", "Reisen")
+
+# anzeigen
+df
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## c) Die zweite Person heisst Kunigunde
+
+```{r}
+#| label: LoesungAA05Bc
+df$Name[2] <- "Kunigunde"
+
+# anzeigen
+df
+```
+
+:::
+
+
+
+\newpage
+
+
+### Lösung zur Aufgabe [-@sec-AAA05C] Studiengänge {#sec-LAA05C}
+
+::: {.callout-tip}
+## a) Erstellen Sie das Datenframe `Studiengaenge` mit den Variablen "`Fachbereich`", "`Studiengang`" und "`Niveau`" (Bachelor/Master), und überführen Sie die oben stehenden Daten in das Datenframe.
+
+```{r}
+#| label: LoesungAA05Ca
+# FB06 und FB10 haben jeweils 6 Studiengänge
+# schreibe direkt als factor()
+Fachbereich <- factor(c("FB06", "FB06", "FB06", "FB06", "FB06", "FB06", 
+                 "FB10", "FB10", "FB10", "FB10", "FB10", "FB10"))
+## oder auch so:
+Fachbereich <- factor(c(rep("FB06", 6), rep("FB10", 6)))
+
+# Zuerst die Studiengänge von FB06, dann von FB10
+# schreibe direkt als factor()
+Studiengang = factor(c("BA  Soziale Arbeit", "BA Kulturpädagogik", 
+                "BA Kindheitspädagogik", "MA Soziale Arbeit", 
+                "MA Kulturpädagogik & Kulturmanagement", 
+                "MA Sozialmanagement", "BA Health Care Management",
+                "BA Medizinische Informatik", 
+                "BA Angewandte Therapiewissenschaften", "BA Pflege",
+                "BA Angewandte Hebammenwissenschaft", "MA Health Care"))
+
+# FB06 hat 3xBachelor und 3xMaster, FB010 hat 5xBachelor und 1xMaster
+Niveau = factor(c("Bachelor", "Bachelor", "Bachelor", "Master", "Master", 
+                  "Master", "Bachelor", "Bachelor", "Bachelor", "Bachelor", 
+                  "Bachelor", "Master"))
+# oder auch so:
+Niveau = factor(c(rep("Bachelor", 3), rep("Master", 3), 
+                  rep("Bachelor", 5), "Master"))
+
+# Füge zu Datenframe zusammen
+Studiengaenge <- data.frame(Fachbereich,
+                            Studiengang,
+                            Niveau)
+
+# anzeigen
+Studiengaenge
+```
+
+:::
 
 
 
