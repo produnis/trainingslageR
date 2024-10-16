@@ -35,8 +35,10 @@ contributes:
     html:
       lang: de
       rights: "Creative Commons BY-NC-SA 4.0"
+      theme: [yeti, buechlein.scss]
     epub:
       toc: true
       rights: "Creative Commons BY-NC-SA 4.0"
       code-line-numbers: false
       lang: de
+      theme: [buechlein.scss]

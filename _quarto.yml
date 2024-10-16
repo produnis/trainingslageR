@@ -74,7 +74,6 @@ language:
 freeze: auto
 
 format:
-    buechlein-pdf: default
+    buechlein-html: default
     buechlein-epub: default
-    buechlein-html:
-      theme: yeti
+    buechlein-pdf: default
