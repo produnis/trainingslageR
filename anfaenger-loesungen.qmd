@@ -1744,3 +1744,86 @@ df %>%
 
 :::
 
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB07] Schulnoten {#sec-LAB07}
+
+::: {.callout-tip}
+## a) Überführen Sie die Daten in `R`
+
+```{r}
+#| label: LoesungAB07a
+#| warning: false
+# überführe in ordinalen Factor
+noten <- factor(c("2", "2", "4+", "2", "2-", "durchgefallen", "2", "2-", "2+", 
+                  "2+", "4", "2", "2", "3-", "2", "2", "1-", "2", "2", "4", 
+                  "3+", "2-", "2-", "2+", "1+", "1", "2", "2+", "3+", "2-", 
+                  "3-", "1-", "3", "1-", "4", "4+", "2", "3+", "3", "2-", "2", 
+                  "1-", "3+", "1+", "3", "2", "durchgefallen", "2-", "1-", 
+                  "2+", "3", "3+", "2-", "2+", "2+", "durchgefallen", "2-", 
+                  "2+", "2+", "2+", "1", "1-", "2", "4", "1-", "1+", "3", "2+", 
+                  "2-", "2+", "2-", "2-", "2-", "4", "3+", "1", "2-", 
+                  "durchgefallen", "1", "2+", "2-", "2"),
+                ordered=TRUE,
+                levels = c("1+", "1", "1-", "2+", "2", "2-",
+                           "3+", "3", "3-", "4+", "4", 
+                           "durchgefallen")
+                )
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) erstellen Sie eine vollständige Häufigkeitstabelle, ohne dabei die Funktion `freqTable()` zu verwenden.
+
+```{r}
+#| label: LoesungAB07b
+#| warning: false
+# überführe in Datenframe
+df <- as.data.frame(table(noten))
+
+# kumuliere
+df$Hkum <- cumsum(df$Freq)
+
+# relative Häufigkeiten
+df$rel <- as.numeric(prop.table(table(noten)))
+
+# kumulierte relative
+df$relkum <- cumsum(df$rel)
+
+# umbenennen
+colnames(df) <- c("Note", "Haeufig", "Hkum", "Relativ", "Rkum")
+
+# anzeigen
+df
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Stellen Sie die relativen Häufigkeiten als ausreichend beschriftetes Säulendiagramm dar.
+
+```{r}
+#| label: LoesungAB07c
+#| warning: false
+#| layout-ncol: 2
+# Rbase
+barplot(prop.table(table(noten)),
+        col="steelblue",
+        xlab="Schulnote",
+        ylab="relative Häufigkeit")
+
+# ggplot()
+library(ggplot2)
+ggplot(df, aes(x=Note, y=Relativ)) +
+  geom_bar(stat="identity", fill="steelblue") +
+  xlab("Schulnote") +
+  ylab("relative Häufigkeit")
+```
+
+:::
+

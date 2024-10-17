@@ -575,3 +575,29 @@ Lösung siehe @sec-LAB06
 :::
 
 
+
+### Aufgabe [-@sec-AAB07] Schulnoten {#sec-AAB07}
+
+:::: {.callout-note appearance="simple"}
+Gegeben sind folgende Noten von $82$ Studierenden:
+
+> `2, 2, 4+, 2, 2-, durchgefallen, 2, 2-, 2+, 2+, 4, 2, 2, 3-, 2, 2, 1-, 2, 2, 4, 3+, 2-, 2-, 2+, 1+, 1, 2, 2+, 3+, 2-, 3-, 1-, 3, 1-, 4, 4+, 2, 3+, 3, 2-, 2, 1-, 3+, 1+, 3, 2, durchgefallen, 2-, 1-, 2+, 3, 3+, 2-, 2+, 2+, durchgefallen, 2-, 2+, 2+, 2+, 1, 1-, 2, 4, 1-, 1+, 3, 2+, 2-, 2+, 2-, 2-, 2-, 4, 3+, 1, 2-, durchgefallen, 1, 2+, 2-, 2`
+
+a) Überführen Sie die Daten in `R` und 
+b) erstellen Sie eine vollständige Häufigkeitstabelle, ohne dabei die Funktion `jgsbook::freqTable()` zu verwenden.
+
+::: {.callout-tip appearance="simple"}
+Kopieren Sie die Werte in eine leere Scriptdatei und verwenden Sie "*Find*" und "*Replace*" (Tasten `[STRG]` + `[F]`), um die Werte in Anführungszeichen zu hüllen. 
+
+
+![](images/SucheErsetzen.png)
+:::
+
+c) Stellen Sie die relativen Häufigkeiten als ausreichend beschriftetes Säulendiagramm dar.
+::::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB07
+:::
+
+
