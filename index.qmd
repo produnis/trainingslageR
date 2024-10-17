@@ -1,23 +1,12 @@
 **Willkommen im trainingslageR!**
 
-In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten. Für Ihre Lösungswege kann das freie Nachschlagewerk von @grSchlR hilfreich sein.
+In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten, die vor allem für Studierende im Gesundheitswesen von Nutzen sein könnten.
 
-Lassen Sie sich nicht entmutigen, `R` hat eine steile Lernkurve.
-
-Falls Sie nach diesen Übungen immer noch nicht genug haben, finden Sie weitere Aufgabenstellungen bei @grSchlRuebung.
-
-Der Quelltext dieses Buchs ist bei GitHub verfügbar, siehe <https://github.com/produnis/trainingslageR>.
-
-- Eine aktuelle epub-Version finden Sie unter: <https://www.produnis.de/trainingslager/trainingslager.epub>
-- Eine aktuelle PDF-Version finden Sie unter: <https://www.produnis.de/trainingslager/trainingslager.pdf>
-- Kritik und Diskussion sind per Mastodon möglich: <https://mastodon.social/@rbuch>
-
-
-
+\smallskip\  
 
 # Lizenz {.unnumbered}
 
-![](images/ccbyncsa.png){width="2.2cm"}
+![](images/ccbyncsa.png){width=2.2cm}
 
 Dieses Script ist unter der `Creative Commons BY-NC-SA 4.0`[^index-1] lizensiert.
 
@@ -36,7 +25,7 @@ Unter folgenden Bedingungen:
 
 **Keine weiteren Einschränkungen** — Sie dürfen keine zusätzlichen Klauseln oder technische Verfahren einsetzen, die anderen rechtlich irgendetwas untersagen, was die Lizenz erlaubt.
 
-![](images/trainingslageR-hexsticker.png){fig-align="center" width="130"}
+\vfill
 
 ::: callout-tip
 ## **Zitationsvorschlag**
@@ -60,3 +49,11 @@ große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger\
 :::
 
 \normalsize
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand\pagemark{{\usekomafont{pagenumber}\thepage\ von \pageref{LastPage}}}

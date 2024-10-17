@@ -4,13 +4,18 @@
 “You shouldn’t feel ashamed about your code - if it solves the problem, it’s perfect just the way it is. \newline But also, it could always be better.” \footnotesize — **Hadley Wickham** at `rstudio::conf2019`
 :::
  
+\smallskip\  
 
-![](images/trainingslageR-hexsticker.png){fig-align="center" width="150"}
-
-
+\begin{wrapfigure}{r}{0.25\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{images/trainingslageR-hexsticker.png}
+  \end{center}
+\end{wrapfigure}
 
 \Large Willkommen im trainingslageR!
 \normalsize
+
+<img src="images/trainingslageR-hexsticker.png" width="200">
 
 In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten. Für Ihre Lösungswege kann das freie Nachschlagewerk von @grSchlR hilfreich sein.
 
@@ -19,3 +24,8 @@ Lassen Sie sich nicht entmutigen, `R` hat eine steile Lernkurve.
 Falls Sie nach diesen Übungen immer noch nicht genug haben, finden Sie weitere Aufgabenstellungen bei @grSchlRuebung.
 
 Der Quelltext dieses Buchs ist bei GitHub verfügbar, siehe <https://github.com/produnis/trainingslageR>.
+
+
+- Eine aktuelle epub-Version finden Sie unter: \newline <https://www.produnis.de/trainingslager/trainingslager.epub>
+- Eine aktuelle PDF-Version finden Sie unter: \newline <https://www.produnis.de/trainingslager/trainingslager.pdf>
+- Kritik und Diskussion sind per Mastodon möglich: \newline <https://mastodon.social/@rbuch>
