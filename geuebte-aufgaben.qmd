@@ -79,7 +79,7 @@ Lösung siehe @sec-LBA01
 ### Aufgabe [-@sec-ABA02] Aufnahme und Entlassung {#sec-ABA02}
 
 ::: {.callout-note appearance="simple"}
-Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/R/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten, die an einer bestimmten Krankheit leiden.
+Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/trainingslager/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten, die an einer bestimmten Krankheit leiden.
 
 a) Laden Sie den Datensatz `Krankenhaus.RData` in Ihre R-Session.
 b) Ein Variablenname enthält einen Tippfehler. Reparieren Sie auch die Datenklassen der Variablen. Entfernen Sie alle Einträge mit ungültigen Zeitstempeln. 
@@ -100,7 +100,7 @@ Lösung siehe @sec-LBA02
 ### Aufgabe [-@sec-ABA03] SPSS Datensatz {#sec-ABA03}
 
 ::: {.callout-note appearance="simple"}
-Gegeben ist folgender Datensatz:  <https://www.produnis.de/R/data/alteDaten-kurz.sav>.
+Gegeben ist folgender Datensatz:  <https://www.produnis.de/trainingslager/data/alteDaten-kurz.sav>.
 
 a) Laden Sie den Datensatz in ein R-Objekt
 b) Passen Sie die Datenklassen der Variablen entsprechend des Skalenniveaus an, indem Sie nur Funktionen aus der `R` Standardinstallation verwenden. Dabei sollen die Variablennamen als Labels erhalten bleiben. 
@@ -154,7 +154,7 @@ Lösung siehe @sec-LBA03
 
 ::: {.callout-note appearance="simple"}
 
-Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/R/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten, die an einer bestimmten Krankheit leiden.
+Im Datensatz `Krankenhaus.RData`^[siehe <https://www.produnis.de/trainingslager/data/Krankenhaus.RData>] sind die Aufnahme- und Entlassungsdaten von Patienten eines Krankenhauses enthalten, die an einer bestimmten Krankheit leiden.
 
 a) Laden Sie den Datensatz `Krankenhaus.RData` in Ihre R-Session, korrigieren Sie den Tippfehler der Variable `ALter`, reparieren Sie die Datenklassen der Variablen und entfernen Sie alle Einträge mit ungültigen Zeitstempeln. 
 b) Plotten Sie die absoluten Häufigkeiten der Aufnahmen und Entlassungen pro Kalendertag. Was fällt Ihnen auf?
@@ -215,7 +215,7 @@ Lösung siehe @sec-LBB02
 ### Aufgabe [-@sec-ABB03] Brustkrebs {#sec-ABB03}
 
 ::: {.callout-note appearance="simple"}
-Die Daten von mehr als 1200 Patientinnen mit Brustkrebs finden sich im Datensatz \newline <https://www.produnis.de/R/data/breast.sav>.
+Die Daten von mehr als 1200 Patientinnen mit Brustkrebs finden sich im Datensatz \newline <https://www.produnis.de/trainingslager/data/breast.sav>.
 
 a) Importieren Sie den Datensatz in Ihre R-Session und machen Sie sich mit dem Datensatz vertraut.
 b) Klassieren Sie die Variablen
@@ -256,7 +256,7 @@ Lösung siehe @sec-LBB03
 
 In dieser Aufgabe soll der Tidy Tuesday Datensatz "Rolling Stone" vom 07.05.2024^[siehe <https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-05-07>] mit dem Paket `data.table` ausgewertet werden. Er enthält die „500 besten Alben aller Zeiten“-Listen des Rolling Stone Magazine aus den Jahren 2003, 2012 und 2020. 
 
-a) Laden Sie den Datensatz als `data.table` von <https://www.produnis.de/R/data/rolling_stone.csv> in Ihre R-Session, und machen Sie sich mit den Daten vertraut.
+a) Laden Sie den Datensatz als `data.table` von <https://www.produnis.de/trainingslager/data/rolling_stone.csv> in Ihre R-Session, und machen Sie sich mit den Daten vertraut.
 
 
 

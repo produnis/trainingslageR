@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: BOOK
+  resources:
+    - data
 
 author:
     - name: Prof. Dr. Jörg große Schlarmann

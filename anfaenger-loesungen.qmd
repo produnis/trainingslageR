@@ -839,7 +839,7 @@ jgsbook::freqTable(df$Kinder)
 #| label: LoesungAA09a
 #| eval: false
 # Lese Daten ein
-a <- read.table("https://www.produnis.de/R/data/Datentabelle.txt", header=TRUE)
+a <- read.table("https://www.produnis.de/trainingslager/data/Datentabelle.txt", header=TRUE)
 ```
 
 ```{r}
@@ -872,7 +872,7 @@ In der Datei werden Dezimalstellen mit "," und Feldtrenner mit ";" angegeben. En
 #| label: LoesungAA09b
 #| eval: false
 # Lese Daten ein
-b <- read.table("https://www.produnis.de/R/data/anwesenheitnoten.csv", 
+b <- read.table("https://www.produnis.de/trainingslager/data/anwesenheitnoten.csv", 
                 header=TRUE, dec=",", sep=";")
 ```
 
@@ -902,7 +902,7 @@ Alle Datenklassen sind korrekt (numerisch).
 #| label: LoesungAA09d
 #| eval: false
 # Lese Daten ein
-d <- openxlsx::read.xlsx("https://www.produnis.de/R/data/Testdatumdaten.xlsx")
+d <- openxlsx::read.xlsx("https://www.produnis.de/trainingslager/data/Testdatumdaten.xlsx")
 ```
 
 ```{r}
@@ -962,6 +962,55 @@ str(d)
 \newpage 
 
 ## Lösungen zur deskriptiven Statistik {#sec-LoesungenAnfangB}
+
+### Lösung zur Aufgabe [-@sec-AAB00] Median Mittelwert {#sec-LAB00}
+::: {.callout-tip}
+## a) erzeugen Sie einen Datenvektor mit Werten von $1$ bis $10$
+
+```{r}
+#| label: LoesungAB00a
+v <- 1:10
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) berechnen Sie den Median und das arithmetische Mittel 
+
+```{r}
+#| label: LoesungAB00b
+median(v)
+mean(v)
+```
+:::
+
+
+::: {.callout-tip}
+## c) fügen Sie den Wert $45881$ dem Datenvektor hinzu
+
+```{r}
+#| label: LoesungAB00c
+v <- c(v, 45881)
+# anschauen
+v
+```
+:::
+
+
+::: {.callout-tip}
+## d) berechnen Sie erneut den Median und das arithmetische Mittel. Was fällt Ihnen auf?
+
+```{r}
+#| label: LoesungAB00d
+median(v)
+mean(v)
+```
+Es fällt auf, dass der Mittelwert viel stärker von dem neuen Wert (45881) beinflusst wird als der Median.
+:::
+
+
+
 
 ### Lösung zur Aufgabe [-@sec-AAB01] Serumcholesterin {#sec-LAB01}
 ::: {.callout-tip}
@@ -1748,7 +1797,7 @@ df %>%
 
 
 
-### Lösung zur Aufgabe [-@sec-AAB07] Schulnoten {#sec-LAB07}
+### Lösung zur Aufgabe [-@sec-AAB07] Abschlussnoten {#sec-LAB07}
 
 ::: {.callout-tip}
 ## a) Überführen Sie die Daten in `R`
@@ -1814,16 +1863,99 @@ df
 # Rbase
 barplot(prop.table(table(noten)),
         col="steelblue",
-        xlab="Schulnote",
+        xlab="Abschlussnote",
         ylab="relative Häufigkeit")
 
 # ggplot()
 library(ggplot2)
 ggplot(df, aes(x=Note, y=Relativ)) +
-  geom_bar(stat="identity", fill="steelblue") +
-  xlab("Schulnote") +
+  geom_bar(stat="identity", fill="steelblue", color="black") +
+  xlab("Abschlussnote") +
   ylab("relative Häufigkeit")
 ```
 
 :::
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB08] Modulnoten {#sec-LAB08}
+
+::: {.callout-tip}
+## a) Übertragen Sie die Daten mittels der `rep()`-Funktion in `R`
+
+```{r}
+#| label: LoesungAB08a
+#| warning: false
+# überführe mittels rep()
+noten <- c( rep("1+",1),  rep("1", 3),  rep("1-", 2),
+            rep("2+",7),  rep("2", 12), rep("2-", 15),
+            rep("3+",13), rep("3", 6),  rep("3-", 5),
+            rep("4+",4),  rep("4", 4),  rep("nb", 4))
+
+# überführe in ordinalen Factor
+noten <- factor(noten, ordered=TRUE, 
+                levels = c("1+", "1", "1-", "2+", "2", "2-",
+                           "3+", "3", "3-", "4+", "4", "nb")
+                )
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) erstellen Sie eine vollständige Häufigkeitstabelle, ohne dabei die Funktion `jgsbook::freqTable()` zu verwenden.
+
+```{r}
+#| label: LoesungAB08b
+#| warning: false
+# überführe in Datenframe
+df <- as.data.frame(table(noten))
+
+# kumuliere
+df$Hkum <- cumsum(df$Freq)
+
+# relative Häufigkeiten
+df$rel <- as.numeric(prop.table(table(noten)))
+
+# kumulierte relative
+df$relkum <- cumsum(df$rel)
+
+# umbenennen
+colnames(df) <- c("Note", "Haeufig", "Hkum", "Relativ", "Rkum")
+
+# anzeigen
+df
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## c) Stellen Sie die relativen Häufigkeiten als ausreichend beschriftetes Balkendiagramm (nicht Säulendiagramm) dar.
+
+```{r}
+#| label: LoesungAB08c
+#| warning: false
+#| layout-ncol: 2
+# Rbase
+barplot(prop.table(table(noten)),
+        col="orchid",
+        # schalte um auf "Balkendiagramm"
+        horiz=TRUE,
+        ylab="Modulnote",
+        xlab="relative Häufigkeit")
+
+# ggplot()
+library(ggplot2)
+ggplot(df, aes(y=Note, x=Relativ)) +
+  geom_bar(stat="identity", fill="orchid", color="black") +
+  ylab("Modulnote") +
+  xlab("relative Häufigkeit")
+```
+
+:::
+
 

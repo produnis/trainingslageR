@@ -354,9 +354,9 @@ Lösung siehe @sec-LAA08
 ::: {.callout-note appearance="simple"}
 Laden Sie die folgenden Datensätz jeweils in ein R-Objekt und passen Sie die Datenklassen der Variablen entsprechend des Skalenniveaus an.
 
-a) <https://www.produnis.de/R/data/Datentabelle.txt>
-b) <https://www.produnis.de/R/data/anwesenheitnoten.csv>
-c) <https://www.produnis.de/R/data/Testdatumdaten.xlsx> 
+a) <https://www.produnis.de/trainingslager/data/Datentabelle.txt>
+b) <https://www.produnis.de/trainingslager/data/anwesenheitnoten.csv>
+c) <https://www.produnis.de/trainingslager/data/Testdatumdaten.xlsx> 
 :::
 
 ::: {.callout-tip appearance="simple"}
@@ -395,6 +395,23 @@ Lösung siehe @sec-LAA09
 ## Deskriptive Statistik {#sec-AufgabenAnfangB}
 
 In diesem Abschnitt üben Sie typische Funktionen und Arbeitsfolgen zur deskriptiven Auswertung der Daten.
+
+
+### Aufgabe [-@sec-AAB00] Median Mittelwert {#sec-AAB00}
+
+::: {.callout-note appearance="simple"}
+a) erzeugen Sie einen Datenvektor mit Werten von $1$ bis $10$
+b) berechnen Sie den Median und das arithmetische Mittel 
+c) fügen Sie den Wert $45881$ dem Datenvektor hinzu
+d) berechnen Sie erneut den Median und das arithmetische Mittel. Was fällt Ihnen auf?
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB00
+:::
+
+
+
 
 
 ### Aufgabe [-@sec-AAB01] Serumcholesterin {#sec-AAB01}
@@ -576,10 +593,10 @@ Lösung siehe @sec-LAB06
 
 
 
-### Aufgabe [-@sec-AAB07] Schulnoten {#sec-AAB07}
+### Aufgabe [-@sec-AAB07] Abschlussnoten {#sec-AAB07}
 
 :::: {.callout-note appearance="simple"}
-Gegeben sind folgende Noten von $82$ Studierenden:
+Gegeben sind folgende Abschlussnoten von $82$ Studierenden:
 
 > `2, 2, 4+, 2, 2-, durchgefallen, 2, 2-, 2+, 2+, 4, 2, 2, 3-, 2, 2, 1-, 2, 2, 4, 3+, 2-, 2-, 2+, 1+, 1, 2, 2+, 3+, 2-, 3-, 1-, 3, 1-, 4, 4+, 2, 3+, 3, 2-, 2, 1-, 3+, 1+, 3, 2, durchgefallen, 2-, 1-, 2+, 3, 3+, 2-, 2+, 2+, durchgefallen, 2-, 2+, 2+, 2+, 1, 1-, 2, 4, 1-, 1+, 3, 2+, 2-, 2+, 2-, 2-, 2-, 4, 3+, 1, 2-, durchgefallen, 1, 2+, 2-, 2`
 
@@ -598,6 +615,28 @@ c) Stellen Sie die relativen Häufigkeiten als ausreichend beschriftetes Säulen
 
 ::: {.callout-tip appearance="simple"}
 Lösung siehe @sec-LAB07
+:::
+
+
+
+
+
+### Aufgabe [-@sec-AAB08] Modulnoten {#sec-AAB08}
+
+:::: {.callout-note appearance="simple"}
+In einem Modul haben $76$ Studierende folgende Noten erzielt:
+
+|**Note**| 1+  | 1   | 1-  |2+   | 2   | 2-  |3+   |   3 |  3- |  4+ |   4 | *nb*|
+|:------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **n**  | 1   | 3   | 2   | 7   | 12  | 15  | 13  | 6   | 5   | 4   | 4   | 4   |
+
+a) Übertragen Sie die Daten mittels der `rep()`-Funktion in `R` und
+b) erstellen Sie eine vollständige Häufigkeitstabelle, ohne dabei die Funktion `jgsbook::freqTable()` zu verwenden.
+c) Stellen Sie die relativen Häufigkeiten als ausreichend beschriftetes Balkendiagramm (nicht Säulendiagramm) dar.
+::::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB08
 :::
 
 

@@ -152,7 +152,7 @@ Kurse
 #| label: LoesungBA02a
 #| eval: false
 # Lese Daten ein
-load("https://www.produnis.de/R/data/Krankenhaus.RData")
+load("https://www.produnis.de/trainingslager/data/Krankenhaus.RData")
 ```
 
 ```{r}
@@ -304,7 +304,7 @@ Dateien mit Endung `.sav` stammen von SPSS.
 #| label: LoesungBA03a
 #| eval: false
 # Lese Daten ein
-c <- haven::read_sav("https://www.produnis.de/R/data/alteDaten-kurz.sav")
+c <- haven::read_sav("https://www.produnis.de/trainingslager/data/alteDaten-kurz.sav")
 ```
 
 ```{r}
@@ -373,7 +373,7 @@ str(c)
 #| label: LoesungBA03c
 #| eval: false
 # Lese Daten ein
-c <- haven::read_sav("https://www.produnis.de/R/data/alteDaten-kurz.sav")
+c <- haven::read_sav("https://www.produnis.de/trainingslager/data/alteDaten-kurz.sav")
 ```
 
 ```{r}
@@ -428,7 +428,7 @@ str(c)
 #| label: LoesungBB01setupA
 #| eval: false
 # Lese Daten ein
-load("https://www.produnis.de/R/data/Krankenhaus.RData")
+load("https://www.produnis.de/trainingslager/data/Krankenhaus.RData")
 ```
 
 ```{r}
@@ -1169,7 +1169,7 @@ Durch Hinzunahme der Prädiktoren verbessert sich R^2^, aber nur minimal.
 #| label: LoesungBB03setupA
 #| eval: false
 # lade den Datensatz
-breast <- haven::read_sav("https://www.produnis.de/R/data/breast.sav")
+breast <- haven::read_sav("https://www.produnis.de/trainingslager/data/breast.sav")
 ```
 
 
@@ -1342,7 +1342,7 @@ forestmodel::forest_model(cox)
 library(data.table)
 
 # lade den Datensatz
-rs <- fread("https://www.produnis.de/R/data/rolling_stone.csv")
+rs <- fread("https://www.produnis.de/trainingslager/data/rolling_stone.csv")
 
 # anzeigen
 str(rs)
