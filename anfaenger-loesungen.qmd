@@ -6,7 +6,7 @@ Gerade als Anfänger:in sollten Sie zumindest *versuchen*, die Aufgaben selbstst
 
 ## Lösungen zu Objekten in R {#sec-LoesungenAnfangA}
 
-### Lösung zur Aufgabe [-@sec-AAA00] Vektoren {#sec-LAA00}
+### Lösung zur Aufgabe [-@sec-AAA00] Taschenrechner {#sec-LAA00}
 ::: {.callout-tip}
 ## R als Taschenrechner
 
@@ -1007,6 +1007,271 @@ median(v)
 mean(v)
 ```
 Es fällt auf, dass der Mittelwert viel stärker von dem neuen Wert (45881) beinflusst wird als der Median.
+:::
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB00B] Punktwolke und Balkendiagramm {#sec-LAB00B}
+::: {.callout-tip}
+## a) Überführen Sie die Daten in ein Datenframe.
+
+```{r}
+#| label: LoesungAB00Ba
+#| warning: false
+df <- data.frame(x = c(1:10),
+                 y = c(4, 7, 8, 11, 12, 9, 9, 6, 4, 2))
+```
+
+:::
+
+::: {.callout-tip}
+## b) Stellen Sie die Werte als Punktwolke dar.
+
+```{r}
+#| label: LoesungAB00Bb
+#| warning: false
+#| layout-ncol: 2
+# Rbase
+plot(df, col="blue")
+# ggplot
+library(ggplot2)
+ggplot(df, aes(x=x, y=y)) +
+  geom_point(color="blue")
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Stellen Sie die Werte als Balkendiagramm (**nicht** Säulendiagramm) dar. 
+
+```{r}
+#| label: LoesungAB00Bc
+#| warning: false
+#| layout-ncol: 2
+# R-base
+barplot(df$y, names.arg = df$x, 
+        col="skyblue", 
+        horiz = TRUE)
+
+# ggplot
+ggplot(df, aes(x=x, y=y)) +
+  geom_bar(stat="identity",
+           fill="skyblue", col="black") +
+  coord_flip()
+```
+
+:::
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB00C] Taylor Swift {#sec-LAB00C}
+::: {.callout-tip}
+## a) Laden Sie den Datensatz `taylor_swift_spotify.csv` in Ihre R-Session. Nennen Sie Ihr Datenframe dabei `ts`.
+
+```{r}
+#| label: LoesungAB00CSETUP
+#| echo: false
+ts <- read.csv("data/taylor_swift_spotify2024.csv",
+                 sep=",", header=TRUE)
+```
+
+```{r}
+#| label: LoesungAB00Ca
+#| eval: false
+ts <- read.csv("https://www.produnis.de/trainingslager/data/taylor_swift_spotify2024.csv", 
+                 sep=",", header=TRUE)
+
+```
+
+:::
+
+::: {.callout-tip}
+## b) Verschaffen Sie sich mittels `str()` und `summary()` einen Überblick über die enthaltenen Daten.
+
+```{r}
+#| label: LoesungAB00Cb
+#| warning: false
+str(ts)
+summary(ts)
+```
+:::
+
+::: {.callout-tip}
+## c) Wenn nötig, korrigiern Sie das Skalenniveau (nominal, ordinal, metrisch) der Variablen innerhalb des Datensatzes.
+
+Mindestens `album` kann als Factor angesehen werden. Streggenommen aber auch `name`,  `id` und `uri`. 
+```{r}
+#| label: LoesungAB00Cc
+#| warning: false
+ts$name  <- factor(ts$name)
+ts$album <- factor(ts$album)
+ts$id    <- factor(ts$id)
+ts$uri   <- factor(ts$uri)
+summary(ts)
+```
+:::
+
+::: {.callout-tip}
+## d) Wie lang dauern die Songs im Durchschnitt? Bei welcher Songlänge liegt der Median? Bitte geben Sie die Ergebnisse in Sekunden (nicht Millisekunden) an.
+
+```{r}
+#| label: LoesungAB00Cd
+#| warning: false
+# Mittelwert
+mean(ts$duration_ms)/1000
+
+# Median
+median(ts$duration_ms)/1000
+```
+:::
+
+
+::: {.callout-tip}
+## e) Erstellen Sie ein ausreichend beschriftetes Histogramm der Songlängen in Sekunden.
+
+```{r}
+#| label: LoesungAB00Ce
+#| warning: false
+#| layout-ncol: 2
+# Umrechnen in Sekunden
+songlänge <- ts$duration_ms / 1000
+
+# Rbase
+hist(songlänge, col="pink",
+     xlab="Länge in Sekunden",
+     ylab="Anzahl der Songs",
+     main= "Talyor Swift 2024")
+# ggplot
+library(ggplot2)
+songs <- as.data.frame(songlänge)
+ggplot(songs, aes(x=songlänge)) +
+  geom_histogram(fill="pink", col="black",
+                 bins=10)
+```
+:::
+
+
+
+::: {.callout-tip}
+## f) Welcher Song ist laut Datensatz der populärste, welcher der längste, und welcher der langsamste?
+
+Neben `min()` und `max()` können mittels `summary()` die Werte über `Min.` und `Max.` abgelesen werden.
+
+
+```{r}
+#| label: LoesungAB00Cf1
+#| warning: false
+#| eval: false
+## populärste
+ts[ts$popularity==93, ]
+```
+
+> `...1 name   album release_date track_number id    uri   acousticness `
+>  `1   324 Cruel… Lover 2019-08-23       2            1Bxf… spot…  0.117`
+
+```{r}
+#| label: LoesungAB00Cf2
+#| warning: false
+# oder
+ts$name[ts$popularity==93]
+# oder
+ts$name[ts$popularity==max(ts$popularity)]
+```
+
+```{r}
+#| label: LoesungAB00Cf3
+#| warning: false
+#| eval: false
+## längste
+ts[ts$duration_ms==613026, ]
+```
+
+> `...1 name   album release_date track_number id    uri   acousticness `
+>  `1   197 All Too… Red … 2021-11-12       30           5enx… spot…  0.274` 
+
+```{r}
+# oder
+ts$name[ts$duration_ms==613026]
+# oder
+ts$name[ts$duration_ms==max(ts$duration_ms)]
+```
+
+```{r}
+#| label: LoesungAB00Cf4
+#| warning: false
+#| eval: false
+## langsamste
+ts[ts$tempo==68.097, ]
+```
+
+> `...1 name   album release_date track_number id    uri   acousticness `
+>  `1   281 this is … folk… 2020-11-25      9            1gaL… spot…  0.928`
+
+```{r}
+#| label: LoesungAB00Cf5
+#| warning: false
+# oder
+ts$name[ts$tempo==68.097]
+# oder
+ts$name[ts$tempo==min(ts$tempo)]
+
+```
+
+:::
+
+
+::: {.callout-tip}
+## g) Welches Album hat die meisten Songs, und welches hat die wenigsten Songs?
+
+Mindestens `album` kann als Factor angesehen werden. Streggenommen aber auch `name`,  `id` und `uri`. 
+```{r}
+#| label: LoesungAB00Cg
+#| warning: false
+# die meisten Songs
+sort(table(ts$album), decreasing=TRUE)[1]
+
+# die wenigsten Songs
+sort(table(ts$album))[1]
+```
+:::
+
+
+::: {.callout-tip}
+## h) Plotten Sie die Anzahl der Tracks pro Album als Liniendiagramm, wobei das Datum auf der X-Achse, und die Trackanzahl auf der Y-Achse dargestellt werden.
+
+Für R-Base plot () wandeln wir hierzu das `release_date` in einen Factor um. Damit die Levelreihenfolge stimmt, überführen wir die Daten in ein gesondertes Objekt. Für `ggplot()` muss die Häufigkeitstabelle zunächst in ein Datenframe überführt werden.
+```{r}
+#| label: LoesungAB00Ch
+#| warning: false
+#| layout-ncol: 2
+# nimm nur unique Datumsangaben und sortiere diese
+zeitstrahl <- sort(unique(ts$release_date))
+
+# überführe in factor()
+ts$release_date <- factor(ts$release_date,
+                          ordered=TRUE,
+                          levels = zeitstrahl)
+# plotte mit Rbase
+plot(table(ts$release_date), type="l",
+     col="purple",
+     ylab="Anzahl Tracks",
+     xlab="Datum",
+     main="Taylor Swift Alben")
+# ggplot
+# Häufigkeitstabelle der release_dates erstellen
+tbl <- as.data.frame(table(ts$release_date))
+
+# Plot mit ggplot2 erstellen
+ggplot(tbl, aes(x = as.Date(Var1), y = Freq)) +
+  geom_line(color = "purple") +
+  labs(x = "Datum", 
+       y = "Anzahl Tracks", 
+       title = "Taylor Swift Alben")
+```
 :::
 
 

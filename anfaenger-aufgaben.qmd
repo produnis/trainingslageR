@@ -412,6 +412,49 @@ Lösung siehe @sec-LAB00
 
 
 
+### Aufgabe [-@sec-AAB00B] Punktwolke und Balkendiagramm {#sec-AAB00B}
+
+::: {.callout-note appearance="simple"}
+Gegeben sind folgende Werte
+
+| **x**: | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **y**: | 4 | 7 | 8 | 11| 12| 9 | 9 | 6 | 4 | 2  |
+
+a) Überführen Sie die Daten in ein Datenframe.
+b) Stellen Sie die Werte als Punktwolke dar.
+c) Stellen Sie die Werte als Balkendiagramm (**nicht** Säulendiagramm) dar. 
+
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB00B
+:::
+
+
+
+
+### Aufgabe [-@sec-AAB00C] Taylor Swift {#sec-AAB00C}
+
+::: {.callout-note appearance="simple"}
+Im Datensatz `taylor_swift_spotify2024.csv`^[siehe <https://www.produnis.de/trainingslager/data/taylor_swift_spotify2024.csv>] sind Daten von Taylor Swift bei Spotify enthalten (Stand 2024).
+
+a) Laden Sie den Datensatz `taylor_swift_spotify.csv` in Ihre R-Session. Nennen Sie Ihr Datenframe dabei `ts`.
+b) Verschaffen Sie sich mittels `str()` und `summary()` einen Überblick über die enthaltenen Daten.
+c) Wenn nötig, korrigiern Sie das Skalenniveau (nominal, ordinal, metrisch) der Variablen innerhalb des Datensatzes.
+d) Wie lang dauern die Songs im Durchschnitt? Bei welcher Songlänge liegt der Median? Bitte geben Sie die Ergebnisse in Sekunden (nicht Millisekunden) an.
+e) Erstellen Sie ein ausreichend beschriftetes  Histogramm der Songlängen in Sekunden.
+f) Welcher Song ist laut Datensatz der populärste, welcher der längste, und welcher der langsamste?
+g) Welches Album hat die meisten Songs, und welches hat die wenigsten Songs?
+h) Plotten Sie die Anzahl der Tracks pro Album als Liniendiagramm, wobei das Datum auf der X-Achse, und die Trackanzahl auf der Y-Achse dargestellt werden.
+:::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB00C
+:::
+
+
+
 
 
 ### Aufgabe [-@sec-AAB01] Serumcholesterin {#sec-AAB01}
