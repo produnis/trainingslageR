@@ -12,7 +12,8 @@
   \end{center}
 \end{wrapfigure}
 
-\Large Willkommen im trainingslageR!
+\Large 
+**Willkommen im trainingslageR!**
 \normalsize
 
 <img src="images/trainingslageR-hexsticker.png" width="200">
