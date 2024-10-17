@@ -18,9 +18,9 @@
 
 <img src="images/trainingslageR-hexsticker.png" width="200">
 
-In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten. Für Ihre Lösungswege kann das freie Nachschlagewerk von @grSchlR hilfreich sein.
+In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten, die vor allem für Studierende im Gesundheitswesen von Nutzen sein könnten. Für Ihre Lösungswege kann das freie Nachschlagewerk von @grSchlR hilfreich sein.
 
-Lassen Sie sich nicht entmutigen, `R` hat eine steile Lernkurve.
+Lassen Sie sich nicht entmutigen, `R` hat eine steile Lernkurve, und nur durch Übung kommen Sie weiter. Diese Sammlung möchte Sie auf Ihrem Weg begleiten und Sie befähigen, *typische* Aufgaben in `R` sicher zu meistern.
 
 Falls Sie nach diesen Übungen immer noch nicht genug haben, finden Sie weitere Aufgabenstellungen bei @grSchlRuebung.
 
