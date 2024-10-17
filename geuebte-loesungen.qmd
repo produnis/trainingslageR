@@ -798,7 +798,7 @@ hist(kh$Alter)
 # Wahrscheinlichkeit für maximal 2 Aufnahmen berechnen
 ppois(2, lambda = mu)
 ``` 
-Es fällt auf, dass es viele Probanden mit `Alter=0` gibt. Diese sollten in `NA` umgewandelt werden.
+Es fällt auf, dass es viele Probanden mit `Alter=0` gibt. Dabei handelt es sich wahrscheinlich um Geburten. Da die Geburtsstation gesondert betrachtet werden muss, wandeln wir diese Datenreihen in `NA` um. So gehen sie nicht verloren und stören dennoch nicht bei der Auswertung.
 
 ```{r}
 #| label: LoesungBB01j2

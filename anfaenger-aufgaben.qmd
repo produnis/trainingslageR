@@ -267,7 +267,7 @@ In Hogwarts wurden jeweils die vier beliebtesten Kurse der Schüler pro Haus erm
 
 a) Erstellen Sie das Datenframe `Kurse`, in welchem die Daten aus den Tabellenspalten `Haus` und `Kurs` enthalten sind.
 b) Wieviele Kurse haben es in die Auswahlliste geschafft?
-c) Erstellen Sie für jedes Haus ein eigenes Datenframe
+c) Erstellen Sie  per `subset()` für jedes Haus ein eigenes Datenframe
 d) Wandeln Sie in jedem Haus-Datenframe die Variablen in Faktoren um.
 e) Fügen Sie die Haus-Datenframes zu einem einzigen Datenframe `Hogwarts` zusammen, in der Reihenfolge Ravenclaw, Gryffindor, Syltherin und Hufflepuff. Ändern Sie anschließend den Kurs "*Geschichte der Zauberei*" in "*Geisterkunde*" um. 
 f) Sortieren Sie den Datensatz, so dass die Kurse in alphabetischer Reihenfolge angezeigt werden.
@@ -439,14 +439,14 @@ Lösung siehe @sec-LAB00B
 ::: {.callout-note appearance="simple"}
 Im Datensatz `taylor_swift_spotify2024.csv`^[siehe <https://www.produnis.de/trainingslager/data/taylor_swift_spotify2024.csv>] sind Daten von Taylor Swift bei Spotify enthalten (Stand 2024).
 
-a) Laden Sie den Datensatz `taylor_swift_spotify.csv` in Ihre R-Session. Nennen Sie Ihr Datenframe dabei `ts`.
+a) Laden Sie den Datensatz `taylor_swift_spotify2024.csv` in Ihre R-Session. Nennen Sie Ihr Datenframe dabei `ts`.
 b) Verschaffen Sie sich mittels `str()` und `summary()` einen Überblick über die enthaltenen Daten.
 c) Wenn nötig, korrigiern Sie das Skalenniveau (nominal, ordinal, metrisch) der Variablen innerhalb des Datensatzes.
 d) Wie lang dauern die Songs im Durchschnitt? Bei welcher Songlänge liegt der Median? Bitte geben Sie die Ergebnisse in Sekunden (nicht Millisekunden) an.
 e) Erstellen Sie ein ausreichend beschriftetes  Histogramm der Songlängen in Sekunden.
 f) Welcher Song ist laut Datensatz der populärste, welcher der längste, und welcher der langsamste?
 g) Welches Album hat die meisten Songs, und welches hat die wenigsten Songs?
-h) Plotten Sie die Anzahl der Tracks pro Album als Liniendiagramm, wobei das Datum auf der X-Achse, und die Trackanzahl auf der Y-Achse dargestellt werden.
+h) Plotten Sie die Anzahl der Tracks pro Album als Punkt-Liniendiagramm, wobei das Datum auf der X-Achse, und die Trackanzahl auf der Y-Achse dargestellt werden.
 :::
 
 ::: {.callout-tip appearance="simple"}

@@ -528,7 +528,7 @@ Es sind 13 Kurse in der Liste.
 
 
 ::: {.callout-tip}
-## c) Erstellen Sie für jedes Haus ein eigenes Datenframe
+## c) Erstellen Sie per `subset()` für jedes Haus ein eigenes Datenframe
 
 ```{r}
 #| label: LoesungAA06c
@@ -1070,7 +1070,7 @@ ggplot(df, aes(x=x, y=y)) +
 
 ### Lösung zur Aufgabe [-@sec-AAB00C] Taylor Swift {#sec-LAB00C}
 ::: {.callout-tip}
-## a) Laden Sie den Datensatz `taylor_swift_spotify.csv` in Ihre R-Session. Nennen Sie Ihr Datenframe dabei `ts`.
+## a) Laden Sie den Datensatz `taylor_swift_spotify2024.csv` in Ihre R-Session. Nennen Sie Ihr Datenframe dabei `ts`.
 
 ```{r}
 #| label: LoesungAB00CSETUP
@@ -1144,13 +1144,16 @@ songlänge <- ts$duration_ms / 1000
 hist(songlänge, col="pink",
      xlab="Länge in Sekunden",
      ylab="Anzahl der Songs",
-     main= "Talyor Swift 2024")
+     main= "Talyor Swift Songs 2024")
 # ggplot
 library(ggplot2)
 songs <- as.data.frame(songlänge)
 ggplot(songs, aes(x=songlänge)) +
   geom_histogram(fill="pink", col="black",
-                 bins=10)
+                 bins=10) +
+  labs(title = "Taylor Swift Songs 2024",
+       x = "Länge in Sekunden",
+       y = "Anzahl der Songs")
 ```
 :::
 
@@ -1227,7 +1230,6 @@ ts$name[ts$tempo==min(ts$tempo)]
 ::: {.callout-tip}
 ## g) Welches Album hat die meisten Songs, und welches hat die wenigsten Songs?
 
-Mindestens `album` kann als Factor angesehen werden. Streggenommen aber auch `name`,  `id` und `uri`. 
 ```{r}
 #| label: LoesungAB00Cg
 #| warning: false
@@ -1241,33 +1243,35 @@ sort(table(ts$album))[1]
 
 
 ::: {.callout-tip}
-## h) Plotten Sie die Anzahl der Tracks pro Album als Liniendiagramm, wobei das Datum auf der X-Achse, und die Trackanzahl auf der Y-Achse dargestellt werden.
+## h) Plotten Sie die Anzahl der Tracks pro Album als Punkt-Liniendiagramm, wobei das Datum auf der X-Achse, und die Trackanzahl auf der Y-Achse dargestellt werden.
 
-Für R-Base plot () wandeln wir hierzu das `release_date` in einen Factor um. Damit die Levelreihenfolge stimmt, überführen wir die Daten in ein gesondertes Objekt. Für `ggplot()` muss die Häufigkeitstabelle zunächst in ein Datenframe überführt werden.
+Um die Datumsangaben auf der X-Achse in korrekten Abständen anzuzeigen erstellen wir zunächst ein Datenframe der Häufigkeitstabelle von `ts$release_date`. Anschließend werden die Datumsangaben per `as.Date()` in die richtige Klasse überführt. 
 ```{r}
 #| label: LoesungAB00Ch
 #| warning: false
-#| layout-ncol: 2
-# nimm nur unique Datumsangaben und sortiere diese
-zeitstrahl <- sort(unique(ts$release_date))
+# erstelle Datenframe der Häufigkeitstabelle
+df <- as.data.frame(table(ts$release_date))
+# anzeigen
+df
 
-# überführe in factor()
-ts$release_date <- factor(ts$release_date,
-                          ordered=TRUE,
-                          levels = zeitstrahl)
+# überführe in Datumsklasse
+df$Var1 <- as.Date(df$Var1)
+```
+```{r}
+#| label: LoesungAB00Ch2
+#| warning: false
+#| layout-ncol: 2
 # plotte mit Rbase
-plot(table(ts$release_date), type="l",
+plot(df, type="b",
      col="purple",
      ylab="Anzahl Tracks",
      xlab="Datum",
      main="Taylor Swift Alben")
-# ggplot
-# Häufigkeitstabelle der release_dates erstellen
-tbl <- as.data.frame(table(ts$release_date))
 
-# Plot mit ggplot2 erstellen
-ggplot(tbl, aes(x = as.Date(Var1), y = Freq)) +
+# plott mit ggplot
+ggplot(df, aes(x = Var1, y = Freq)) +
   geom_line(color = "purple") +
+  geom_point(color = "purple") +
   labs(x = "Datum", 
        y = "Anzahl Tracks", 
        title = "Taylor Swift Alben")
