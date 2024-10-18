@@ -30,7 +30,7 @@ Unter folgenden Bedingungen:
 ::: callout-tip
 ## **Zitationsvorschlag**
 
-große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger\*innen und Fortgeschrittene", Hochschule Niederrhein, <https://github.com/produnis/trainingslager>
+große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger\*innen und Fortgeschrittene", Hochschule Niederrhein, <https://www.produnis.de/trainingslager>
 
 \scriptsize
 
@@ -42,7 +42,7 @@ große Schlarmann, J (2024): "trainingslageR. Ein Übungsbuch für R-Einsteiger\
     publisher = {Hochschule Niederrhein},
     address = {Krefeld},
     copyright = {CC BY-NC-SA 4.0},
-    url = {github.com/produnis/trainingslager},
+    url = {https://www.produnis.de/trainingslager},
     language = {de},
 }
 ```
