@@ -39,7 +39,7 @@ book:
   description:  |
     In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware R enthalten, die vor allem für Studierende im Gesundheitswesen von Nutzen sein könnten.
   favicon: images/favicon.ico
-  cover-image: images/Titelbild.png
+  cover-image: images/Titelbild.jpg
   output-file: trainingslageR
   sidebar:
     collapse-level: 4
