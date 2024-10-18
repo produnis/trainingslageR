@@ -1,3 +1,12 @@
+---
+description: "Lösungswege zu den Übungsaufgaben für fortgeschrittene Nutzerinnen"
+format:
+  html:
+    include-in-header: "vgwort/fortgeschritteneloesungen.html"
+    #aliases: 
+    #- Kapitel-Tidyverse.html
+---
+
 # Lösungswege der Aufgaben für fortgeschrittene User:innen {#sec-LoesungFortschritt}
 
 ::: {.callout-note appearance="simple"}

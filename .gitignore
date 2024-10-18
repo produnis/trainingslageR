@@ -15,3 +15,4 @@ BOOK/site_libs
 BOOK/*json
 BOOK/data
 _src/
+vgwort/*.ods

@@ -1,3 +1,12 @@
+---
+description: "Übungsaufgaben für R-Einsteiger:innen"
+format:
+  html:
+    include-in-header: "vgwort/anfaengeraufgaben.html"
+    #aliases: 
+    #- Kapitel-Tidyverse.html
+---
+
 # Aufgaben für Einsteiger:innen {#sec-AufgabeAnfang}
 
 

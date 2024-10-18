@@ -1,3 +1,12 @@
+---
+description: "Lösung zu den Übungsaufgaben für R-Einsteiger:innen"
+format:
+  html:
+    include-in-header: "vgwort/anfaengerloesungen.html"
+    #aliases: 
+    #- Kapitel-Tidyverse.html
+---
+
 # Lösungswege zu den Aufgaben für Einsteiger:innen {#sec-LoesungAnfang}
 
 ::: {.callout-warning appearance="simple"}
