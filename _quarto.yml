@@ -22,6 +22,7 @@ citation:
   url: https://github.com/produnis/trainingslager
   public-url: https://www.produnis.de/trainingslager
   fulltext-url: https://www.produnis.de/trainingslager
+  pdf-url: https://www.produnis.de/trainingslager/trainingslageR.pdf
 
 book:
   title: "trainingslageR"
@@ -66,6 +67,18 @@ book:
         - fortgeschritten-loesungen.qmd
     - literatur.qmd
     - credits.qmd
+  page-footer:
+    right:
+      - icon: github
+        href: https://github.com/produnis/trainingslager
+      - icon: linkedin
+        href: https://www.linkedin.com/in/j%C3%B6rg-gro%C3%9Fe-schlarmann-32b3331b7/
+      - icon: mastodon
+        href: https://mastodon.social/@rbuch
+      - icon: file-earmark-pdf
+        href: trainingslageR.pdf
+      - icon: journal-richtext
+        href: trainingslageR.epub
 
 bibliography: literatur.bib
 csl: apa-single-spaced.csl
