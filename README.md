@@ -20,11 +20,13 @@ Ein freies Übungsbuch für R-Einsteiger*innen und Fortgeschrittene.
 
 Das Buch ist mit `quarto` erstellt worden, siehe <https://quarto.org>. Wenn Sie RStudio installiert haben, können Sie das Projekt über die Datei `_trainingslageR.Rproj` laden und das Buch rendern.
 
-Eine fertig gerenderte EPUB- und PDF-Datei steht im Unterornder `BOOK` zur Verfügung.
+Fertig gerenderte EPUB- und PDF-Dateien stehen im Unterornder `BOOK` zur Verfügung.
 
+Eine Live-Version der HTML-Seite gibt es unter <https://www.produnis.de/trainingslager/>.
 
 ## siehe auch
 
 - Angewandte Übungen in R, <https://github.com/produnis/angewandte_uebungen_in_R>
+- table traineR, <https://github.com/produnis/tabletrainer>
 - Statistik mit R und RStudio, <https://www.produnis.de/R>
 
