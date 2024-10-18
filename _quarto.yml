@@ -47,10 +47,10 @@ book:
     - pdf
     - epub
   open-graph:
-    image: "https://www.produnis.de/trainingslager/images/Titelbild.png"
+    image: "https://www.produnis.de/trainingslager/images/Titelbild.jpg"
     locale: de_DE
   twitter-card:
-    image: "https://www.produnis.de/trainingslager/images/Titelbild.png"
+    image: "https://www.produnis.de/trainingslager/images/Titelbild.jpg"
     creator: "produnis"
   chapters:
     - index.qmd
