@@ -1,7 +1,7 @@
 ---
 description: "Lösungswege zu den Übungsaufgaben für fortgeschrittene Nutzerinnen"
 format:
-  html:
+  buechlein-html:
     include-in-header: "vgwort/fortgeschritteneloesungen.html"
     #aliases: 
     #- Kapitel-Tidyverse.html

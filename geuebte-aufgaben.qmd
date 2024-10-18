@@ -1,7 +1,7 @@
 ---
 description: "Übungsaufgaben für geübte Anwenderinnen"
 format:
-  html:
+  buechlein-html:
     include-in-header: "vgwort/geuebteaufgaben.html"
     #aliases: 
     #- Kapitel-Tidyverse.html
