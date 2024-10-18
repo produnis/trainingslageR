@@ -1374,11 +1374,34 @@ median(df$chol)
 :::
 
 
-::: {.callout-tip}
-## e) Erstellen Sie einen Boxplot der Werte.
 
+::: {.callout-tip}
+## e) Berechnen Sie die Summe der quadrierten Abweichungen
+
+Wir können "von Hand" rechnen...
 ```{r}
 #| label: LoesungAB01e
+mittelwert <- mean(serumchol)
+
+# SQA
+sum((serumchol - mittelwert)^2)
+```
+
+... oder wir machen uns die Tatsache zu nutze, dass die Formel für die *Varianz* $\frac{\sum(x_{i}-\bar{x})^2}{n-1}$ lautet. Folglich müssen wir die Varianz mit $(n-1)$ multiplizieren, und erhalten so die SQA.
+
+```{r}
+#| label: LoesungAB01e2
+var(serumchol) * (length(serumchol)-1)
+```
+
+:::
+
+
+::: {.callout-tip}
+## f) Erstellen Sie einen Boxplot der Werte.
+
+```{r}
+#| label: LoesungAB01f
 boxplot(df$chol)
 
 # hübscher
@@ -1389,10 +1412,10 @@ boxplot(df$chol, main="Serumcholesterinspiegel in mmol/l",
 
 
 ::: {.callout-tip}
-## f) Stellen Sie die in b) aufgelisteten absoluten nicht kumulierten Häufigkeiten als Histogramm dar.
+## g) Stellen Sie die in b) aufgelisteten absoluten nicht kumulierten Häufigkeiten als Histogramm dar.
 
 ```{r}
-#| label: LoesungAB01f
+#| label: LoesungAB01g
 # Histogram
 hist(df$chol)
 
@@ -1408,10 +1431,10 @@ hist(df$chol, breaks=5,
 
 
 ::: {.callout-tip}
-## g) Welche Form hat die Verteilung?
+## h) Welche Form hat die Verteilung?
 
 ```{r}
-#| label: LoesungAB01g
+#| label: LoesungAB01h
 # "Schiefe" berechnen
 psych::skew(df$chol)
 
@@ -2235,5 +2258,238 @@ ggplot(df, aes(y=Note, x=Relativ)) +
 ```
 
 :::
+
+
+
+
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB09] Statistikklausur {#sec-LAB09}
+
+::: {.callout-tip}
+## a) Überführen Sie die Ergebnisse der Studierende in ein Datenframe.
+
+```{r}
+#| label: LoesungAB09a
+#| warning: false
+df <- data.frame(Punkte = c(0, 0, 1, 85, 95, 63, 89, 98, 88, 75, 90, 41, 89, 99, 
+      97, 68, 49, 59, 96, 57, 65, 94, 48, 71,96, 72, 98, 88, 66, 58, 43, 66, 76, 
+      98, 44, 74, 99, 86, 87, 97, 99, 86, 61, 41, 77, 73, 71,40, 63, 71, 78, 72, 
+      58, 52, 68, 81, 75, 80, 70, 65, 86, 63, 97, 45, 58, 96, 48, 64, 67, 100,
+      49, 90, 63, 69, 93, 90, 85, 78, 62, 84, 100, 67, 88, 71, 42, 72, 44, 89, 
+      73, 42, 71, 88, 74,60, 81, 58, 56, 94, 90, 69, 44, 42, 69, 100, 100))
+```
+
+:::
+
+
+::: {.callout-tip}
+## b) Erzeugen Sie eine neue Spalte `Note`, indem Sie die erreichten Punkte mit Hilfe der `cut()`-Funktion in "echte" Noten umwandeln.
+
+Die Schwierigkeit besteht darin, die absoluten Ränder (0 und 100 Punkte) korrekt zu klassieren.
+Ein möglicher Trick besteht darin, den Parameter `right=FALSE` zu setzen, und dann die oberste Klassengrenze nicht bei 100, sondern bei 101 aufhören zu lassen. Auf diese Weise werden Studierende, die 100 Punkte erreicht haben, ebenfalls korrekt klassiert. 
+```{r}
+#| label: LoesungAB09b
+#| warning: false
+df$Note <- cut(df$Punkte, breaks=c(0, seq(50, 95, 5), 101), 
+               ordered=TRUE, right=FALSE, 
+               labels = c("5.0", "4.0", "3.7", 
+                          "3.3", "3.0", "2.7", 
+                          "2.3", "2.0", "1.7", 
+                          "1.3", "1.0"))
+
+# anschauen
+df
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Erzeugen Sie mit wenig Aufwand eine vollständige Häufigkeitstabelle der Noten.
+
+```{r}
+#| label: LoesungAB09c
+#| warning: false
+jgsbook::freqTable(df$Note)
+```
+
+:::
+
+
+::: {.callout-tip}
+## d) Erzeugen Sie ein farbiges Histogramm, welches die Klassengrenzen nachahmt. Denken Sie daran, dass `hist()` die "Originaldaten" erwartet und die Klassierung selbst (nach Ihren Angaben) vornimmt. 
+Geben Sie dem Plot eine Überschrift und beschriften Sie die Achsen.
+
+```{r}
+#| label: LoesungAB09d
+#| warning: false
+#| layout-ncol: 2
+hist(df$Punkte, col="orchid",
+     breaks=c(0, seq(50, 100, 5)),
+     main="Notenhäufigkeiten", freq = TRUE,
+     xlab="Note", ylab="Häufigkeiten")
+
+# flächenproportional
+hist(df$Punkte, col="seagreen2",
+     breaks=c(0, seq(50, 100, 5)),
+     main="Notenhäufigkeiten flächenproportional",
+     xlab="Note", ylab="Häufigkeiten")
+```
+
+:::
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB10] Klausurergebnisse {#sec-LAB10}
+
+::: {.callout-tip}
+## a) Berechnen Sie die Punktzahl, die dem 77. Perzentil entspricht, d.h. bei welcher Punktzahl 77% der Studierenden schlechter abgeschnitten haben.
+
+```{r}
+#| label: LoesungAB10a
+#| warning: false
+qnorm(0.77, 80, 8)
+```
+
+:::
+
+::: {.callout-tip}
+## b) Wie viele Punkte muss eine Studentin mindestens erreichen, um zu den besten 5% der Klausur zu gehören?
+
+```{r}
+#| label: LoesungAB10b
+#| warning: false
+qnorm(0.95, 80, 8)
+```
+
+:::
+
+
+::: {.callout-tip}
+## c) Bei welchem Punktwert liegt der Median?
+
+Bei normalverteilten Werten liegen Median und Mittelwert im selben Punkt. Somit liegt der Median bei 80 Punkten.
+:::
+
+
+::: {.callout-tip}
+## d) Ein Student behauptet, dass er zu den besten 25% des Kurses gehöre. Berechnen Sie, wie viele Punkte er mindestens erreicht haben müsste.
+
+```{r}
+#| label: LoesungAB10d
+#| warning: false
+qnorm(0.75, 80, 8)
+```
+
+:::
+
+
+::: {.callout-tip}
+## e) Plotten Sie die Glockenkurve der Verteilung.
+
+```{r}
+#| label: LoesungAB10e
+#| warning: false
+#| layout-ncol: 2
+# helper
+mean <- 80
+sd <- 8
+# x-Werte erzeugen
+x <- seq(mean - 4*sd, mean + 4*sd, by=0.1)
+# y-Werte
+y <- dnorm(x, mean, sd)
+
+# mit R-base
+plot(x, y, type="l", col="darkgreen")
+
+# mit ggplot
+library(ggplot2)
+df <- data.frame(x, y)
+ggplot(df, aes(x=x, y=y)) +
+  geom_line(color="darkgreen")
+```
+
+:::
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB11] Ampullen aufziehen {#sec-LAB11}
+
+::: {.callout-tip}
+##  a) Wie lautet der z-transformierte Wert von Tina?
+
+```{r}
+#| label: LoesungAB11a
+#| warning: false
+# z-Wert von Tina
+as.numeric(scale(105, center=110, scale=17))
+```
+
+Tinas z-Wert lautet -0,2941.
+:::
+
+
+::: {.callout-tip}
+##  b) wieviel Prozent der Kolleginnen sind schneller als Tina?
+
+```{r}
+#| label: LoesungAB11b
+#| warning: false
+# schneller bedeutet weniger Sekunden
+pnorm(105, mean=110, s=17)
+```
+
+Es sind 38,43% der Kolleginnen schneller als Tina.
+:::
+
+
+::: {.callout-tip}
+##   c) wieviel Prozent der Kolleginnen sind langsamer als Tina?
+
+```{r}
+#| label: LoesungAB11c
+#| warning: false
+1 - pnorm(105, mean=110, s=17)
+```
+
+Es sind 61,57% der Kolleginnen schneller als Tina
+:::
+
+
+
+::: {.callout-tip}
+## d) plotten Sie die Glockenkurve der Verteilung.
+
+```{r}
+#| label: LoesungAB11d
+#| warning: false
+#| layout-ncol: 2
+# x-Werte von 60 bis 170 erzeugen
+x <- seq(60, 170, by=0.1)
+
+# y-Werte mittels dnorm erzeugen
+y <- dnorm(x, mean=110, sd=17)
+
+# plotten mit Rbase
+plot(x, y, col="royalblue")
+
+# plotten mit ggplot
+df <- data.frame(x, y)
+ggplot(df, aes(x=x, y=y)) +
+  geom_line(color="royalblue")
+```
+
+:::
+
 
 

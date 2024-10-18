@@ -489,9 +489,13 @@ d) Bestimmen Sie bitte folgende Kenngrößen:
    - Varianz und Standardabweichung
    - Minimum  10. Perzentil  1. Quartil  3. Quartil  90. Perzentil  Maximum
    - Interquartilsabstand
-e) Erstellen Sie  einen Boxplot der Werte.
-f) Stellen Sie die in a) aufgelisteten absoluten nicht kumulierten Häufigkeiten als Histogramm dar.
-g) Welche Form hat die Verteilung?
+e) In `R` gibt es keine generische Funktion zur Berechnung der *Summe der quadrierten Abnweichungen* $\ \sum(x_{i}-\bar{x})^2$ 
+   
+   Bitte berechnen Sie diesen Wert dennoch.
+   
+f) Erstellen Sie  einen Boxplot der Werte.
+g) Stellen Sie die in a) aufgelisteten absoluten nicht kumulierten Häufigkeiten als Histogramm dar.
+h) Welche Form hat die Verteilung?
 :::
 
 ::: {.callout-tip appearance="simple"}
@@ -689,6 +693,115 @@ c) Stellen Sie die relativen Häufigkeiten als ausreichend beschriftetes Balkend
 
 ::: {.callout-tip appearance="simple"}
 Lösung siehe @sec-LAB08
+:::
+
+
+
+
+
+### Aufgabe [-@sec-AAB09] Statistikklausur {#sec-AAB09}
+
+:::: {.callout-note appearance="simple"}
+Nachfolgend sind die erreichten Punkte von Studierenden in der Statistikklausur aufgeführt.
+
+> 0, 0, 1, 85, 95, 63, 89, 98, 88, 75, 90, 41, 89, 99, 97, 68, 49, 59, 96, 57, 65, 94, 48, 71, 96, 72, 98, 88, 66, 58, 43, 66, 76, 98, 44, 74, 99, 86, 87, 97, 99, 86, 61, 41, 77, 73, 71, 40, 63, 71, 78, 72, 58, 52, 68, 81, 75, 80, 70, 65, 86, 63, 97, 45, 58, 96, 48, 64, 67, 100, 49, 90, 63, 69, 93, 90, 85, 78, 62, 84, 100, 67, 88, 71, 42, 72, 44, 89, 73, 42, 71, 88, 74, 60, 81, 58, 56, 94, 90, 69, 44, 42, 69, 100, 100
+
+Insgesamt konnten 100 Punkte erreicht werden. Zur Bestimmung der Note wurde folgender Notenschlüssel verwendet:
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-align: center
+df <-tibble::tibble(Prozent = c(49.99, seq(from=50, to=95, by=5)),
+               Punkte = c(
+              round(49.9*100/100, 1),
+              round(50*100/100, 1),
+              round(55*100/100, 1),
+              round(60*100/100, 1),
+              round(65*100/100, 1),
+              round(70*100/100, 1),
+              round(75*100/100, 1),
+              round(80*100/100, 1),
+              round(85*100/100, 1),
+              round(90*100/100, 1),
+              round(95*100/100, 1)
+               ),
+               Note = c(5, 4, 3.7, 3.3, 3, 2.7, 2.3, 2, 1.7, 1.3, 1)
+              )
+kableExtra::kbl(df[ order(df$Punkte, decreasing=T), ], align="c", position="b") |> 
+  kableExtra::row_spec(0, background = "#185191", color="white", bold=TRUE) |> 
+  kableExtra::row_spec(11, background = "#FAAEAE")
+
+```
+\smallskip\  
+
+Wie Sie sehen sind Studierende, die weniger als 50 Punkte erreichten, durchgefallen.
+
+
+a) Überführen Sie die Ergebnisse der Studierende in ein Datenframe.
+b) Erzeugen Sie eine neue Spalte `Note`, indem Sie die erreichten Punkte mit Hilfe der `cut()`-Funktion in "echte" Noten umwandeln.
+
+::: {.callout-important}
+## ACHTUNG
+Die Aufgabe enthällt einen Fallstrick! Schauen Sie sich Ihre Klassifikationsergebnisse **genau** an und achten Sie dabei auf die Ränder ($0$ Punkte und $100$ Punkte).
+:::
+
+c) Erzeugen Sie mit wenig Aufwand eine vollständige Häufigkeitstabelle der Noten.
+
+d) Erzeugen Sie ein farbiges Histogramm, welches die Klassengrenzen nachahmt. Denken Sie daran, dass `hist()` die "Originaldaten" erwartet und die Klassierung selbst (nach Ihren Angaben) vornimmt. 
+Geben Sie dem Plot eine Überschrift und beschriften Sie die Achsen.
+
+::::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB09
+:::
+
+
+
+
+
+
+
+
+### Aufgabe [-@sec-AAB10] Klausurergebnisse {#sec-AAB10}
+
+:::: {.callout-note appearance="simple"}
+Die erreichten Punkte in der Statistikklausur sind normalverteilt mit $\bar{x} = 80$ Punkten und $sd = 8$ Punkten.
+
+a) Berechnen Sie die Punktzahl, die dem 77. Perzentil entspricht, d.h. bei welcher Punktzahl 77% der Studierenden schlechter abgeschnitten haben.
+b) Wie viele Punkte muss eine Studentin mindestens erreichen, um zu den besten 5% der Klausur zu gehören?
+c) Bei welchem Punktwert liegt der Median?
+d) Ein Student behauptet, dass er zu den besten 25% des Kurses gehöre. Berechnen Sie, wie viele Punkte er mindestens erreicht haben müsste.
+e) Plotten Sie die Glockenkurve der Verteilung.
+::::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB10
+:::
+
+
+
+
+
+
+
+### Aufgabe [-@sec-AAB11] Ampullen aufziehen {#sec-AAB11}
+
+:::: {.callout-note appearance="simple"}
+Die Studierenden im Pflegestudiengang benötigen im Schnitt 110 Sekunden für das Aufziehen einer Ampulle bei einer Standardabweichung von 17 Sekunden. Die Zeiten sind normalverteilt.
+
+Unsere Kollegin Tina benötigt für das Aufziehen der Ampulle 105 Sekunden.
+
+a) Wie lautet der z-transformierte Wert von Tina?
+b) Wieviel Prozent der Kolleginnen sind schneller als Tina?
+c) Wieviele sind langsamer als Tina?
+d) Plotten Sie die Glockenkurve der Verteilung.
+
+::::
+
+::: {.callout-tip appearance="simple"}
+Lösung siehe @sec-LAB11
 :::
 
 
