@@ -2303,7 +2303,7 @@ df$Note <- cut(df$Punkte, breaks=c(0, seq(50, 95, 5), 101),
                           "1.3", "1.0"))
 
 # anschauen
-df
+head(df)
 ```
 
 :::
@@ -2489,6 +2489,164 @@ ggplot(df, aes(x=x, y=y)) +
   geom_line(color="royalblue")
 ```
 
+:::
+
+
+
+
+
+
+### Lösung zur Aufgabe [-@sec-AAB12] Partys und Prüfungen {#sec-LAB12}
+
+::: {.callout-tip}
+##  a) Übertragen Sie die Daten in `R` und passen Sie wo notwendig das Skalenniveau an.
+
+```{r}
+#| label: LoesungAB12a
+#| warning: false
+library(tidyverse)
+
+# Daten übertragen, z.B. mittels tribble()
+df <- tribble(
+  ~Proband,  ~Partys,  ~bestanden,
+  1,2,3,
+  2,3,3,
+  3,6,1,
+  4,4,0,
+  5,0,5,
+  6,1,3,
+  7,4,0,
+  8,0,4,
+  9,8,1,
+  10,4,2
+  )
+
+# Skalenniveau anpassen
+df <- mutate(df, Proband=factor(Proband))
+
+# anzeigen
+glimpse(df)
+```
+
+:::
+
+
+
+::: {.callout-tip}
+##  b) Gibt es einen Zusammenhang zwischen der Anzahl an Partys und der Anzahl an bestandenen Prüfungen? Prüfen Sie mittels geeigneter Korrelationverfahren.
+
+```{r}
+#| label: LoesungAB12b
+#| warning: false
+cor(df$Partys, df$bestanden)
+```
+
+Der Korrelationskoeffizient liegt bei -0,7783. Das spricht für einen starken negativen Zusammenhang.
+:::
+
+
+
+::: {.callout-tip}
+##  c) Führen Sie eine Regression `bestanden erklärt durch Partys` durch. Wie stark ist der Zusammenhang?
+
+```{r}
+#| label: LoesungAB12c
+#| warning: false
+# Regression durchführen
+fit<- lm(bestanden~Partys, data=df)
+# Ergebnisse anzeigen
+summary(fit)
+```
+
+Der Koeffizient (die Steigung der Geraden) beträgt -0,5101. Mit jeder Party werden 0,5101 Prüfungen weniger bestanden.
+:::
+
+
+::: {.callout-tip}
+##  d) Plotten Sie die Werte als Punktwolke, fügen Sie die Regressionsgerade hinzu und beschriften Sie Ihr Diagramm ausreichend.
+
+```{r}
+#| label: LoesungAB12d
+#| warning: false
+#| layout-ncol: 2
+# mit Rbase plotten
+plot(df$Partys, df$bestanden, col="blue",
+     xlab="Anzahl besuchter Partys",
+     ylab="Anzahl bestandener Prüfungen")
+# Regressionsgerade
+abline(lm(bestanden~Partys, data=df), col="red")
+# mit ggplot
+ggplot(df, aes(x=Partys, y=bestanden)) +
+  geom_point(color="blue") +
+  # Regressionsgerade
+  geom_smooth(method="lm", se=FALSE, color="red")
+```
+
+:::
+
+
+
+
+::: {.callout-tip}
+##  e) Ein weiterer Student gibt an, er habe keine Party besucht aber leider auch keine Prüfung bestanden. Fügen Sie diese Daten Ihrem Datenframe hinzu. 
+
+```{r}
+#| label: LoesungAB12e
+#| warning: false
+# neuer Proband als eigenes tibble/data.frame
+new <- tibble(Proband=factor(11), 
+              Partys=0,
+              bestanden=0)
+# mittels rbind() zusammenführen
+df  <- rbind(df, new)
+
+# anzeigen
+df
+```
+
+:::
+
+
+
+::: {.callout-tip}
+## f) Wie ändern sich dadurch der Korrelationskoeffizient, das Bestimmtheitsmaß R^2 und die Regressionsgerade?
+
+```{r}
+#| label: LoesungAB12f
+#| warning: false
+# Korrelation
+cor(df$Partys, df$bestanden)
+```
+
+Der Zusammenhang wird schwächer, ist aber immernoch leicht größer als 0,5.
+
+```{r}
+#| label: LoesungAB12f2
+#| warning: false
+# Regression erneut durchführen
+fit<- lm(bestanden~Partys, data=df)
+# Ergebnisse anzeigen
+summary(fit)
+```
+Das Bestimmtheitsmaß R^2 beträgt 0,1985. Das bedeutet, dass nur noch 19,85% des Rauschens erklärt werden können. Ohne den letzten Studenten lag es bei 55,64% (siehe oben unter c)).
+
+```{r}
+#| label: LoesungAB12f3
+#| warning: false
+#| layout-ncol: 2
+plot(df$Partys, df$bestanden, col="blue",
+     xlab="Anzahl besuchter Partys",
+     ylab="Anzahl bestandener Prüfungen")
+# Regressionsgerade
+abline(lm(bestanden~Partys, data=df), col="red")
+# mit ggplot
+ggplot(df, aes(x=Partys, y=bestanden)) +
+  geom_point(color="blue") +
+  # Regressionsgerade
+  geom_smooth(method="lm", se=FALSE, color="red")
+```
+
+Die Regressionsgerade wird flacher, die Steigung beträgt nur noch -0.3483.
 :::
 
 
