@@ -1,11 +1,14 @@
 # Credits {.unnumbered}
 
 
-:::{layout-ncol=2 fig-env="figure*"}
+:::{layout-ncol=3 fig-env="figure*"}
  
 ![@grSchlR](images/RBuch.png){width=60mm}
 
 ![@grSchlRuebung](images/AngewandteUebungen.png){width=60mm}
+
+
+![@grSchlTableTraineR](images/tabletraineR.png){width=60mm}
 :::
 
 \vfill
