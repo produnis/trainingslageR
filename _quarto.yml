@@ -85,7 +85,7 @@ csl: apa-single-spaced.csl
 nocite: |
   @waltherR22, @tidytuesday, @Rbase, @wickham23
 lang: de
-
+cover-image: images/Titelbild.jpg
 language:
   crossref-sec-prefix: "Abschnitt"
   crossref-chap-prefix: "Abschnitt"
