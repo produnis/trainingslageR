@@ -35,8 +35,11 @@ book:
       orcid: 0000-0002-3634-7722
   date: "2024-10-16"
   date-format: "DD.MM.YYYY"
+  description:  |
+    In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware R enthalten, die vor allem für Studierende im Gesundheitswesen von Nutzen sein könnten.
+  favicon: images/favicon.ico
   cover-image: images/Titelbild.png
-  output-file: trainingslager
+  output-file: trainingslageR
   sidebar:
     collapse-level: 4
   downloads:

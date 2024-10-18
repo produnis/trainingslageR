@@ -13,3 +13,5 @@ BOOK/*.html
 BOOK/images
 BOOK/site_libs
 BOOK/*json
+BOOK/data
+_src/
