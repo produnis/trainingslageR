@@ -16,7 +16,7 @@
 **Willkommen im trainingslageR!**
 \normalsize
 
-<img src="images/trainingslageR-hexsticker.png" width="200">
+<img class="float-right" src="images/trainingslageR-hexsticker.png" width="200">
 
 In diesem Buch sind zahlreiche Übungen zur freien Statistiksoftware `R` enthalten, die vor allem für Studierende im Gesundheitswesen von Nutzen sein könnten. Für Ihre Lösungswege kann das freie Nachschlagewerk von @grSchlR hilfreich sein.
 

@@ -13,12 +13,16 @@
 
 \vfill
 
+
+
+\includegraphics[width=0.15\textwidth]{images/grSchl2016.jpg}
+
+<img class="float-left" src="images/grSchl2016.jpg" width="150">
+
 Prof. Dr. Jörg große Schlarmann, BScN, MScN, RN
 
 Hochschule Niederrhein, Krefeld
 
 [joerg.grosseschlarmann@hs-niederrhein.de](mailto:joerg.grosseschlarmann@hs-niederrhein.de)
 
-<https://www.produnis.de/R>
-
-<https://www.github.com/produnis/trainingslager>
+<https://github.com/produnis/trainingslageR>
